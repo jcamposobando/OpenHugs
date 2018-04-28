@@ -1,0 +1,21 @@
+INCORPORAR Hola
+
+CLASE Algoritmos { 
+	
+	FUNCION triangulo (PALABRA letra , NUMERO niveles) {
+		; El primer ciclo se mueve por niveles
+		imprimir(  hola )
+	} ;fin de la función
+} ;fin de la clase
+
+CLASE Mono {
+	NUMERO hola
+	NUMERO ave
+	
+	FUNCION perro () {
+		imprimir()
+		NUMERO gato
+	}
+}
+
+; Código elaborado con fines académicos. Open Hugs Team. 2018.
