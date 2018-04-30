@@ -6,6 +6,16 @@ void debug (String str){
   System.err.println(str);
 }
 
+boolean isFunctionCall() {
+ Token next = scanner.Peek();
+ return la.kind == _variableName && next.kind == _lpar;
+} 
+
+boolean isAsignment() {
+ Token next = scanner.Peek();
+ return la.kind == _variableName && next.kind == _asign;
+} 
+
 /*-------------------------------------------------------------------------*/
 
 CHARACTERS
@@ -21,6 +31,8 @@ CHARACTERS
   stringChar    = ANY - "\"" - '\\' - cr - lf.
 
 TOKENS
+  
+  lineEnd = lf {lf}.
   
   variableName = lower{lower}.
   
@@ -69,7 +81,7 @@ TOKENS
 COMMENTS FROM ";;" TO ";;"
 COMMENTS FROM ";" TO lf
 
-IGNORE lf + cr + tab
+IGNORE cr + tab
 
 /*---------------------------------------------------------------------------*/
 
@@ -79,15 +91,15 @@ OpenHugs = {include} classDeclaration {classDeclaration}
 (. debug("Programa"); .)
 .
 
-include = incorporar className
+include = incorporar className lineEnd
 (. debug("include"); .)
 .
 
-classDeclaration = clase className [ ":" typeName {comma typeName}] classBlock
+classDeclaration = clase className [ ":" typeName {comma typeName}] classBlock [lineEnd]
 (. debug("Declaracion de una clase"); .)
 .
 
-function =  funcion variableName lpar [typeName variableName {comma typeName variableName}] rpar StatementBlock
+function =  funcion variableName lpar [typeName variableName {comma typeName variableName}] rpar [lineEnd] StatementBlock
 (. debug("Declaracion de una funcion"); .)
 .
 
@@ -107,20 +119,25 @@ functionCall = variableName lpar [variableName] { comma variableName} rpar.
 
 expresion = 
   ( lpar expresion rpar
+  | IF( isFunctionCall() )functionCall
+  | variableName
+  | number
   | expresion   ( minus expresion
                 | plus expresion
                 | mul expresion
                 | div expresion 
                 | inc
                 | dec )
-  | functionCall
-  | variableName
-  | number
   ).
 
-StatementBlock = lbrace { functionCall | whileLoop | ifStatement | assignment | variableDeclaration } rbrace .
+StatementBlock = lbrace [lineEnd] { ( IF( isFunctionCall() ) functionCall 
+                                      | whileLoop 
+                                      | ifStatement 
+                                      | assignment 
+                                      | variableDeclaration 
+                                    ) lineEnd } rbrace .
 
-classBlock = lbrace {function | variableDeclaration} rbrace.
+classBlock = lbrace lineEnd {(function | variableDeclaration) lineEnd} rbrace.
 
 typeName = className | numero | palabra.
 
