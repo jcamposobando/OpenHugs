@@ -1,17 +1,22 @@
-INCORPORAR Hola
+INCORPORAR Stdio ;esta linea permite incluir la biblioteca de manejo de datos entrada-salida
 
 CLASE Algoritmos {
-	FUNCION triangulo (PALABRA letra , NUMERO niveles) {
-		imprimir(  hola )
+	FUNCION triangulo (PALABRA letra , NUMERO niveles){
+		NUMERO i := 1
+		MIENTRAS ( i ) {
+			NUMERO e := 1
+			MIENTRAS (e <= niveles - i) {
+				imprimir(" ")
+				e++
+			}
+			NUMERO j := 0
+			CICLO MIENTRAS (j < i*2-1) {
+				imprimir(letra)
+				j++
+			}
+			i++
+		} ;fin del primer ciclo	
 	} ;fin de la función
 } ;fin de la clase
 
-CLASE Mono {
-	NUMERO hola := 88
-	NUMERO ave := hola()
-
-	FUNCION perro () {
-		imprimir()
-		NUMERO gato
-	}
-}
+; Código elaborado con fines académicos. Open Hugs Team. 2018.

@@ -64,6 +64,13 @@ TOKENS
   asign = ":=".
   mul = "*".
   div = "/".
+  colon = ":".
+  leq = "<=".
+  geq = ">=".
+  less = "<".
+  grea = ">".
+  equal = "==".
+  
   
   /*----- Reserved words ----------------------------------------------------------*/
   
@@ -75,6 +82,10 @@ TOKENS
   funcion = "FUNCION".
   numero = "NUMERO".
   palabra = "PALABRA".
+  returns = "RETORNA".
+  bool = "LOGICO".
+  return = "RETORNAR".
+
   
 
 
@@ -88,6 +99,7 @@ IGNORE cr + tab
 PRODUCTIONS
 
 OpenHugs = 
+    [lineEnd]
     { 
     ( si            (. System.out.println("Si"); .)
     | mientras      (. System.out.println("mientras"); .)
@@ -95,7 +107,7 @@ OpenHugs =
     | clase         (. System.out.println("clase"); .)
     | incorporar    (. System.out.println("incorporar"); .)
     | funcion       (. System.out.println("funcio"); .)
-    | numero        (. System.out.println("numero"); .)
+    | numero        (. System.out.println("tipo numero"); .)
     | palabra       (. System.out.println("palabra"); .)
     | comma         (. System.out.println("coma"); .)
     | dec           (. System.out.println("dec"); .)
@@ -113,7 +125,18 @@ OpenHugs =
     | div           (. System.out.println("division"); .)
     | className     (. System.out.println("nombre de clase"); .)
     | variableName  (. System.out.println("nombre de variable"); .)
-    ) [lineEnd]
+    | number        (. System.out.println("numero literal"); .)
+    | leq           (. System.out.println("menor igual"); .)
+    | geq           (. System.out.println("mayor igual"); .)
+    | returns       (. System.out.println("retorna"); .)
+    | return       (. System.out.println("retornar"); .)
+    | colon         (. System.out.println("operador de templates"); .)
+    | stringLit     (. System.out.println("string literal"); .)
+    | less          (. System.out.println("menor"); .)
+    | grea          (. System.out.println("mayor"); .)
+    | bool          (. System.out.println("tipo Logico"); .)
+    | equal         (. System.out.println("igual"); .)
+    ) [lineEnd]     
 }   (. System.out.println("Produccion Base"); .)
 .
 

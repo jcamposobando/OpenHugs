@@ -64,6 +64,9 @@ TOKENS
   asign = ":=".
   mul = "*".
   div = "/".
+  colon = ":".
+  leq = "<=".
+  geq = ">=".
   
   /*----- Reserved words ----------------------------------------------------------*/
   
@@ -75,6 +78,7 @@ TOKENS
   funcion = "FUNCION".
   numero = "NUMERO".
   palabra = "PALABRA".
+  returns = "RETORNA".
   
 
 
@@ -91,6 +95,8 @@ OpenHugs = {include} classDeclaration {classDeclaration}
 (. debug("Programa"); .)
 .
 
+completeClassName = className{ dot className}[ colon (typeName|className) { comma (typeName|className)} ].
+
 include = incorporar className lineEnd
 (. debug("include"); .)
 .
@@ -99,7 +105,7 @@ classDeclaration = clase className [ ":" typeName {comma typeName}] classBlock [
 (. debug("Declaracion de una clase"); .)
 .
 
-function =  funcion variableName lpar [typeName variableName {comma typeName variableName}] rpar [lineEnd] StatementBlock
+functionDeclaration =  funcion variableName lpar [typeName variableName {comma typeName variableName}] rpar [returns completeClassName] [lineEnd] StatementBlock
 (. debug("Declaracion de una funcion"); .)
 .
 
@@ -125,7 +131,9 @@ expresion =
   | expresion   ( minus expresion
                 | plus expresion
                 | mul expresion
-                | div expresion 
+                | div expresion
+                | leq expresion
+                | geq expresion
                 | inc
                 | dec )
   ).
@@ -137,7 +145,7 @@ StatementBlock = lbrace [lineEnd] { ( IF( isFunctionCall() ) functionCall
                                       | variableDeclaration 
                                     ) lineEnd } rbrace .
 
-classBlock = lbrace lineEnd {(function | variableDeclaration) lineEnd} rbrace.
+classBlock = lbrace lineEnd {(functionDeclaration | variableDeclaration) lineEnd} rbrace.
 
 typeName = className | numero | palabra.
 
