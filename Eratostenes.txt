@@ -1,0 +1,39 @@
+;; UNIVERSIDAD DE COSTA RICA
+   ESCUELA DE CIENCIAS DE LA COMPUTACIÓN E INFORMÁTICA
+   AUTÓMATAS Y COMPILADORES: I-2018
+   TEAM OPEN HUGS: PRIMERA ENTREGA
+   ALGORITMO DE LA CRIBA DE ERATOSTENES PARA NUMEROS PRIMOS ;;
+
+INCORPORAR stdio
+INCORPORAR stdds ;linea permite incorporar la biblioteca para manejo de estructuras de datos
+INCORPORAR stdmath ;linea permite incorporar la biblioteca para manejo de operaciones matemáticas complejas
+
+CLASE Algoritmos
+	
+	;; El segundo de los algoritmos es el de La Criba de Eratostenes
+	   Recibe un parámetro "n" y devuelve los números primos menores o igual a él
+           Dicha devolución la va a realizar en un vector de booleanos ;;
+
+	FUNCION eratostenes (NUMERO n) RETORNA Vector:LOGICO
+		Vector:LOGICO respuesta
+		
+		;llenado de la lista con los números desde 2 hasta n
+		NUMERO i := 0
+		CICLO MIENTRAS (i <= n)
+			respuesta.agregar(i,VERDADERO)
+			i++
+		
+		NUMERO limite := raiz(n) ;para control del algoritmo
+		i := 2 ;reutilización de la variable i declarada anteriormente
+		CICLO MIENTRAS (i <= limite)
+			SI (respuesta.obtener(i))
+				NUMERO j := i
+				CICLO MIENTRAS (j <= n/i)
+					respuesta.agregar(i*j, FALSO)
+					j++
+			i++
+		RETORNAR respuesta
+	;fin de la función
+;fin de la clase
+
+; Código elaborado con fines académicos. Open Hugs Team. 2018.

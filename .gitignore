@@ -1,4 +1,4 @@
 Parser.java
 Scanner.java
-.class
-.java.old
+*.class
+*.java.old

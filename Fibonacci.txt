@@ -1,0 +1,27 @@
+﻿;; UNIVERSIDAD DE COSTA RICA
+   ESCUELA DE CIENCIAS DE LA COMPUTACIÓN E INFORMÁTICA
+   AUTÓMATAS Y COMPILADORES: I-2018
+   TEAM OPEN HUGS: PRIMERA ENTREGA
+   ALGORITMO RECURSIVO DE FIBONACCI ;;
+
+INCORPORAR stdio ;esta linea permite incluir la biblioteca de manejo de datos entrada-salida
+
+;; El lenguaje orientado a objetos obliga a crear una clase que contenga los algoritmos
+   Esto se hace utilizando la palabra reservada CLASE seguido del nombre de la clase asignado ;;
+
+CLASE Algoritmos
+	
+	;; El primero de los algoritmos es fibonacci
+	   Recibe un parámetro "n" y devuelve la imagen en la función fibonacci ;;
+
+	FUNCION fibonacci (NUMERO n) RETORNA NUMERO
+		SI (n == 0)
+			RETORNAR 0 ;la primera condición de salida
+		SINO SI (n == 1)
+			RETORNAR 1 ;la segunda condición de salida
+		SINO
+			RETORNAR fibonacci(n-1) + fibonacci(n-2) ;recursividad en acción
+	;fin de la función
+;fin de la clase
+
+; Código elaborado con fines académicos. Open Hugs Team. 2018.
