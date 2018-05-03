@@ -1,24 +1,23 @@
-
 INCORPORAR Stdio
 INCORPORAR Stdds ;linea permite incorporar la biblioteca para manejo de estructuras de datos
 INCORPORAR Stdmath ;linea permite incorporar la biblioteca para manejo de operaciones matemáticas complejas
 
 CLASE Algoritmos {
-	FUNCION eratostenes (NUMERO n) RETORNA Vector:LOGICO {
+	FUNCION eratostenes (NUMERO n) RETORNA Vector:NUMERO {
 		Vector:LOGICO respuesta
 		NUMERO i := 0
-		MIENTRAS (i <= n){
-			respuesta.agregar(i,VERDADERO)
-			i++
+		CICLO MIENTRAS (i <= n) {
+			agregar( i , VERDADERO )
+			i := i ++
 		}
 		NUMERO limite := raiz(n) ;para control del algoritmo
 		i := 2 ;reutilización de la variable i declarada anteriormente
-		MIENTRAS (i <= limite)
-			SI (respuesta.obtener(i)) {
+		CICLO MIENTRAS (i <= limite) {
+			SI ( obtener(i) ) {
 				NUMERO j := i
-				MIENTRAS (j <= n/i) {
-					respuesta.agregar(i*j, FALSO)
-					j++
+				CICLO MIENTRAS (j <= n/i) {
+					agregar( i*j , FALSO )
+					j := j++
 				}
 			}
 			i++
