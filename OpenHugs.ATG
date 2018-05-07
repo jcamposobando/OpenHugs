@@ -6,15 +6,16 @@ void debug (String str){
   System.err.println(str);
 }
 
+
 boolean isFunctionCall() {
  Token next = scanner.Peek();
  return la.kind == _variableName && next.kind == _lpar;
-} 
+}
 
 boolean isAsignment() {
  Token next = scanner.Peek();
  return la.kind == _variableName && next.kind == _asign;
-} 
+}
 
 /*-------------------------------------------------------------------------*/
 
@@ -31,21 +32,21 @@ CHARACTERS
   stringChar    = ANY - "\"" - '\\' - cr - lf.
 
 TOKENS
-  
-  lineEnd = lf {lf}.
-  
+
+  lineEnd = lf {{tab}lf}.
+
   variableName = lower{lower}.
-  
+
   className = upper{lower}.
-  
+
   number = digit { digit } ['.' digit { digit } ].
-  
-  stringLit = 
+
+  stringLit =
   "\"" { stringChar
        | "\\" ( "b" | "t" | "n" | "f" | "r" | "\"" | "\'" | "\\" )
-       } 
+       }
   "\"".
-  
+
   /*----- operators and special characters needed in LL(1) resolvers --------------*/
   comma   = ",".
   dec     = "--".
@@ -61,16 +62,20 @@ TOKENS
   rbrack  = "]".
   rpar    = ")".
   tilde   = "~".
-  asign = ":=".
-  mul = "*".
-  div = "/".
-  colon = ":".
-  leq = "<=".
-  geq = ">=".
-  
+  asign   = ":=".
+  mul     = "*".
+  div     = "/".
+  colon   = ":".
+  leq     = "<=".
+  geq     = ">=".
+  less = "<".
+  great = ">".
+  equal = "==".
+
   /*----- Reserved words ----------------------------------------------------------*/
-  
+
   si = "SI".
+  ciclo = "CICLO".
   mientras = "MIENTRAS".
   sino = "SINO".
   clase = "CLASE".
@@ -79,8 +84,10 @@ TOKENS
   numero = "NUMERO".
   palabra = "PALABRA".
   returns = "RETORNA".
-  
-
+  bool = "LOGICO".
+  return = "RETORNAR".
+  true = "VERDADERO".
+  false = "FALSO".
 
 COMMENTS FROM ";;" TO ";;"
 COMMENTS FROM ";" TO lf
@@ -91,13 +98,13 @@ IGNORE cr + tab
 
 PRODUCTIONS
 
-OpenHugs = {include} classDeclaration {classDeclaration}
+OpenHugs = {include} classDeclaration {classDeclaration} lineEnd
 (. debug("Programa"); .)
 .
 
 completeClassName = className{ dot className}[ colon (typeName|className) { comma (typeName|className)} ].
 
-include = incorporar className lineEnd
+include = incorporar className{ dot className} lineEnd
 (. debug("include"); .)
 .
 
@@ -117,36 +124,40 @@ assignment = variableName asign expresion
 (. debug("asignacion"); .)
 .
 
-whileLoop = mientras lpar expresion rpar StatementBlock.
+whileLoop = ciclo mientras lpar expresion rpar StatementBlock.
 
 ifStatement = si lpar expresion rpar StatementBlock [ sino StatementBlock ].
 
-functionCall = variableName lpar [variableName] { comma variableName} rpar.
+functionCall = variableName lpar [value { comma value } ]  rpar.
 
-expresion = 
+value = number | boolValue | stringLit | variableName.
+
+expresion =
   ( lpar expresion rpar
   | IF( isFunctionCall() )functionCall
-  | variableName
-  | number
-  | expresion   ( minus expresion
+  | value )     [ minus expresion
                 | plus expresion
                 | mul expresion
                 | div expresion
                 | leq expresion
                 | geq expresion
+                | less expresion
+                | great expresion
                 | inc
-                | dec )
-  ).
+                | dec ].
 
-StatementBlock = lbrace [lineEnd] { ( IF( isFunctionCall() ) functionCall 
-                                      | whileLoop 
-                                      | ifStatement 
-                                      | assignment 
-                                      | variableDeclaration 
+boolValue = true | false .
+
+StatementBlock = lbrace [lineEnd] { ( IF( isFunctionCall() ) functionCall
+                                      | whileLoop
+                                      | ifStatement
+                                      | assignment
+                                      | variableDeclaration
+                                      | variableName ( inc | dec)
                                     ) lineEnd } rbrace .
 
 classBlock = lbrace lineEnd {(functionDeclaration | variableDeclaration) lineEnd} rbrace.
 
-typeName = className | numero | palabra.
+typeName = completeClassName | numero | palabra | bool.
 
 END OpenHugs.
