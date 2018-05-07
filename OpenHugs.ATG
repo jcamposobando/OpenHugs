@@ -105,15 +105,17 @@ OpenHugs = {include} classDeclaration {classDeclaration}
 
 completeClassName = className{ dot className}[ colon (typeName|className) { comma (typeName|className)} ].
 
+tipoRetorno = numero | bool | palabra | ([className  colon]| numero | bool | palabra).
+
 include = incorporar className { dot className} lineEnd
 (. debug("include"); .)
 .
 
-classDeclaration = clase className [ ":" typeName {comma typeName}] classBlock [lineEnd]
+classDeclaration = clase className [ colon typeName {comma typeName}] classBlock [lineEnd]
 (. debug("Declaracion de una clase"); .)
 .
 
-functionDeclaration =  funcion (variableName|className) lpar [typeName variableName {comma typeName variableName}] rpar [returns completeClassName] [lineEnd] StatementBlock
+functionDeclaration =  funcion (variableName|className) lpar [typeName variableName {comma typeName variableName}] rpar [returns tipoRetorno] [lineEnd] StatementBlock
 (. debug("Declaracion de una funcion"); .)
 .
 
@@ -131,7 +133,7 @@ ifStatement = si lpar expresion rpar StatementBlock [ sino StatementBlock ].
 
 functionCall = variableName lpar [value { comma value } ]  rpar.
 
-value = number | boolValue | stringLit | variableName.
+value = number | true | false | stringLit | variableName.
 
 expresion =
   ( lpar expresion rpar
