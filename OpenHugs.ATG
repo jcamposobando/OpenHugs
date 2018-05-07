@@ -103,9 +103,9 @@ OpenHugs = {include} classDeclaration {classDeclaration}
 (. debug("Programa"); .)
 .
 
-completeClassName = className{ dot className}[ colon (typeName|className) { comma (typeName|className)} ].
+completeClassName = className{ dot className} [ colon typeName {comma typeName } colon ].
 
-tipoRetorno = numero | bool | palabra | ([className  colon]| numero | bool | palabra).
+tipoRetorno = numero | bool | palabra | completeClassName.
 
 include = incorporar className { dot className} lineEnd
 (. debug("include"); .)
@@ -133,33 +133,37 @@ ifStatement = si lpar expresion rpar StatementBlock [ sino StatementBlock ].
 
 functionCall = variableName lpar [value { comma value } ]  rpar.
 
-value = number | true | false | stringLit | variableName.
+typeName = completeClassName | numero | palabra | bool.
+
+value = number | boolValue | stringLit | variableName.
 
 expresion =
   ( lpar expresion rpar
   | IF( isFunctionCall() )functionCall
-  | variableName
-  | number
-  | expresion   ( minus expresion
+  | value 	( minus expresion
                 | plus expresion
                 | mul expresion
                 | div expresion
                 | leq expresion
                 | geq expresion
+                | less expresion
+                | great expresion
+                | equal expresion
+                | notEq expresion
                 | inc
                 | dec )
-  ).
+ ).
+
+boolValue = true | false .
 
 StatementBlock = lbrace [lineEnd] { ( IF( isFunctionCall() ) functionCall 
                                       | whileLoop 
                                       | ifStatement 
-                                      | assignment 
+                                      | IF(isAsignment()) assignment 
                                       | variableDeclaration
                                       | variableName (inc | dec)
                                     ) lineEnd } rbrace .
 
 classBlock = lbrace lineEnd {(functionDeclaration | variableDeclaration) lineEnd} rbrace.
-
-typeName = completeClassName | numero | palabra | bool.
 
 END OpenHugs.
