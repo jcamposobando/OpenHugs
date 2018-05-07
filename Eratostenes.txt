@@ -1,4 +1,3 @@
-
 INCORPORAR Stdio
 INCORPORAR Stdds ;linea permite incorporar la biblioteca para manejo de estructuras de datos
 INCORPORAR Stdmath ;linea permite incorporar la biblioteca para manejo de operaciones matemáticas complejas

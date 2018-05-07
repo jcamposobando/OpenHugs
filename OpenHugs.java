@@ -1,3 +1,5 @@
+
+
 public class OpenHugs {
     public static void main(String[] arg) {
         Scanner scanner = new Scanner(arg[0]);
