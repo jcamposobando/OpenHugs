@@ -5,7 +5,7 @@ CLASE Algoritmos {
 		NUMERO i := 1
 		MIENTRAS ( i ) {
 			NUMERO e := 1
-			MIENTRAS (e <= niveles - i) {
+			MIENTRAS (e <= niveles - i ) {
 				imprimir(" ")
 				e++
 			}
