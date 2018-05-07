@@ -9,12 +9,12 @@ void debug (String str){
 boolean isFunctionCall() {
  Token next = scanner.Peek();
  return la.kind == _variableName && next.kind == _lpar;
-}
+} 
 
 boolean isAsignment() {
  Token next = scanner.Peek();
  return la.kind == _variableName && next.kind == _asign;
-}
+} 
 
 /*-------------------------------------------------------------------------*/
 
@@ -31,21 +31,21 @@ CHARACTERS
   stringChar    = ANY - "\"" - '\\' - cr - lf.
 
 TOKENS
-
-  lineEnd = lf {lf}.
-
+  
+  lineEnd = lf {{tab}lf}.
+  
   variableName = lower{lower}.
-
+  
   className = upper{lower}.
-
+  
   number = digit { digit } ['.' digit { digit } ].
-
-  stringLit =
+  
+  stringLit = 
   "\"" { stringChar
        | "\\" ( "b" | "t" | "n" | "f" | "r" | "\"" | "\'" | "\\" )
-       }
+       } 
   "\"".
-
+  
   /*----- operators and special characters needed in LL(1) resolvers --------------*/
   comma   = ",".
   dec     = "--".
@@ -67,10 +67,15 @@ TOKENS
   colon = ":".
   leq = "<=".
   geq = ">=".
-
+  less = "<".
+  great = ">".
+  equal = "==".
+  notEq = "!=".
+  
   /*----- Reserved words ----------------------------------------------------------*/
-
+  
   si = "SI".
+  ciclo = "CICLO".
   mientras = "MIENTRAS".
   sino = "SINO".
   clase = "CLASE".
@@ -79,8 +84,10 @@ TOKENS
   numero = "NUMERO".
   palabra = "PALABRA".
   returns = "RETORNA".
-  logico = "LOGICO".
-
+  bool = "LOGICO".
+  true = "VERDADERO".
+  false = "FALSO".
+  
 
 
 COMMENTS FROM ";;" TO ";;"
@@ -96,11 +103,9 @@ OpenHugs = {include} classDeclaration {classDeclaration}
 (. debug("Programa"); .)
 .
 
-//completeClassName = className{ dot className}[ colon (typeName|className) { comma (typeName|className)} ].
+completeClassName = className{ dot className}[ colon (typeName|className) { comma (typeName|className)} ].
 
-tipoRetorno = (className colon (numero | palabra | logico)) | numero | palabra | logico.
-
-include = incorporar className lineEnd
+include = incorporar className { dot className} lineEnd
 (. debug("include"); .)
 .
 
@@ -108,7 +113,7 @@ classDeclaration = clase className [ ":" typeName {comma typeName}] classBlock [
 (. debug("Declaracion de una clase"); .)
 .
 
-functionDeclaration =  funcion (className|variableName) lpar [typeName variableName {comma typeName variableName}] rpar [returns tipoRetorno] [lineEnd] StatementBlock
+functionDeclaration =  funcion (variableName|className) lpar [typeName variableName {comma typeName variableName}] rpar [returns completeClassName] [lineEnd] StatementBlock
 (. debug("Declaracion de una funcion"); .)
 .
 
@@ -120,11 +125,13 @@ assignment = variableName asign expresion
 (. debug("asignacion"); .)
 .
 
-whileLoop = mientras lpar expresion rpar StatementBlock.
+whileLoop = ciclo mientras lpar expresion rpar StatementBlock.
 
 ifStatement = si lpar expresion rpar StatementBlock [ sino StatementBlock ].
 
-functionCall = variableName lpar [variableName] { comma variableName} rpar.
+functionCall = variableName lpar [value { comma value } ]  rpar.
+
+value = number | boolValue | stringLit | variableName.
 
 expresion =
   ( lpar expresion rpar
@@ -141,15 +148,16 @@ expresion =
                 | dec )
   ).
 
-StatementBlock = lbrace [lineEnd] { ( IF( isFunctionCall() ) functionCall
-                                      | whileLoop
-                                      | ifStatement
-                                      | assignment
+StatementBlock = lbrace [lineEnd] { ( IF( isFunctionCall() ) functionCall 
+                                      | whileLoop 
+                                      | ifStatement 
+                                      | assignment 
                                       | variableDeclaration
+                                      | variableName (inc | dec)
                                     ) lineEnd } rbrace .
 
 classBlock = lbrace lineEnd {(functionDeclaration | variableDeclaration) lineEnd} rbrace.
 
-typeName = className colon (numero | palabra | logico) | numero | palabra | logico.
+typeName = completeClassName | numero | palabra | bool.
 
 END OpenHugs.
