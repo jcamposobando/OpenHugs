@@ -1,16 +1,16 @@
-INCORPORAR Stdio ;esta linea permite incluir la biblioteca de manejo de datos entrada-salida
+INCORPORAR Wtdio ;esta linea permite incluir la biblioteca de manejo de datos entrada-salida
 
 CLASE Algoritmos {
-	FUNCION fibonacci (NUMERO n) RETORNA NUMERO {
+	FUNCION fibonacci (NUMERO n ) RETORNA NUMERO {
+		fff := 4
 		SI ( n == 0 ) {
-			RETORNAR 0 ;la primera condición de salida
-		} 
-		SINO { 
-			SI (n == 1) {
+			RETORNAR 0
+		} SINO 	{
+			SI ( (22 + 6) + (88) + 0) {
 				RETORNAR 1 ;la segunda condición de salida
-			}
+			} 
 			SINO {
-				RETORNAR fibonacci(n-1) + fibonacci(n-2) ;recursividad en acción
+				RETORNAR fibonacci(n-1)
 			}
 		}
 	} ;fin de la función
