@@ -4,9 +4,9 @@ INCORPORAR Stdmath ;linea permite incorporar la biblioteca para manejo de operac
 
 CLASE Algoritmos {
 	FUNCION eratostenes (NUMERO n) RETORNA Vector:NUMERO {
-		Vector:LOGICO respuesta
+		Vector:PALABRA respuesta
 		NUMERO i := 0
-		CICLO MIENTRAS (i <= n) {
+		CICLO MIENTRAS ( i <= ( n + ( 22 + 6 ) + ( 88 ) ) ) {
 			agregar( i , VERDADERO )
 			i := i ++
 		}
