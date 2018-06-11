@@ -2,11 +2,11 @@ import java.util.BitSet;
 
 COMPILER OpenHugs
 
-int tab = 0;
+Node root = new Node("root",-1,null);
+Node currentNode = root;
 
 void debug (String str){
-  String repeated = new String(new char[tab*2]).replace("\0", " ");
-  System.err.println(repeated+ str);
+  //System.err.println(str);
 }
 
 boolean isFunctionCall() {
@@ -25,6 +25,20 @@ boolean isElseClause(){
   scanner.ResetPeek();
   Token next = scanner.Peek();
   return  next.kind == _sino || la.kind == _sino ;
+}
+
+void pushNode(){
+  Node newNode = new Node(scanner.pt.val, scanner.pt.kind, currentNode);
+  currentNode.children.add(newNode);
+  currentNode = newNode;
+}
+
+void popNode(){
+  currentNode = currentNode.parent;
+}
+
+void addChildren(){
+  currentNode.children.add(new Node(scanner.pt.val, scanner.pt.kind, currentNode));
 }
 
 /*-------------------------------------------------------------------------*/
@@ -113,7 +127,7 @@ IGNORE cr + tab
 PRODUCTIONS
 
 OpenHugs = [lineEnd] {include} classDeclaration {classDeclaration}
-(. debug("Programa"); .)
+(. PrintTree.print(root); .)
 .
 
 completeClassName = className{ dot className} [ colon typeName {comma typeName } not ].
@@ -149,7 +163,7 @@ whileLoop = ciclo (. debug("while"); .) mientras lpar expresion rpar StatementBl
 
 ifStatement = si (. debug("if"); .) lpar expresion rpar StatementBlock [IF (isElseClause()) [lineEnd] sino (. debug("else"); .) StatementBlock ].
 
-functionCall = variableName lpar [expresion { comma expresion } ]  rpar.
+functionCall = variableName lpar [expresion { comma expresion } ]  rpar (. addChildren(); .).
 
 typeName = completeClassName | numero | palabra | bool.
 
@@ -174,7 +188,7 @@ expresion =
 
 boolValue = true | false .
 
-StatementBlock = lbrace (.;tab++;  .)
+StatementBlock = lbrace (.pushNode(); .)
                         [lineEnd] { ( IF(isAsignment()) assignment  
                                       | whileLoop 
                                       | ifStatement 
@@ -182,10 +196,10 @@ StatementBlock = lbrace (.;tab++;  .)
                                       | variableDeclaration
                                       | variableName (inc | dec)
                                       | return expresion
-                                    ) lineEnd } rbrace (. tab--; .).
+                                    ) lineEnd } rbrace (. popNode(); .).
 
-classBlock =  lbrace (. tab++; .)
+classBlock =  lbrace (. pushNode(); .)
               lineEnd {(functionDeclaration | variableDeclaration) lineEnd} 
-              rbrace(. tab--; .). 
+              rbrace(. popNode(); .). 
 
 END OpenHugs.
