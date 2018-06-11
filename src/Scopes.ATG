@@ -178,7 +178,7 @@ whileLoop = ciclo (. debug("while"); .) mientras lpar expresion rpar StatementBl
 
 ifStatement = si (. debug("if"); .) lpar expresion rpar StatementBlock [IF (isElseClause()) [lineEnd] sino (. debug("else"); .) StatementBlock ].
 
-functionCall = (. currentMethod.lookUpMethod(skipString()); .) variableName lpar [expresion { comma expresion } ]  rpar (. addChildren(); .).
+functionCall = (. currentClass.lookUpMethod(skipString()); .) variableName lpar [expresion { comma expresion } ]  rpar (. addChildren(); .).
 
 typeName = completeClassName | numero | palabra | bool.
 
