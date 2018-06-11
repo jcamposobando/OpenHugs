@@ -2,3 +2,4 @@ java -jar ../libraries/Coco.jar Scopes.ATG;
 rm *.class;
 rm *.java.old;
 javac -d ../out OpenHugs.java Scanner.java Parser.java Node.java;
+javac -d ../out Semantic/*.java;

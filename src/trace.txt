@@ -1,0 +1,82 @@
+
+First & follow symbols:
+----------------------
+
+OpenHugs
+first:   lineEnd clase incorporar 
+follow:  EOF 
+
+include
+first:   incorporar 
+follow:  clase incorporar 
+
+classDeclaration
+first:   clase 
+follow:  EOF clase 
+
+completeClassName
+first:   className 
+follow:  lineEnd variableName comma lbrace not 
+
+typeName
+first:   className numero palabra bool 
+follow:  variableName comma lbrace not 
+
+tipoRetorno
+first:   className numero palabra bool 
+follow:  lineEnd lbrace 
+
+classBlock
+first:   lbrace 
+follow:  EOF lineEnd clase 
+
+functionDeclaration
+first:   funcion 
+follow:  lineEnd 
+
+parameterList
+first:   className numero palabra bool 
+follow:  rpar 
+
+StatementBlock
+first:   lbrace 
+follow:  lineEnd sino 
+
+functionParameter
+first:   className numero palabra bool 
+follow:  comma rpar 
+
+variableDeclaration
+first:   className numero palabra bool 
+follow:  lineEnd 
+
+expresion
+first:   variableName number stringLit lpar true false 
+follow:  lineEnd comma rpar 
+
+assignment
+first:   variableName 
+follow:  lineEnd 
+
+whileLoop
+first:   ciclo 
+follow:  lineEnd 
+
+ifStatement
+first:   si 
+follow:  lineEnd 
+
+functionCall
+first:   variableName 
+follow:  lineEnd comma rpar 
+
+value
+first:   variableName number stringLit true false 
+follow:  lineEnd comma dec inc minus plus rpar mul div leq geq less great 
+         equal notEq 
+
+boolValue
+first:   true false 
+follow:  lineEnd comma dec inc minus plus rpar mul div leq geq less great 
+         equal notEq 
+
