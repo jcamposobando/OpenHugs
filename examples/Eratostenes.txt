@@ -3,10 +3,10 @@ INCORPORAR Stdds ;linea permite incorporar la biblioteca para manejo de estructu
 INCORPORAR Stdmath ;linea permite incorporar la biblioteca para manejo de operaciones matemáticas complejas
 
 CLASE Algoritmos {
-	FUNCION eratostenes (NUMERO n) RETORNA Vector:NUMERO {
-		Vector:PALABRA respuesta
+	FUNCION eratostenes (NUMERO n) RETORNA Vector:NUMERO! {
+		Vector:PALABRA! respuesta
 		NUMERO i := 0
-		CICLO MIENTRAS ( i <= ( n + ( 22 + 6 ) + ( 88 ) ) ) {
+		CICLO MIENTRAS ( i <= ( n +  88 )  ) {
 			agregar( i , VERDADERO )
 			i := i ++
 		}
@@ -24,3 +24,4 @@ CLASE Algoritmos {
 		RETORNAR respuesta
 	};fin de la función
 } ;fin de la clase
+}
