@@ -1,12 +1,28 @@
 import java.util.BitSet;
-
+import Semantic.*;
 COMPILER OpenHugs
 
-int tab = 0;
+Node root = new Node("root",-1,null);
+Node currentNode = root;
+
+ProgramScope program;
+ClassScope currentClass;
+MethodScope currentMethod;
 
 void debug (String str){
-  String repeated = new String(new char[tab*2]).replace("\0", " ");
-  System.err.println(repeated+ str);
+  //System.err.println(str);
+}
+
+
+String skipString(){
+  return skipString(0);
+}
+
+String skipString( int n ){
+  scanner.ResetPeek(); 
+  Token next = la;
+  for (int i = 0; i < n ; i ++) next = scanner.Peek(); 
+  return next.val;
 }
 
 boolean isFunctionCall() {
@@ -25,6 +41,20 @@ boolean isElseClause(){
   scanner.ResetPeek();
   Token next = scanner.Peek();
   return  next.kind == _sino || la.kind == _sino ;
+}
+
+void pushNode(){
+  Node newNode = new Node(scanner.pt.val, scanner.pt.kind, currentNode);
+  currentNode.children.add(newNode);
+  currentNode = newNode;
+}
+
+void popNode(){
+  currentNode = currentNode.parent;
+}
+
+void addChildren(){
+  currentNode.children.add(new Node(scanner.pt.val, scanner.pt.kind, currentNode));
 }
 
 /*-------------------------------------------------------------------------*/
@@ -112,8 +142,7 @@ IGNORE cr + tab
 
 PRODUCTIONS
 
-OpenHugs = [lineEnd] {include} classDeclaration {classDeclaration}
-(. debug("Programa"); .)
+OpenHugs = (. program = new ProgramScope(); .)[lineEnd] {include} classDeclaration {classDeclaration}
 .
 
 completeClassName = className{ dot className} [ colon typeName {comma typeName } not ].
@@ -124,24 +153,24 @@ include = incorporar className { dot className} lineEnd
 (. debug("include"); .)
 .
 
-classDeclaration = clase  (. debug("Nuevo block");.) className [ colon typeName {comma typeName}] classBlock [lineEnd]
-(. debug("Declaracion de una clase"); .)
+classDeclaration = (. currentClass = new ClassScope(program,skipString(1)); .) clase className [ colon typeName {comma typeName}] classBlock [lineEnd]
+(. currentClass = null; .)
 .
 
-functionDeclaration =  funcion variableName lpar [parameterList] rpar [returns tipoRetorno] [lineEnd] StatementBlock
-(. debug("Declaracion de una funcion"); .)
+functionDeclaration = (. currentMethod = new MethodScope(currentClass, skipString(1)); .)funcion variableName lpar [parameterList] rpar [returns tipoRetorno] [lineEnd] StatementBlock
+(. currentMethod = null; .)
 .
 parameterList = functionParameter {comma functionParameter} 
 .
 
-functionParameter = typeName variableName
+functionParameter = typeName (. currentMethod.addVariable(skipString(0));.) variableName
 .
 
-variableDeclaration = typeName variableName [asign expresion]
-(. debug("Declaracion de una variable"); .)
+variableDeclaration = (. if (currentMethod == null)  currentClass.addVariable(skipString(1)); else currentMethod.addVariable(skipString(1)); .)
+typeName variableName [asign expresion]
 .
 
-assignment = variableName asign expresion
+assignment = (. currentMethod.lookUpVariable(skipString()); .) variableName asign expresion
 (. debug("asignacion"); .)
 .
 
@@ -149,11 +178,11 @@ whileLoop = ciclo (. debug("while"); .) mientras lpar expresion rpar StatementBl
 
 ifStatement = si (. debug("if"); .) lpar expresion rpar StatementBlock [IF (isElseClause()) [lineEnd] sino (. debug("else"); .) StatementBlock ].
 
-functionCall = variableName lpar [expresion { comma expresion } ]  rpar.
+functionCall = (. currentMethod.lookUpMethod(skipString()); .) variableName lpar [expresion { comma expresion } ]  rpar (. addChildren(); .).
 
 typeName = completeClassName | numero | palabra | bool.
 
-value = number | boolValue | stringLit | variableName.
+value = number | boolValue | stringLit | (. currentMethod.lookUpVariable(skipString()); .) variableName.
 
 expresion =
   ( lpar expresion rpar
@@ -174,18 +203,20 @@ expresion =
 
 boolValue = true | false .
 
-StatementBlock = lbrace (.;tab++;  .)
+StatementBlock = lbrace (.pushNode(); .)
                         [lineEnd] { ( IF(isAsignment()) assignment  
                                       | whileLoop 
                                       | ifStatement 
                                       | IF( isFunctionCall() ) functionCall
                                       | variableDeclaration
-                                      | variableName (inc | dec)
+                                      | increment
                                       | return expresion
-                                    ) lineEnd } rbrace (. tab--; .).
+                                    ) lineEnd } rbrace (. popNode(); .).
+                                    
+increment = (. currentMethod.lookUpVariable(skipString()); .) variableName (inc | dec) .
 
-classBlock =  lbrace (. tab++; .)
+classBlock =  lbrace (. pushNode(); .)
               lineEnd {(functionDeclaration | variableDeclaration) lineEnd} 
-              rbrace(. tab--; .). 
+              rbrace(. popNode(); .). 
 
 END OpenHugs.

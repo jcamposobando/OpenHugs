@@ -5,24 +5,27 @@ import java.util.HashMap;
 public class ClassScope {
 
     /**
-     * This structure provides all global variables
+     * This structure stores all class variables
      */
     private HashMap<String,DataType> attributes;
 
     /**
-     * This structure provide all methods in a class
+     * This structure stores all methods in a class
      */
-    private HashMap<String, MethodScope> methods;
+    private HashMap<String, Method> methods;
 
     /**
      *
      */
     private ProgramScope parent;
+    
+    private String className;
 
     /**
      *
      */
-    public ClassScope(ProgramScope parent) {
+    public ClassScope(ProgramScope parent, String className) {
+        this.className = className;
         this.parent = parent;
         this.attributes = new HashMap<>();
         this.methods = new HashMap<>();
@@ -48,7 +51,7 @@ public class ClassScope {
      *
      * @return
      */
-    public HashMap<String, MethodScope> getMethods() {
+    public HashMap<String, Method> getMethods() {
         return methods;
     }
 
@@ -56,7 +59,7 @@ public class ClassScope {
      *
      * @param methods
      */
-    public void setMethods(HashMap<String, MethodScope> methods) {
+    public void setMethods(HashMap<String, Method> methods) {
         this.methods = methods;
     }
 
@@ -65,8 +68,9 @@ public class ClassScope {
      * @param name
      * @return
      */
-    public DataType lockUpAttribute (String name){
-        return this.attributes.get(name);
+    public DataType lookUpAttribute (String name){
+        DataType d = this.attributes.get(name);
+        return (d!=null) ? d : this.parent.lookUpVariable(name); 
     }
 
     /**
@@ -74,8 +78,9 @@ public class ClassScope {
      * @param name
      * @return
      */
-    public MethodScope lockUpMethod (String name){
-        return this.methods.get(name);
+    public Method lookUpMethod (String name){
+        Method a = this.methods.get(name);
+        return (a!= null) ? a : this.parent.lookUpMethod(name);
     }
 
     /**
@@ -93,4 +98,14 @@ public class ClassScope {
     public void setParent(ProgramScope parent) {
         this.parent = parent;
     }
+    
+    
+    public void addVariable(String name){
+        attributes.put(name, DataType.NUMERO);
+    }
+    
+    public void addMethod(String name){
+        methods.put(name, new Method(name) );
+    }
+    
 }

@@ -21,12 +21,16 @@ public class MethodScope implements Scope{
      *
      */
     private ClassScope parent;
+    
+    private String methodName;
 
     /**
      *
      */
-    public MethodScope(ClassScope parent){
+    public MethodScope(ClassScope parent, String methodName){
+        this.methodName = methodName;
         this.parent = parent;
+        parent.addMethod(methodName);
         this.declarations = new HashMap<>();
         this.primitives = new HashMap<>();
     }
@@ -68,9 +72,9 @@ public class MethodScope implements Scope{
      * @param name
      * @return
      */
-    public DataType lockUpVariable(String name){
+    public DataType lookUpVariable(String name){
         DataType dec = this.declarations.get(name);
-        return (dec!=null) ? dec : this.parent.lockUpAttribute(name);
+        return (dec!=null) ? dec : this.parent.lookUpAttribute(name);
     }
 
     /**
@@ -78,8 +82,11 @@ public class MethodScope implements Scope{
      * @param name
      * @return
      */
-    public Scope lockUpMethod(String name){
-        Scope met = this.primitives.get(name);
-        return (met!=null) ? met : this.parent.lockUpMethod(name);
+    public Method lookUpMethod(String name){
+        return this.parent.lookUpMethod(name);
+    }
+    
+    public void addVariable(String name){
+        declarations.put(name, DataType.NUMERO);
     }
 }

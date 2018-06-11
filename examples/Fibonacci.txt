@@ -1,8 +1,8 @@
 INCORPORAR Wtdio ;esta linea permite incluir la biblioteca de manejo de datos entrada-salida
 
 CLASE Algoritmos {
-	FUNCION fibonacci (NUMERO n ) RETORNA NUMERO {
-		fff := 4
+	FUNCION fibonacci ( NUMERO n ) RETORNA NUMERO {
+		NUMERO fff := 4
 		SI ( n == 0 ) {
 			RETORNAR 0
 		} SINO 	{

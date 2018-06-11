@@ -7,12 +7,12 @@ public interface Scope {
      * @param name
      * @return
      */
-    DataType lockUpVariable(String name);
+    DataType lookUpVariable(String name);
 
     /**
      *
      * @param name
      * @return
      */
-    Scope lockUpMethod(String name);
+    Method lookUpMethod(String name);
 }
