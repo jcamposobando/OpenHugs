@@ -1,4 +1,4 @@
-java -jar Coco.jar OpenHugs.ATG;
+java -jar ../libraries/Coco.jar OpenHugs.ATG;
 rm *.class;
 rm *.java.old;
-javac OpenHugs.java Scanner.java Parser.java;
+javac OpenHugs.java Scanner.java Parser.java Node.java;
