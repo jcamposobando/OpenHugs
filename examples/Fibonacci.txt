@@ -6,7 +6,7 @@ CLASE Algoritmos {
 		SI ( n == 0 ) {
 			RETORNAR 0
 		} SINO 	{
-			SI ( (22 + 6) + (88) + 0) {
+			SI  ( 88 + ( 0+ 6) ) {
 				RETORNAR 1 ;la segunda condición de salida
 			} 
 			SINO {
