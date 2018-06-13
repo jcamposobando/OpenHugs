@@ -6,7 +6,7 @@ CLASE Algoritmos {
 	FUNCION eratostenes (NUMERO n) RETORNA Vector:NUMERO! {
 		Vector:PALABRA! respuesta
 		NUMERO i := 0
-		CICLO MIENTRAS ( i <= ( n +  88 )  ) {
+		CICLO MIENTRAS ( i <= ( 88 )  ) {
 			agregar( i , VERDADERO )
 			i := i ++
 		}

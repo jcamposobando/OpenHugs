@@ -82,9 +82,9 @@ public class PrimitiveScope implements Scope{
      * @param name
      * @return
      */
-    public DataType lockUpVariable(String name) {
+    public DataType lookUpVariable(String name) {
         DataType var = this.variables.get(name);
-        return (var!=null) ? var : this.parent.lockUpVariable(name);
+        return (var!=null) ? var : this.parent.lookUpVariable(name);
     }
 
     /**
@@ -92,7 +92,7 @@ public class PrimitiveScope implements Scope{
      * @param name
      * @return
      */
-    public Scope lockUpMethod(String name) {
+    public Method lookUpMethod(String name) {
         return null;
     }
 }

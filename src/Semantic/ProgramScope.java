@@ -2,7 +2,7 @@ package Semantic;
 
 import java.util.HashMap;
 
-public class ProgramScope {
+public class ProgramScope implements Scope {
 
     /**
      *
@@ -30,5 +30,20 @@ public class ProgramScope {
      */
     public void setClasses(HashMap<String, ClassScope> classes) {
         this.classes = classes;
+    }
+    
+    public DataType lookUpVariable(String name){
+        System.out.println("ERROR: variable " + name + " no encontrado ");
+        return null;
+    }
+
+    /**
+     *
+     * @param name
+     * @return
+     */
+    public Method lookUpMethod(String name){
+        System.out.println("ERROR: metodo " + name + " no encontrado ");
+        return null;
     }
 }
