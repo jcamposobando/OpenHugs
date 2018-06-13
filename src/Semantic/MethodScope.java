@@ -5,7 +5,7 @@ import java.util.HashMap;
 /**
  *
  */
-public class MethodScope implements Scope{
+public class MethodScope {
 
     /**
      *

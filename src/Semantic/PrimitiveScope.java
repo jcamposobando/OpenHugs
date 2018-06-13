@@ -2,7 +2,7 @@ package Semantic;
 
 import java.util.HashMap;
 
-public class PrimitiveScope implements Scope{
+public class PrimitiveScope {
 
     /**
      *
