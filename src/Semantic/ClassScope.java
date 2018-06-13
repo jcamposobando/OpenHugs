@@ -105,7 +105,7 @@ public class ClassScope {
     }
     
     public void addMethod(String name){
-        methods.put(name, new Method(name) );
+        //methods.put(name, new Method(name) );
     }
     
 }
