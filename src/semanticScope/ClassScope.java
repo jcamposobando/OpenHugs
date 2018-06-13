@@ -46,6 +46,14 @@ public class ClassScope {
     public void setAttributes(HashMap<String, DataType> attributes) {
         this.attributes = attributes;
     }
+    
+    public void setAttribute1(String type, String name){
+        this.attributes.put(name, type);
+    }
+    
+    public void getAttributeType(String name){
+        this.attributes.get(name);
+    }
 
     /**
      *
