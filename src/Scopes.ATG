@@ -112,6 +112,8 @@ TOKENS
   great = ">".
   equal = "==".
   notEq = "!=".
+  and = "Y".
+  or = "O".
 
   /*----- Reserved words ----------------------------------------------------------*/
   
@@ -174,32 +176,48 @@ assignment = (. currentMethod.lookUpVariable(skipString()); .) variableName asig
 (. debug("asignacion"); .)
 .
 
-whileLoop = ciclo (. debug("while"); .) mientras lpar expresion rpar StatementBlock.
+whileLoop = ciclo (. debug("while"); .) mientras lpar logExpresion rpar StatementBlock.
 
-ifStatement = si (. debug("if"); .) lpar expresion rpar StatementBlock [IF (isElseClause()) [lineEnd] sino (. debug("else"); .) StatementBlock ].
+ifStatement = si (. debug("if"); .) lpar logExpresion rpar StatementBlock [IF (isElseClause()) [lineEnd] sino (. debug("else"); .) StatementBlock ].
 
 functionCall = (. currentClass.lookUpMethod(skipString()); .) variableName lpar [expresion { comma expresion } ]  rpar (. addChildren(); .).
 
 typeName = completeClassName | numero | palabra | bool.
 
-value = number | boolValue | stringLit | (. currentMethod.lookUpVariable(skipString()); .) variableName.
+expresion = 
+  numExpresion | logExpresion | strExpression.
+  
+strExpression = 
+  ( lpar strExpression rpar
+  | stringLit
+  | variableName )
+    [ plus strExpression].
 
-expresion =
-  ( lpar expresion rpar
-  | IF( isFunctionCall() )functionCall
-  | value 	[ minus expresion
-                | plus expresion
-                | mul expresion
-                | div expresion
-                | leq expresion
-                | geq expresion
-                | less expresion
-                | great expresion
-                | equal expresion
-                | notEq expresion
-                | inc
-                | dec ]
- ).
+numExpresion =
+  ((lpar numExpresion rpar
+  | IF( isFunctionCall() ) functionCall
+  | number
+  | variableName  [ inc
+                  | dec ]
+                  ) [ minus numExpresion
+                    | plus numExpresion
+                    | mul numExpresion
+                    | div numExpresion ] ).
+
+logExpresion =
+  ((not logExpresion
+  | lpar logExpresion rpar
+  | IF( isFunctionCall() ) functionCall
+  | variableName 
+  | boolValue )   [ and logExpresion
+                  | or logExpresion ] )
+  | numExpresion  ( leq numExpresion
+                  | geq numExpresion
+                  | less numExpresion
+                  | great numExpresion
+                  | equal numExpresion
+                  | notEq numExpresion ) .
+
 
 boolValue = true | false .
 
