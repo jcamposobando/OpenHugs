@@ -1,5 +1,5 @@
 import java.util.BitSet;
-import Semantic.*;
+import semanticScope.*;
 COMPILER OpenHugs
 
 Node root = new Node("root",-1,null);
