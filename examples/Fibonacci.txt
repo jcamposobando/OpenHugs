@@ -3,10 +3,10 @@ INCORPORAR Wtdio ;esta linea permite incluir la biblioteca de manejo de datos en
 CLASE Algoritmos {
 	FUNCION fibonacci ( NUMERO n ) RETORNA NUMERO {
 		NUMERO fff := 4
-		SI ( n == 0 ) {
+		SI ( n ) {
 			RETORNAR 0
 		} SINO 	{
-			SI  ( 88 + ( 0+ 6) ) {
+			SI  ( 6 ) {
 				RETORNAR 1 ;la segunda condición de salida
 			} 
 			SINO {
