@@ -1,75 +1,97 @@
 package SemanticTree;
 
+import SemanticScope.DataType;
+
 public class Tree {
     
-    private Node root;
-
-    public Tree(){
+    Node root;
+    
+    public Tree() {
+        this.root = new Node();
     }
     
-    public Tree(String rootData) {
-        this.root = new Node(rootData);
+    public Tree(DataType type, String name){
+        this.root = new Node(type, name);
     }
     
-    public void setRoot(String rootData){
-        this.root = new Node(rootData);
+    public void setRoot(DataType type, String name){
+        this.root = new Node(type, name);
     }
     
     public Node getRoot(){
         return this.root;
     }
     
-    public void setLeft(String l){
-        this.root.setLeftNode(l);
+    public void setLeft(DataType type, String name){
+        this.root.setLeftNode(type, name);
     }
     
-    public String getLeft(){
-        return this.root.getLeftNode().getData();
+    public void setRight(DataType type, String name){
+        this.root.setRightNode(type, name);
     }
     
-    public void setRight(String r){
-        this.root.setRightNode(r);
-    }
-    
-    public String getRight(){
-        return this.root.getLeftNode().getData();
-    }
     
     class Node {
-    
-    private String data;
-    private Node parent;
-    private Node h_right;
-    private Node h_left;
-    
-    public Node(String d){
-        this.data = d;
-        this.h_left = null;
-        this.h_right = null;
+
+        //private String data;
+        Pair data;
+        Node parent;
+        Node h_right;
+        Node h_left;
+        
+        public Node(){
+            this.data = new Pair();
+        }
+        
+        public Node(DataType t, String n){
+            this.data = new Pair(t, n);
+            this.h_left = null;
+            this.h_right = null;
+        }
+        
+        public DataType getDataType(){
+            return this.data.type;
+        }
+        
+        public String getDataName(){
+            return this.data.name;
+        }
+        
+        public void setDataType(DataType t){
+            this.data.type = t;
+        }
+        
+        public void setDataName(String n){
+            this.data.name = n;
+        }
+        
+        public void setRightNode(DataType rt, String rn){
+            this.h_right = new Node(rt, rn);
+        }
+        
+        public void setLeftNode(DataType lt, String ln){
+            this.h_left = new Node(lt, ln);
+        }
+        
+        public Node getRightNode(){
+            return this.h_right;
+        }
+        
+        public Node getLeftNode(){
+            return this.h_left;
+        }
+        
     }
     
-    public String getData(){
-        return this.data;
+    class Pair{
+        String name;
+        DataType type;
+        
+        public Pair(){}
+        
+        public Pair(DataType t, String n){
+            this.name = n;
+            this.type = t;
+        }
     }
-    
-    public void setData(String d){
-        this.data = d;
-    }
-    
-    public void setRightNode(String hr){
-        this.h_right = new Node(hr);
-    }
-    
-    public Node getRightNode(){
-        return this.h_right;
-    }
-    
-    public void setLeftNode(String hl){
-        this.h_left = new Node(hl);
-    }
-    
-    public Node getLeftNode(){
-        return this.h_left;
-    }
-}
 }
