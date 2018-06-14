@@ -2,6 +2,9 @@ package SemanticScope;
 
 import java.util.HashMap;
 
+import java.util.LinkedHashMap;
+
+
 /**
  *
  */
@@ -15,78 +18,49 @@ public class MethodScope {
     /**
      *
      */
-    private HashMap<String,PrimitiveScope> primitives;
-
+    private final ClassScope parent;
+    
+    private final String methodName;
+    
+    private DataType returnType;
+    
     /**
      *
      */
-    private ClassScope parent;
+    private final LinkedHashMap<String, DataType> parameters;
     
-    private String methodName;
-
     /**
      *
      */
     public MethodScope(ClassScope parent, String methodName){
         this.methodName = methodName;
         this.parent = parent;
-        parent.addMethod(methodName);
-        this.declarations = new HashMap();
-        this.primitives = new HashMap();
+        this.declarations = new HashMap<>();
+        this.parameters = new LinkedHashMap<>();
+        this.returnType = returnType;
     }
-
-    /**
-     *
-     * @return
-     */
-    public HashMap<String, DataType> getDeclarations() {
-        return declarations;
+    
+    public void setReturnType( String returnType){
+        this.returnType =  DataType.valueOf(returnType); 
     }
-
-    /**
-     *
-     * @param declarations
-     */
-    public void setDeclarations(HashMap<String, DataType> declarations) {
-        this.declarations = declarations;
-    }
-
-    /**
-     *
-     * @return
-     */
-    public HashMap<String, PrimitiveScope> getPrimitives() {
-        return primitives;
-    }
-
-    /**
-     *
-     * @param primitives
-     */
-    public void setPrimitives(HashMap<String, PrimitiveScope> primitives) {
-        this.primitives = primitives;
-    }
-
-    /**
-     *
-     * @param name
-     * @return
-     */
+    
     public DataType lookUpVariable(String name){
-        DataType dec = this.declarations.get(name);
-        return (dec!=null) ? dec : this.parent.lookUpAttribute(name);
+        DataType dec = declarations.get(name);
+        DataType par = parameters.get(name);
+        return (dec!=null) ? dec : (par!=null) ? par : parent.lookUpAttribute(name);
     }
 
-    /**
-     *
-     * @param name
-     * @return
-     */
-    public Method lookUpMethod(String name){
+    public MethodScope lookUpMethod(String name){
         return this.parent.lookUpMethod(name);
     }
     
-    public void addVariable(String name){
-        declarations.put(name, DataType.NUMERO);
+    public void addVariable(String typeName, String name){
+        declarations.put(name, DataType.valueOf(typeName));
     }
+    
+    public void addParameter(String typeName, String name){
+        parameters.put(name, DataType.valueOf(typeName)); 
+    }
+    
 }
+

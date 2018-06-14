@@ -2,24 +2,29 @@ package SemanticScope;
 
 import java.util.HashMap;
 
+import java.util.LinkedHashMap;
+
 public class ClassScope {
 
     /**
      * This structure stores all class variables
      */
-    private HashMap<String,DataType> attributes;
+    private final HashMap<String,DataType> attributes;
 
     /**
      * This structure stores all methods in a class
      */
-    private HashMap<String, Method> methods;
+    private final HashMap<String, MethodScope> methods;
 
     /**
      *
      */
-    private ProgramScope parent;
+    private /*final*/ ProgramScope parent; //realmente necesita ser final?
     
-    private String className;
+    /**
+     *
+     */
+    private final String className;
 
     /**
      *
@@ -33,6 +38,7 @@ public class ClassScope {
 
     /**
      *
+<<<<<<< HEAD:src/SemanticScope/ClassScope.java
      * @return
      */
     public HashMap<String, DataType> getAttributes() {
@@ -73,6 +79,8 @@ public class ClassScope {
 
     /**
      *
+=======
+>>>>>>> master:src/Semantic/ClassScope.java
      * @param name
      * @return
      */
@@ -86,17 +94,9 @@ public class ClassScope {
      * @param name
      * @return
      */
-    public Method lookUpMethod (String name){
-        Method a = this.methods.get(name);
+    public MethodScope lookUpMethod (String name){
+        MethodScope a = this.methods.get(name);
         return (a!= null) ? a : this.parent.lookUpMethod(name);
-    }
-
-    /**
-     *
-     * @return
-     */
-    public ProgramScope getParent() {
-        return parent;
     }
 
     /**
@@ -107,13 +107,28 @@ public class ClassScope {
         this.parent = parent;
     }
     
-    
-    public void addVariable(String name){
-        attributes.put(name, DataType.NUMERO);
+    /**
+     *
+     * @param parent
+     */
+    public void addVariable(String typeName, String name){
+        attributes.put(name, DataType.valueOf(typeName));
     }
     
+<<<<<<< HEAD:src/SemanticScope/ClassScope.java
     public void addMethod(String name){
         //methods.put(name, new Method(name) );
+=======
+    /**
+     *
+     * @param parent
+     */
+    public MethodScope addMethod(String name ){
+        MethodScope newMethod = new MethodScope(this, name);
+        methods.put(name, newMethod);    //Así? cual se supone que sea el otro parámetro?
+        return newMethod;
+>>>>>>> master:src/Semantic/ClassScope.java
     }
-    
 }
+
+
