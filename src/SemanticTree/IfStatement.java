@@ -12,7 +12,7 @@ public class IfStatement implements Statement {
     private DataType tipoExp = null;
 
     public IfStatement() {
-      //  this.type = "SI";
+        this.type = "SI";
 
     }
     public void setOperador(String operador){this.operador = operador;}
@@ -38,7 +38,7 @@ public class IfStatement implements Statement {
             case NUMERO:
                 if(     contenido.containsValue(DataType.NUMERO) &&
                         !contenido.containsValue(DataType.LOGICO) &&
-                        !contenido.containsValue(DataType.PALABRA)){
+                        !contenido.containsValue(DataType.PALABRA)){//Si es un número todos los operadores son válidos
 
                     resultado = true;
                 }
@@ -47,7 +47,8 @@ public class IfStatement implements Statement {
             case LOGICO:
                 if(     contenido.containsValue(DataType.LOGICO) &&
                         !contenido.containsValue(DataType.NUMERO) &&
-                        !contenido.containsValue(DataType.PALABRA)){
+                        !contenido.containsValue(DataType.PALABRA) &&
+                        (operador.equals("!=") || operador.equals("=="))) {//Si es Boleano entonces permite igual o diferente
 
                     resultado = true;
                 }
@@ -56,7 +57,8 @@ public class IfStatement implements Statement {
             case PALABRA:
                 if(         contenido.containsValue(DataType.PALABRA)
                         && !contenido.containsValue(DataType.NUMERO)
-                        && !contenido.containsValue(DataType.LOGICO)){
+                        && !contenido.containsValue(DataType.LOGICO)
+                        && (operador.equals("==") || operador.equals("!="))){//Si es por palabra solo acepta que se comparen strings)
                     resultado = true;
                 }
             break;
