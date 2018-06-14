@@ -84,8 +84,8 @@ public class Tree {
     }
     
     class Pair{
-        final String name;
-        final DataType type;
+        String name;
+        DataType type;
         
         public Pair(){}
         

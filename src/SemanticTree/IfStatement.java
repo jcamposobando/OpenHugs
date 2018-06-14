@@ -1,10 +1,9 @@
-
 package  SemanticTree;
-
-import SemanticScope.DataType;
 
 import java.util.Collection;
 import java.util.HashMap; //Diccionario :v
+
+import src.DataType;
 
 public class IfStatement implements Statement {
 
@@ -13,7 +12,6 @@ public class IfStatement implements Statement {
     private DataType tipoExp = null;
 
     public IfStatement() {
-        this.type = "SI";
 
     }
     public void setOperador(String operador){ //Se puede meter todo tipo de operadore pero solo asigna cuando encuentre el indicado

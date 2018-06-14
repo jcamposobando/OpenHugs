@@ -1,6 +1,6 @@
 package SemanticTree;
 
-import SemanticScope.DataType;
+import src.DataType;
 
 public class ExpressionStatement implements Statement{
     
