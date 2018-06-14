@@ -2,24 +2,29 @@ package Semantic;
 
 import java.util.HashMap;
 
+import java.util.LinkedHashMap;
+
 public class ClassScope {
 
     /**
      * This structure stores all class variables
      */
-    private HashMap<String,DataType> attributes;
+    private final HashMap<String,DataType> attributes;
 
     /**
      * This structure stores all methods in a class
      */
-    private HashMap<String, Method> methods;
+    private final HashMap<String, MethodScope> methods;
 
     /**
      *
      */
-    private ProgramScope parent;
+    private /*final*/ ProgramScope parent; //realmente necesita ser final?
     
-    private String className;
+    /**
+     *
+     */
+    private final String className;
 
     /**
      *
@@ -29,38 +34,6 @@ public class ClassScope {
         this.parent = parent;
         this.attributes = new HashMap<>();
         this.methods = new HashMap<>();
-    }
-
-    /**
-     *
-     * @return
-     */
-    public HashMap<String, DataType> getAttributes() {
-        return attributes;
-    }
-
-    /**
-     *
-     * @param attributes
-     */
-    public void setAttributes(HashMap<String, DataType> attributes) {
-        this.attributes = attributes;
-    }
-
-    /**
-     *
-     * @return
-     */
-    public HashMap<String, Method> getMethods() {
-        return methods;
-    }
-
-    /**
-     *
-     * @param methods
-     */
-    public void setMethods(HashMap<String, Method> methods) {
-        this.methods = methods;
     }
 
     /**
@@ -78,17 +51,9 @@ public class ClassScope {
      * @param name
      * @return
      */
-    public Method lookUpMethod (String name){
-        Method a = this.methods.get(name);
+    public MethodScope lookUpMethod (String name){
+        MethodScope a = this.methods.get(name);
         return (a!= null) ? a : this.parent.lookUpMethod(name);
-    }
-
-    /**
-     *
-     * @return
-     */
-    public ProgramScope getParent() {
-        return parent;
     }
 
     /**
@@ -99,13 +64,23 @@ public class ClassScope {
         this.parent = parent;
     }
     
-    
+    /**
+     *
+     * @param parent
+     */
     public void addVariable(String name){
         attributes.put(name, DataType.NUMERO);
     }
     
-    public void addMethod(String name){
-        methods.put(name, new Method(name) );
+    /**
+     *
+     * @param parent
+     */
+    public MethodScope addMethod(String name ){
+        MethodScope newMethod = new MethodScope(this, name);
+        methods.put(name, newMethod);    //Así? cual se supone que sea el otro parámetro?
+        return newMethod;
     }
-    
 }
+
+
