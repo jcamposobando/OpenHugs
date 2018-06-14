@@ -1,6 +1,6 @@
 package SemanticTree;
 
-public FunctionStatement implements Statement{
+public class FunctionStatement implements Statement{
     
     public FunctionStatement(){
         this.type = "FUNCION";
