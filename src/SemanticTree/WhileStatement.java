@@ -1,3 +1,5 @@
+package SemanticTree;
+
 public WhileStatement implements Statement{
     
     public WhileStatement(){

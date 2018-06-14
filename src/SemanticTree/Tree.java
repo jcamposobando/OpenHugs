@@ -1,3 +1,7 @@
+package SemanticTree;
+
+import SemanticScope.DataType;
+
 public class Tree {
     
     Node root;
@@ -6,11 +10,11 @@ public class Tree {
         this.root = new Node();
     }
     
-    public Tree(String type, String name){
+    public Tree(DataType type, String name){
         this.root = new Node(type, name);
     }
     
-    public void setRoot(String type, String name){
+    public void setRoot(DataType type, String name){
         this.root = new Node(type, name);
     }
     
@@ -18,11 +22,11 @@ public class Tree {
         return this.root;
     }
     
-    public void setLeft(String type, String name){
+    public void setLeft(DataType type, String name){
         this.root.setLeftNode(type, name);
     }
     
-    public void setRight(String type, String name){
+    public void setRight(DataType type, String name){
         this.root.setRightNode(type, name);
     }
     
@@ -39,13 +43,13 @@ public class Tree {
             this.data = new Pair();
         }
         
-        public Node(String t, String n){
+        public Node(DataType t, String n){
             this.data = new Pair(t, n);
             this.h_left = null;
             this.h_right = null;
         }
         
-        public String getDataType(){
+        public DataType getDataType(){
             return this.data.type;
         }
         
@@ -53,7 +57,7 @@ public class Tree {
             return this.data.name;
         }
         
-        public void setDataType(String t){
+        public void setDataType(DataType t){
             this.data.type = t;
         }
         
@@ -61,11 +65,11 @@ public class Tree {
             this.data.name = n;
         }
         
-        public void setRightNode(String rt, String rn){
+        public void setRightNode(DataType rt, String rn){
             this.h_right = new Node(rt, rn);
         }
         
-        public void setLeftNode(String lt, String ln){
+        public void setLeftNode(DataType lt, String ln){
             this.h_left = new Node(lt, ln);
         }
         
@@ -80,11 +84,12 @@ public class Tree {
     }
     
     class Pair{
-        String type, name;
+        String name;
+        DataType type;
         
         public Pair(){}
         
-        public Pair(String t, String n){
+        public Pair(DataType t, String n){
             this.name = n;
             this.type = t;
         }

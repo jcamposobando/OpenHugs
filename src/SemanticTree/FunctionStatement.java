@@ -1,3 +1,5 @@
+package SemanticTree;
+
 public FunctionStatement implements Statement{
     
     public FunctionStatement(){
