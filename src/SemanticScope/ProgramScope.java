@@ -1,8 +1,8 @@
-package Semantic;
+package SemanticScope;
 
 import java.util.HashMap;
 
-public class ProgramScope{
+public class ProgramScope {
 
     private HashMap<String,ClassScope> classes;
 

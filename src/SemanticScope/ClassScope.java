@@ -1,4 +1,4 @@
-package Semantic;
+package SemanticScope;
 
 import java.util.HashMap;
 
@@ -38,6 +38,49 @@ public class ClassScope {
 
     /**
      *
+<<<<<<< HEAD:src/SemanticScope/ClassScope.java
+     * @return
+     */
+    public HashMap<String, DataType> getAttributes() {
+        return attributes;
+    }
+
+    /**
+     *
+     * @param attributes
+     */
+    public void setAttributes(HashMap<String, DataType> attributes) {
+        this.attributes = attributes;
+    }
+    
+    public void setAttribute1(String name, DataType type){
+        this.attributes.put(name, type);
+    }
+    
+    public void getAttributeType(String name){
+        this.attributes.get(name);
+    }
+
+    /**
+     *
+     * @return
+     */
+    public HashMap<String, Method> getMethods() {
+        return methods;
+    }
+
+    /**
+     *
+     * @param methods
+     */
+    public void setMethods(HashMap<String, Method> methods) {
+        this.methods = methods;
+    }
+
+    /**
+     *
+=======
+>>>>>>> master:src/Semantic/ClassScope.java
      * @param name
      * @return
      */
@@ -72,6 +115,10 @@ public class ClassScope {
         attributes.put(name, DataType.valueOf(typeName));
     }
     
+<<<<<<< HEAD:src/SemanticScope/ClassScope.java
+    public void addMethod(String name){
+        //methods.put(name, new Method(name) );
+=======
     /**
      *
      * @param parent
@@ -80,6 +127,7 @@ public class ClassScope {
         MethodScope newMethod = new MethodScope(this, name);
         methods.put(name, newMethod);    //Así? cual se supone que sea el otro parámetro?
         return newMethod;
+>>>>>>> master:src/Semantic/ClassScope.java
     }
 }
 

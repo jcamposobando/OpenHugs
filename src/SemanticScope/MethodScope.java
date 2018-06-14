@@ -1,4 +1,4 @@
-package Semantic;
+package SemanticScope;
 
 import java.util.HashMap;
 
@@ -8,7 +8,7 @@ import java.util.LinkedHashMap;
 /**
  *
  */
-public class MethodScope{
+public class MethodScope {
 
     /**
      *
