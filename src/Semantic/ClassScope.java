@@ -68,8 +68,8 @@ public class ClassScope {
      *
      * @param parent
      */
-    public void addVariable(String name){
-        attributes.put(name, DataType.NUMERO);
+    public void addVariable(String typeName, String name){
+        attributes.put(name, DataType.valueOf(typeName));
     }
     
     /**

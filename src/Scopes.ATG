@@ -161,9 +161,9 @@ functionDeclaration = (. currentMethod = currentClass.addMethod(ss(1)); .) funci
 
 parameterList = functionParameter {comma functionParameter} .
 
-functionParameter = (. currentMethod.addVariable(ss(0)); .) typeName variableName .
+functionParameter = (. currentMethod.addParameter(ss(0),ss(1)); .) typeName variableName .
 
-variableDeclaration = (. if (currentMethod == null)  currentClass.addVariable(ss(1)); else currentMethod.addVariable(ss(1)); .)
+variableDeclaration = (. if (currentMethod == null)  currentClass.addVariable(ss(0),ss(1)); else currentMethod.addVariable(ss(0),ss(1)); .)
 typeName variableName [asign expresion] .
 
 assignment = (. currentMethod.lookUpVariable(ss()); .) variableName asign expresion
