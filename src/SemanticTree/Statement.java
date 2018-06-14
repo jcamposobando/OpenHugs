@@ -6,5 +6,4 @@ import SemanticScope.DataType;
 
 public interface Statement{
 
-    
 }

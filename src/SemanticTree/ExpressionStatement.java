@@ -48,15 +48,5 @@ public class ExpressionStatement implements Statement{
     public Boolean compare(){
         return (this.exp.getRoot().getRightNode().getDataType() == this.exp.getRoot().getLeftNode().getDataType());
     }
-    
-    /*
-    public String getTop(){
-        this.st.pop();
-    }
-    
-    public String viewTop(){
-        this.st.peek();
-    }
-    */
 
 }
