@@ -42,6 +42,10 @@ public class ExpressionStatement implements Statement{
         this.exp.setRoot("operador", operador);
     }
     
+    public Boolean compare(){
+        return (this.exp.getRightNode().getDataType() == this.exp.getLeftNode().getDataType())
+    }
+    
     /*
     public String getTop(){
         this.st.pop();
