@@ -1,6 +1,6 @@
 package SemanticTree;
 
-import SemanticScope.DataType;
+import src.DataType;
 
 public class Tree {
     
@@ -84,8 +84,8 @@ public class Tree {
     }
     
     class Pair{
-        String name;
-        DataType type;
+        final String name;
+        final DataType type;
         
         public Pair(){}
         

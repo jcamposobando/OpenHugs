@@ -1,6 +1,5 @@
 package SemanticTree;
 
-
 import SemanticScope.DataType;
 
 import java.util.HashMap;
