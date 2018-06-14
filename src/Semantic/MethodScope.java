@@ -45,16 +45,17 @@ public class MethodScope{
     }
     
     public DataType lookUpVariable(String name){
-        DataType dec = this.declarations.get(name);
-        return (dec!=null) ? dec : this.parent.lookUpAttribute(name);
+        DataType dec = declarations.get(name);
+        DataType par = parameters.get(name);
+        return (dec!=null) ? dec : (par!=null) ? par : parent.lookUpAttribute(name);
     }
 
     public MethodScope lookUpMethod(String name){
         return this.parent.lookUpMethod(name);
     }
     
-    public void addVariable(String name){
-        declarations.put(name, DataType.NUMERO);
+    public void addVariable(String typeName, String name){
+        declarations.put(name, DataType.valueOf(typeName));
     }
     
     public void addParameter(String typeName, String name){
