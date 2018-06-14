@@ -1,3 +1,7 @@
+package SemanticTree;
+
+import java.util.Vector;
+
 public class Block{
     Vector<Statement> statements;
     
@@ -7,7 +11,7 @@ public class Block{
         this.statements = s;
     }
     
-    public addStatement(Statement s){
+    public void addStatement(Statement s){
         this.statements.add(s);
     }
     

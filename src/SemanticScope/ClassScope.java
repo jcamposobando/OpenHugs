@@ -47,7 +47,7 @@ public class ClassScope {
         this.attributes = attributes;
     }
     
-    public void setAttribute1(String type, String name){
+    public void setAttribute1(String name, DataType type){
         this.attributes.put(name, type);
     }
     

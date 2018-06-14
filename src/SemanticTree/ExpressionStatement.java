@@ -1,4 +1,8 @@
-public ExpressionStatement implements Statement{
+package SemanticTree;
+
+import java.util.Stack;
+
+public class ExpressionStatement implements Statement{
     //expresiones matemáticas
     Stack<String> st;// = new Stack();
     public ExpressionStatement(){
@@ -11,6 +15,4 @@ public ExpressionStatement implements Statement{
         this.st.pop(var2);
         this.st.pop(op);
     }
-    
-    public 
 }

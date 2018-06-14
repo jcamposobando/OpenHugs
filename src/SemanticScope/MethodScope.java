@@ -31,8 +31,8 @@ public class MethodScope {
         this.methodName = methodName;
         this.parent = parent;
         parent.addMethod(methodName);
-        this.declarations = new HashMap<>();
-        this.primitives = new HashMap<>();
+        this.declarations = new HashMap();
+        this.primitives = new HashMap();
     }
 
     /**
