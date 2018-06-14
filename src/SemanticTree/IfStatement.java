@@ -15,7 +15,15 @@ public class IfStatement implements Statement {
         this.type = "SI";
 
     }
-    public void setOperador(String operador){this.operador = operador;}
+    public void setOperador(String operador){ //Se puede meter todo tipo de operadore pero solo asigna cuando encuentre el indicado
+        if (operador.equals("<=") || operador.equals(">=")
+         || operador.equals("<")  || operador.equals(">")
+         || operador.equals("==") || operador.equals("!=") )
+
+        {
+            this.operador = operador;
+        }
+    }
 
     public String getOperador(){return operador;}
 
