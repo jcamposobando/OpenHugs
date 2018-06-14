@@ -14,11 +14,11 @@ void debug (String str){
 }
 
 
-String skipString(){
-  return skipString(0);
+String ss(){
+  return ss(0);
 }
 
-String skipString( int n ){
+String ss( int n ){
   scanner.ResetPeek(); 
   Token next = la;
   for (int i = 0; i < n ; i ++) next = scanner.Peek(); 
@@ -144,35 +144,29 @@ IGNORE cr + tab
 
 PRODUCTIONS
 
-OpenHugs = (. program = new ProgramScope(); .)[lineEnd] {include} classDeclaration {classDeclaration}
-.
+OpenHugs = (. program = new ProgramScope(); .) [lineEnd] {include} classDeclaration {classDeclaration} .
 
 completeClassName = className{ dot className} [ colon typeName {comma typeName } not ].
 
-tipoRetorno = numero | bool | palabra | completeClassName.
+tipoRetorno = numero | bool | palabra | completeClassName .
 
-include = incorporar className { dot className} lineEnd
-(. debug("include"); .)
-.
+include = incorporar className { dot className} lineEnd .
 
-classDeclaration = (. currentClass = new ClassScope(program,skipString(1)); .) clase className [ colon typeName {comma typeName}] classBlock [lineEnd]
-(. currentClass = null; .)
-.
+classDeclaration = 
+(. currentClass = program.addClass(ss(1)); .) clase className [ colon typeName {comma typeName}] classBlock [lineEnd]
+(. currentClass = null; .) .
 
-functionDeclaration = (. currentMethod = new MethodScope(currentClass, skipString(1)); .)funcion variableName lpar [parameterList] rpar [returns tipoRetorno] [lineEnd] StatementBlock
-(. currentMethod = null; .)
-.
-parameterList = functionParameter {comma functionParameter} 
-.
+functionDeclaration = (. currentMethod = currentClass.addMethod(ss(1)); .) funcion variableName lpar [parameterList] rpar [returns (.currentMethod.setReturnType(ss()); .) tipoRetorno] [lineEnd] StatementBlock
+(. currentMethod = null; .).
 
-functionParameter = typeName (. currentMethod.addVariable(skipString(0));.) variableName
-.
+parameterList = functionParameter {comma functionParameter} .
 
-variableDeclaration = (. if (currentMethod == null)  currentClass.addVariable(skipString(1)); else currentMethod.addVariable(skipString(1)); .)
-typeName variableName [asign expresion]
-.
+functionParameter = (. currentMethod.addVariable(ss(0)); .) typeName variableName .
 
-assignment = (. currentMethod.lookUpVariable(skipString()); .) variableName asign expresion
+variableDeclaration = (. if (currentMethod == null)  currentClass.addVariable(ss(1)); else currentMethod.addVariable(ss(1)); .)
+typeName variableName [asign expresion] .
+
+assignment = (. currentMethod.lookUpVariable(ss()); .) variableName asign expresion
 (. debug("asignacion"); .)
 .
 
@@ -180,7 +174,7 @@ whileLoop = ciclo (. debug("while"); .) mientras lpar logExpresion rpar Statemen
 
 ifStatement = si (. debug("if"); .) lpar logExpresion rpar StatementBlock [IF (isElseClause()) [lineEnd] sino (. debug("else"); .) StatementBlock ].
 
-functionCall = (. currentClass.lookUpMethod(skipString()); .) variableName lpar [expresion { comma expresion } ]  rpar (. addChildren(); .).
+functionCall = (. currentClass.lookUpMethod(ss()); .) variableName lpar [expresion { comma expresion } ]  rpar (. addChildren(); .).
 
 typeName = completeClassName | numero | palabra | bool.
 
@@ -231,7 +225,7 @@ StatementBlock = lbrace (.pushNode(); .)
                                       | return expresion
                                     ) lineEnd } rbrace (. popNode(); .).
                                     
-increment = (. currentMethod.lookUpVariable(skipString()); .) variableName (inc | dec) .
+increment = (. currentMethod.lookUpVariable(ss()); .) variableName (inc | dec) .
 
 classBlock =  lbrace (. pushNode(); .)
               lineEnd {(functionDeclaration | variableDeclaration) lineEnd} 
