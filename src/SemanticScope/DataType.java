@@ -1,4 +1,4 @@
-package semanticScope;
+package SemanticScope;
 
 public enum DataType {
     NUMERO,

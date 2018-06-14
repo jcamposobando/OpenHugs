@@ -1,4 +1,4 @@
-package semanticScope;
+package SemanticScope;
 
 import java.util.SortedMap;
 
