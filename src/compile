@@ -1,16 +1,13 @@
-rm ATG/*.java 
-rm ATG/*.java.old
+rm ATG/*.java
 
-rm *.java.old;
-rm *.class
 rm ../out/src/*.class
+
 rm ../out/SemanticScope/*class
-rm ../out/SemanticScope/*.java.old;
+
 rm ../out/SemanticClasses/*.class
-rm ../out/SemanticClasses/*.java.old;
+
 rm ../out/SyntacticTree/*.class
-rm ../out/SyntacticTree/*.java.old;
 
 java -jar ../libraries/Coco.jar ATG/OpenHugs.ATG 
 
-javac -d ../out SyntacticTree/*.java *.java SemanticClasses/*.java 
+javac -d ../out SyntacticTree/*.java *.java SemanticClasses/*.java SemanticScope/*.java

@@ -7,13 +7,14 @@ import src.*;
 
 public class Node{
     Statement st;
-    ArrayList<Statement> objects = new ArrayList<>();  
+    Set<Node> objects;// = new Vector<>();  
     
     public Node(){
-        
+        objects = new HashSet<>();  
     }
     
     public Node(StatementType type){
+        objects = new HashSet<>();  
         
         switch(type){
             case SI:
@@ -72,6 +73,14 @@ public class Node{
                 //
                 System.out.println("NODE: no es un tipo de statement");
         }
+    }
+    
+    public void add(StatementType newStatement){
+        this.objects.add(new Node(newStatement));
+    }
+    
+    public boolean exist(StatementType statement){
+        return this.objects.contains(statement);
     }
 }
 

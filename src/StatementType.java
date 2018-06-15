@@ -13,5 +13,6 @@ public enum StatementType {
     RETORNAR,
     LOGICO,
     VERDADERO,
-    FALSO
+    FALSO,
+    EXPRESSION
 }

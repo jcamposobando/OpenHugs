@@ -1,6 +1,6 @@
 package SemanticClasses;
 
-import src.DataType;
+import src.*;
 
 public class Tree {
     
