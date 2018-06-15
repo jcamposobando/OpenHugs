@@ -1,8 +1,13 @@
 import java.util.BitSet;
 
+//import SemanticScope.*;
+import SemanticClasses.*;
+import SyntacticTree.*
+import src.*;
+
 COMPILER OpenHugs
 
-Node root = new Node("root",-1,null);
+Node root = new Node();
 Node currentNode = root;
 
 void debug (String str){
