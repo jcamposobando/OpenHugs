@@ -14,56 +14,63 @@ public class Node{
     }
     
     public Node(StatementType type){
-        //cambiar por un switch
-        if(type == StatementType.SI){
-            this.st = new IfStatement();
-        }
-        else if(type == StatementType.CICLO){
-            this.st = new WhileStatement();
-        }
-        else if(type == StatementType.SINO){
-            this.st = new IfStatement(); //hay que hacer algo para diferenciar que es el else de un if
-        }
-        else if(type == StatementType.CLASE){
-            this.st = new ClassStatement();
-        }
-        else if(type == StatementType.FUNCION){
-            this.st = new FunctionStatement();
-        }                                       //estos no sé si hay que incluirlos
-        else if(type == StatementType.NONE){
-            System.out.println("NODE: NONE");
-        }
-        else if(type == StatementType.INCORPORAR){
-            //imports 
-            System.out.println("NODE: INCORPORAR");
-        }
-        else if(type == StatementType.NUMERO){
-            //
-            System.out.println("NODE: NUMERO");
-        }
-        else if(type == StatementType.PALABRA){
-            //
-            System.out.println("NODE: PALABRA");
-        }
-        else if(type == StatementType.LOGICO){
-            //
-            System.out.println("NODE: LOGICO");
-        }
-        else if(type == StatementType.RETORNAR){
-            //
-            System.out.println("NODE: RETORNAR");
-        }
-        else if(type == StatementType.VERDADERO){
-            //
-            System.out.println("NODE: VERDADERO");
-        }
-        else if(type == StatementType.FALSO){
-            //
-            System.out.println("NODE: FALSO");
-        }
-        else{
-            //default case
-            System.out.println("NODE: no es un tipo de statement");
+        
+        switch(type){
+            case SI:
+                //
+                this.st = new IfStatement();
+                break;
+            case CICLO:
+                //
+                this.st = new WhileStatement();
+                break;
+            case SINO:
+                this.st = new IfStatement(); //hay que hacer algo para diferenciar que es el else de un if
+                //
+                break;
+            case CLASE:
+                this.st = new ClassStatement();
+                //
+                break;
+            case FUNCION:
+                this.st = new FunctionStatement();
+                //
+                break;
+            case INCORPORAR:
+                //
+                System.out.println("NODE: INCORPORAR");
+                break;
+            case NONE:
+                //
+                System.out.println("NODE: NONE");
+                break;
+            case NUMERO:
+                //
+                System.out.println("NODE: NUMERO");
+                break;
+            case PALABRA:
+                //
+                System.out.println("NODE: PALABRA");
+                break;
+            case LOGICO:
+                //
+                System.out.println("NODE: LOGICO");
+                break;
+            case RETORNAR:
+                //
+                System.out.println("NODE: RETORNAR");
+                break;
+            case VERDADERO:
+                //
+                System.out.println("NODE: VERDADERO");
+                break;
+            case FALSO:
+                //
+                System.out.println("NODE: FALSO");
+                break;
+            default:
+                //
+                System.out.println("NODE: no es un tipo de statement");
         }
     }
 }
@@ -71,46 +78,48 @@ public class Node{
 
 /* to use later 
 
-    if(type == StatementType.SI){
-            
-        }
-        else if(type == StatementType.CICLO){
-            
-        }
-        else if(type == StatementType.NONE){
-            
-        }
-        else if(type == StatementType.SINO){
-            
-        }
-        else if(type == StatementType.CLASE){
-            
-        }
-        else if(type == StatementType.INCORPORAR){
-            
-        }
-        else if(type == StatementType.FUNCION){
-            
-        }
-        else if(type == StatementType.NUMERO){
-            
-        }
-        else if(type == StatementType.PALABRA){
-            
-        }
-        else if(type == StatementType.RETORNAR){
-            
-        }
-        else if(type == StatementType.LOGICO){
-            
-        }
-        else if(type == StatementType.VERDADERO){
-            
-        }
-        else if(type == StatementType.FALSO){
-            
-        }
-        else{
-            //default case
+    switch(type){
+            case SI:
+                //
+                break;
+            case CICLO:
+                //
+                break;
+            case SINO:
+                //
+                break;
+            case CLASE:
+                //
+                break;
+            case FUNCION:
+                //
+                break;
+            case INCORPORAR:
+                //
+                break;
+            case NONE:
+                //
+                break;
+            case NUMERO:
+                //
+                break;
+            case PALABRA:
+                //
+                break;
+            case LOGICO:
+                //
+                break;
+            case RETORNAR:
+                //
+                break;
+            case VERDADERO:
+                //
+                break;
+            case FALSO:
+                //
+                break;
+            default:
+                //
+                System.out.println("NODE: no es un tipo de statement");
         }
 */
