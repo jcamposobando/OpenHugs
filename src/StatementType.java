@@ -1,6 +1,6 @@
 package src;
 
-public enum DataType {
+public enum StatementType {
     SI,
     CICLO,
     NONE,

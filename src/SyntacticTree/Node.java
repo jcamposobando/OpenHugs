@@ -1,10 +1,13 @@
 package SyntacticTree;
 
-import SemanticClasses.Statement;
-import src.StatementType;
+import java.util.*;
+
+import SemanticClasses.*;
+import src.*;
 
 public class Node{
     Statement st;
+    ArrayList<Statement> objects = new ArrayList<>();  
     
     public Node(){
         
