@@ -1,4 +1,4 @@
-package SemanticTree;
+package SemanticClasses;
 
 import src.DataType;
 

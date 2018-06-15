@@ -1,23 +1,22 @@
-package  SemanticTree;
+package SemanticClasses;
 
-import java.util.Collection;
-import java.util.HashMap; //Diccionario :v
+import java.util.HashMap;
 
 import src.DataType;
 
-public class IfStatement implements Statement {
+public class WhileStatement implements Statement{
 
     private HashMap<String, DataType> contenido;
     private String operador;
     private DataType tipoExp = null;
 
-    public IfStatement() {
-
+    public WhileStatement(){
     }
+
     public void setOperador(String operador){ //Se puede meter todo tipo de operadore pero solo asigna cuando encuentre el indicado
         if (operador.equals("<=") || operador.equals(">=")
-         || operador.equals("<")  || operador.equals(">")
-         || operador.equals("==") || operador.equals("!=") )
+                || operador.equals("<")  || operador.equals(">")
+                || operador.equals("==") || operador.equals("!=") )
 
         {
             this.operador = operador;
@@ -49,7 +48,7 @@ public class IfStatement implements Statement {
 
                     resultado = true;
                 }
-            break;
+                break;
 
             case LOGICO:
                 if(     contenido.containsValue(DataType.LOGICO) &&
@@ -59,7 +58,7 @@ public class IfStatement implements Statement {
 
                     resultado = true;
                 }
-            break;
+                break;
 
             case PALABRA:
                 if(         contenido.containsValue(DataType.PALABRA)
@@ -68,14 +67,10 @@ public class IfStatement implements Statement {
                         && (operador.equals("==") || operador.equals("!="))){//Si es por palabra solo acepta que se comparen strings)
                     resultado = true;
                 }
-            break;
+                break;
         }
 
         return  resultado;
 
     }
-
-
-
-
 }
