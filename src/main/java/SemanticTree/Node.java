@@ -1,3 +1,5 @@
+package main.java.SemanticTree;
+
 import java.util.Vector;
 
 class Node {

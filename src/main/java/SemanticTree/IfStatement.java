@@ -1,9 +1,8 @@
 
-package  SemanticTree;
+package main.java.SemanticTree;
 
-import SemanticScope.DataType;
+import main.java.SemanticScope.DataType;
 
-import java.util.Collection;
 import java.util.HashMap; //Diccionario :v
 
 public class IfStatement implements Statement {

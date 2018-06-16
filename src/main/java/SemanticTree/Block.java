@@ -1,4 +1,4 @@
-package SemanticTree;
+package main.java.SemanticTree;
 
 import java.util.Vector;
 

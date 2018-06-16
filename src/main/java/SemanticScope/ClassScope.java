@@ -1,8 +1,6 @@
-package SemanticScope;
+package main.java.SemanticScope;
 
 import java.util.HashMap;
-
-import java.util.LinkedHashMap;
 
 public class ClassScope {
 
@@ -38,7 +36,7 @@ public class ClassScope {
 
     /**
      *
-<<<<<<< HEAD:src/SemanticScope/ClassScope.java
+<<<<<<< HEAD:src/main.java.SemanticScope/ClassScope.java
      * @return
      */
     public HashMap<String, DataType> getAttributes() {

@@ -1,7 +1,7 @@
-package SemanticTree;
+package main.java.SemanticTree;
 
 
-import SemanticScope.DataType;
+import main.java.SemanticScope.DataType;
 
 import java.util.HashMap;
 

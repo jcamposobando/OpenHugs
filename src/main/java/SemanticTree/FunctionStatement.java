@@ -1,4 +1,4 @@
-package SemanticTree;
+package main.java.SemanticTree;
 
 public class FunctionStatement implements Statement{
     
