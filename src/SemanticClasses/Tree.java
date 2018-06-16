@@ -1,6 +1,6 @@
-package SemanticTree;
+package SemanticClasses;
 
-import SemanticScope.DataType;
+import src.*;
 
 public class Tree {
     

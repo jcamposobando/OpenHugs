@@ -2,6 +2,8 @@ package SemanticScope;
 
 import java.util.SortedMap;
 
+import src.DataType;
+
 
 class Method {
     String name;

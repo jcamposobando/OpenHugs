@@ -1,4 +1,13 @@
-java -jar ../libraries/Coco.jar Scopes.ATG;
-rm *.java.old;
-javac -d ../out ATG/OpenHugs.java ATG/Scanner.java ATG/Parser.java ATG/Node.java;
-javac -d ../out semanticScope/*.java;
+rm ATG/*.java
+
+rm ../out/src/*.class
+
+rm ../out/SemanticScope/*class
+
+rm ../out/SemanticClasses/*.class
+
+rm ../out/SyntacticTree/*.class
+
+java -jar ../libraries/Coco.jar ATG/OpenHugs.ATG 
+
+javac -d ../out SyntacticTree/*.java *.java SemanticClasses/*.java SemanticScope/*.java

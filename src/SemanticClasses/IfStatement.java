@@ -1,20 +1,19 @@
-
-package  SemanticTree;
-
-import SemanticScope.DataType;
+package  SemanticClasses;
 
 import java.util.Collection;
 import java.util.HashMap; //Diccionario :v
+
+import src.*;
 
 public class IfStatement implements Statement {
 
     private HashMap<String, DataType> contenido;
     private String operador;
     private DataType tipoExp = null;
+    StatementType stType;
 
     public IfStatement() {
-        this.type = "SI";
-
+        this.stType = StatementType.SI;
     }
     public void setOperador(String operador){ //Se puede meter todo tipo de operadore pero solo asigna cuando encuentre el indicado
         if (operador.equals("<=") || operador.equals(">=")
@@ -77,7 +76,8 @@ public class IfStatement implements Statement {
 
     }
 
-
-
+    public StatementType getType(){
+        return this.stType;
+    }
 
 }
