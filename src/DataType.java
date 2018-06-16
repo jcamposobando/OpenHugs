@@ -5,5 +5,5 @@ public enum DataType {
     LOGICO,
     PALABRA,
     NONE,
-    OPERATOR
+    OPERATOR,
 }

@@ -1,7 +1,8 @@
-package SemanticTree;
+package SemanticClasses;
 
 import java.util.Vector;
 
+import src.*;
 
 public class Block{
     Vector<Statement> statements;

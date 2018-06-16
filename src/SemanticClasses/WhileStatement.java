@@ -1,17 +1,18 @@
-package SemanticTree;
-
-import SemanticScope.DataType;
+package SemanticClasses;
 
 import java.util.HashMap;
+
+import src.*;
 
 public class WhileStatement implements Statement{
 
     private HashMap<String, DataType> contenido;
     private String operador;
     private DataType tipoExp = null;
+    StatementType stType;
 
     public WhileStatement(){
-        this.type = "CICLO";
+        this.stType = StatementType.CICLO;
     }
 
     public void setOperador(String operador){ //Se puede meter todo tipo de operadore pero solo asigna cuando encuentre el indicado
@@ -72,6 +73,9 @@ public class WhileStatement implements Statement{
         }
 
         return  resultado;
-
+    }
+    
+    public StatementType getType(){
+        return this.stType;
     }
 }

@@ -1,14 +1,15 @@
-package SemanticTree;
+package SemanticClasses;
 
-import SemanticScope.DataType;
+import src.*;
 
 public class ExpressionStatement implements Statement{
     
     Tree exp;
-    
+    StatementType stType;
 
     public ExpressionStatement(){
-        exp = new Tree();
+        this.stType = StatementType.EXPRESSION;
+        this.exp = new Tree();
     }
     
     public void addExpression(DataType type1, String var1, DataType type2, String var2, String op){ //var es cualquier cosa, action es el operador
@@ -47,6 +48,10 @@ public class ExpressionStatement implements Statement{
     
     public Boolean compare(){
         return (this.exp.getRoot().getRightNode().getDataType() == this.exp.getRoot().getLeftNode().getDataType());
+    }
+    
+    public StatementType getType(){
+        return this.stType;
     }
 
 }

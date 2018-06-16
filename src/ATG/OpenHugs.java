@@ -5,4 +5,5 @@ public class OpenHugs {
         parser.Parse();
         System.out.println(parser.errors.count + " errors detected");
     }   
-}   
+} 
+
