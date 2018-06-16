@@ -1,5 +1,8 @@
 import java.util.BitSet;
 
+COMPILER main.java.Main
+main.java.SemanticTree.Node root = new main.java.SemanticTree.Node("root",-1,null);
+main.java.SemanticTree.Node currentNode = root;
 //import SemanticScope.*;
 import SemanticClasses.*;
 import SyntacticTree.*
@@ -33,7 +36,7 @@ boolean isElseClause(){
 }
 
 void pushNode(){
-  Node newNode = new Node(scanner.pt.val, scanner.pt.kind, currentNode);
+  main.java.SemanticTree.Node newNode = new main.java.SemanticTree.Node(scanner.pt.val, scanner.pt.kind, currentNode);
   currentNode.children.add(newNode);
   currentNode = newNode;
 }
@@ -43,7 +46,7 @@ void popNode(){
 }
 
 void addChildren(){
-  currentNode.children.add(new Node(scanner.pt.val, scanner.pt.kind, currentNode));
+  currentNode.children.add(new main.java.SemanticTree.Node(scanner.pt.val, scanner.pt.kind, currentNode));
 }
 
 /*-------------------------------------------------------------------------*/
@@ -131,8 +134,8 @@ IGNORE cr + tab
 
 PRODUCTIONS
 
-OpenHugs = [lineEnd] {include} classDeclaration {classDeclaration}
-(. PrintTree.print(root); .)
+main.java.Main = [lineEnd] {include} classDeclaration {classDeclaration}
+(. main.java.SemanticTree.PrintTree.print(root); .)
 .
 
 completeClassName = className{ dot className} [ colon typeName {comma typeName } not ].
@@ -207,4 +210,4 @@ classBlock =  lbrace (. pushNode(); .)
               lineEnd {(functionDeclaration | variableDeclaration) lineEnd} 
               rbrace(. popNode(); .). 
 
-END OpenHugs.
+END main.java.Main.

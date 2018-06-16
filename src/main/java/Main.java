@@ -1,4 +1,6 @@
-public class OpenHugs {
+package main.java;
+
+public class Main {
     public static void main(String[] arg) {
         Scanner scanner = new Scanner(arg[0]);
         Parser parser = new Parser(scanner);
