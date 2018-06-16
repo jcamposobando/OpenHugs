@@ -10,11 +10,89 @@ public class IfStatement implements Statement {
     private HashMap<String, DataType> contenido;
     private String operador;
     private DataType tipoExp = null;
+    
+    private final Block thenBlock;
+    private final Block elseBlock;
+    private ExpressionStatement;
+    private Block parent;
 
-    public IfStatement() {
+    public IfStatement( Block parent) {
         this.type = "SI";
-
+        thenBlock = new Block();
+        elseBlock = new Block();
+        this.parent = parent;
     }
+    
+    public Block getThenBlock(){
+        return thenBlock;
+    }
+    
+    public Block getElseBlock(){
+        return elseBlock;
+    }
+    
+    
+    public getParent(){
+        return parent;
+    }
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+    //----------------------------------------------------------------------------
+    //ESTO VA PARA CHEQUEO SEMANTICO
+    //----------------------------------------------------------------------------
+        
+        
+
     public void setOperador(String operador){ //Se puede meter todo tipo de operadore pero solo asigna cuando encuentre el indicado
         if (operador.equals("<=") || operador.equals(">=")
          || operador.equals("<")  || operador.equals(">")

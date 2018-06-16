@@ -6,8 +6,13 @@ COMPILER OpenHugs
 ProgramScope program;
 ClassScope currentClass;
 MethodScope currentMethod;
-Node currentNode;
+Block currentBlock;
 
+IfStatement currentIf;
+FunctionStatement currentfunction;
+WhileStatement currentWhile;
+ExpressionStatement currentExpression;
+AsigmentStatement currentAssignment;
 
 String ss(){
   return ss(0);
@@ -36,20 +41,6 @@ boolean isElseClause(){
   scanner.ResetPeek();
   Token next = scanner.Peek();
   return  next.kind == _sino || la.kind == _sino ;
-}
-
-void pushNode(){
-  main.java.SemanticTree.Node newNode = new main.java.SemanticTree.Node(scanner.pt.val, scanner.pt.kind, currentNode);
-  currentNode.children.add(newNode);
-  currentNode = newNode;
-}
-
-void popNode(){
-  currentNode = currentNode.parent;
-}
-
-void addChildren(){
-  currentNode.children.add(new main.java.SemanticTree.Node(scanner.pt.val, scanner.pt.kind, currentNode));
 }
 
 /*-------------------------------------------------------------------------*/
@@ -151,7 +142,9 @@ classDeclaration =
 (. currentClass = program.addClass(ss(1)); .) clase className [ colon typeName {comma typeName}] classBlock [lineEnd]
 (. currentClass = null; .) .
 
-functionDeclaration = (. currentMethod = currentClass.addMethod(ss(1)); .) funcion variableName lpar [parameterList] rpar [returns (.currentMethod.setReturnType(ss()); .) tipoRetorno] [lineEnd] StatementBlock
+functionDeclaration = (. currentMethod = currentClass.addMethod(ss(1)); .) funcion variableName lpar [parameterList] rpar 
+[returns (.currentMethod.setReturnType(ss()); .) tipoRetorno]
+(. currentBlock = currentMethod.getBlock(); .) [lineEnd] StatementBlock (. currentBlock = null; .)
 (. currentMethod = null; .).
 
 parameterList = functionParameter {comma functionParameter} .
@@ -161,15 +154,39 @@ functionParameter = (. currentMethod.addParameter(ss(0),ss(1)); .) typeName vari
 variableDeclaration = (. if (currentMethod == null)  currentClass.addVariable(ss(0),ss(1)); else currentMethod.addVariable(ss(0),ss(1)); .)
 typeName variableName [asign expresion] .
 
-assignment = variableName asign expresion
-(. debug("asignacion"); .)
-.
+assignment = 
+  (. currentAssignment = currentBlock.addAssigmentStatement(ss()); .) variableName asign 
+  (. currentExpression = currentAssignment.getExpression(); .) expresion 
+  (. currentExpression = null; .)
+  (. currentAssignment = null; .)
+  .
 
-whileLoop = ciclo (. debug("while"); .) mientras lpar expresion rpar StatementBlock.
+whileLoop = 
+  (. currentWhile = currentBlock.addWhileStatement(); .) 
+  ciclo  mientras lpar
+  (. ;.)expresion rpar 
+  ( currentBlock = currentWhile.getBlock(); ) StatementBlock
+  ( currentBlock = currentWhile.getParent(); )
+  (. currentWhile = null; .) 
+  .
 
-ifStatement = si (. debug("if"); .) lpar expresion rpar StatementBlock [IF (isElseClause()) [lineEnd] sino (. debug("else"); .) StatementBlock ].
+ifStatement =  
+  (. currentIf = currentBlock.addIfStatement(); .)
+  si lpar 
+  (. ; .) expresion rpar 
+  (. currentBlock = currentIf.getThenBlock() ; .) StatementBlock 
+  [IF (isElseClause()) [lineEnd] sino (. currentBlock = currentIf.getElseBlock() ; .) StatementBlock ]
+  (. currentBlock = currentIf.getParent(); .)
+  (. currentIf = null;.)
+  .
 
-functionCall = variableName lpar [expresion { comma expresion } ]  rpar (. addChildren(); .).
+functionCall = 
+  (. currentfunction = (currentExpression == null) ? currentBlock.addFunctionCall(ss()) : currentExpression.addFunctionCall(ss()) ;.)
+  variableName lpar 
+  [ (. currentExpression = currentfunction.addParameter() ;.) expresion 
+  { (. currentExpression = currentfunction.addParameter() ;.) comma expresion } ]  rpar
+  (. currentfunction = null; .)
+  .
 
 typeName = completeClassName | numero | palabra | bool.
 

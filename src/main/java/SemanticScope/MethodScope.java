@@ -26,6 +26,8 @@ public class MethodScope {
     
     private DataType returnType;
     
+    private final Block block;
+    
     /**
      *
      */
@@ -40,6 +42,7 @@ public class MethodScope {
         this.declarations = new HashMap<>();
         this.parameters = new LinkedHashMap<>();
         this.returnType = returnType;
+        this.block = new Block();
     }
     
     public void setReturnType( String returnType){
@@ -62,6 +65,10 @@ public class MethodScope {
     
     public void addParameter(String typeName, String name){
         parameters.put(name, DataType.valueOf(typeName)); 
+    }
+    
+    public Block getBlock(){
+        return block;
     }
     
 }
