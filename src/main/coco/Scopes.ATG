@@ -1,17 +1,13 @@
-import java.util.BitSet;
-import main.java.SemanticScope.*;
-COMPILER main.java.Main
+package main.coco;
 
-main.java.SemanticTree.Node root = new main.java.SemanticTree.Node("root",-1,null);
-main.java.SemanticTree.Node currentNode = root;
+import java.util.BitSet;
+
+COMPILER OpenHugs
 
 ProgramScope program;
 ClassScope currentClass;
 MethodScope currentMethod;
-
-void debug (String str){
-  //System.err.println(str);
-}
+Node currentNode;
 
 
 String ss(){
@@ -144,7 +140,7 @@ IGNORE cr + tab
 
 PRODUCTIONS
 
-main.java.Main = (. program = new ProgramScope(); .) [lineEnd] {include} classDeclaration {classDeclaration} .
+OpenHugs = (. program = new ProgramScope(); .) [lineEnd] {include} classDeclaration {classDeclaration} .
 
 completeClassName = className{ dot className} [ colon typeName {comma typeName } not ].
 
@@ -166,52 +162,36 @@ functionParameter = (. currentMethod.addParameter(ss(0),ss(1)); .) typeName vari
 variableDeclaration = (. if (currentMethod == null)  currentClass.addVariable(ss(0),ss(1)); else currentMethod.addVariable(ss(0),ss(1)); .)
 typeName variableName [asign expresion] .
 
-assignment = (. currentMethod.lookUpVariable(ss()); .) variableName asign expresion
+assignment = variableName asign expresion
 (. debug("asignacion"); .)
 .
 
-whileLoop = ciclo (. debug("while"); .) mientras lpar logExpresion rpar StatementBlock.
+whileLoop = ciclo (. debug("while"); .) mientras lpar expresion rpar StatementBlock.
 
-ifStatement = si (. debug("if"); .) lpar logExpresion rpar StatementBlock [IF (isElseClause()) [lineEnd] sino (. debug("else"); .) StatementBlock ].
+ifStatement = si (. debug("if"); .) lpar expresion rpar StatementBlock [IF (isElseClause()) [lineEnd] sino (. debug("else"); .) StatementBlock ].
 
-functionCall = (. currentClass.lookUpMethod(ss()); .) variableName lpar [expresion { comma expresion } ]  rpar (. addChildren(); .).
+functionCall = variableName lpar [expresion { comma expresion } ]  rpar (. addChildren(); .).
 
 typeName = completeClassName | numero | palabra | bool.
 
-expresion = 
-  numExpresion | logExpresion | strExpression.
-  
-strExpression = 
-  ( lpar strExpression rpar
-  | stringLit
-  | variableName )
-    [ plus strExpression].
+value = number | boolValue | stringLit | variableName.
 
-numExpresion =
-  ((lpar numExpresion rpar
-  | IF( isFunctionCall() ) functionCall
-  | number
-  | variableName  [ inc
-                  | dec ]
-                  ) [ minus numExpresion
-                    | plus numExpresion
-                    | mul numExpresion
-                    | div numExpresion ] ).
-
-logExpresion =
-  ((not logExpresion
-  | lpar logExpresion rpar
-  | IF( isFunctionCall() ) functionCall
-  | variableName 
-  | boolValue )   [ and logExpresion
-                  | or logExpresion ] )
-  | numExpresion  ( leq numExpresion
-                  | geq numExpresion
-                  | less numExpresion
-                  | great numExpresion
-                  | equal numExpresion
-                  | notEq numExpresion ) .
-
+expresion =
+  ( lpar expresion rpar
+  | IF( isFunctionCall() )functionCall
+  | value 	[ minus expresion
+                | plus expresion
+                | mul expresion
+                | div expresion
+                | leq expresion
+                | geq expresion
+                | less expresion
+                | great expresion
+                | equal expresion
+                | notEq expresion
+                | inc
+                | dec ]
+ ).
 
 boolValue = true | false .
 
@@ -221,14 +201,12 @@ StatementBlock = lbrace (.pushNode(); .)
                                       | ifStatement 
                                       | IF( isFunctionCall() ) functionCall
                                       | variableDeclaration
-                                      | increment
+                                      | variableName (inc | dec)
                                       | return expresion
                                     ) lineEnd } rbrace (. popNode(); .).
-                                    
-increment = (. currentMethod.lookUpVariable(ss()); .) variableName (inc | dec) .
 
 classBlock =  lbrace (. pushNode(); .)
               lineEnd {(functionDeclaration | variableDeclaration) lineEnd} 
               rbrace(. popNode(); .). 
 
-END main.java.Main.
+END OpenHugs.

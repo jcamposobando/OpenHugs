@@ -1,1 +1,7 @@
-javac -d ../out/ main/java/SemanticClasses/*.java main/java/SemanticScope/*.java main/java/SyntacticTree/*.java main/java/*.java
+rm main/coco/*.java.old
+
+java -jar ../libraries/Coco.jar main/coco/Scopes.ATG
+
+rm main/coco/*.java.old
+
+javac -d ../out/ main/coco/*.java main/java/*.java main/java/SemanticClasses/*.java main/java/SemanticScope/*.java main/java/SyntacticTree/*.java
