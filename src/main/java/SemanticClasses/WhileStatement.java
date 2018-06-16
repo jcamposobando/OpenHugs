@@ -1,8 +1,8 @@
-package SemanticClasses;
+package main.java.SemanticClasses;
 
 import java.util.HashMap;
 
-import src.*;
+import main.java.*;
 
 public class WhileStatement implements Statement{
 

@@ -1,6 +1,6 @@
-package main.java.SemanticTree;
+package main.java.SemanticClasses;
 
-import main.java.SemanticScope.DataType;
+import main.java.*;
 
 public class Tree {
     

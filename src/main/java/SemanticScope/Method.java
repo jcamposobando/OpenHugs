@@ -2,7 +2,7 @@ package main.java.SemanticScope;
 
 import java.util.SortedMap;
 
-import src.DataType;
+import main.java.*;
 
 
 class Method {

@@ -1,3 +1,7 @@
-java -jar ../libraries/Coco.jar ATG/OpenHugs.ATG 
+rm main/coco/*.java.old
 
-javac -d ../out SyntacticTree/*.java *.java SemanticClasses/*.java SemanticScope/*.java
+java -jar ../libraries/Coco.jar main/coco/Scopes.ATG
+
+rm main/coco/*.java.old
+
+javac -d ../out/ main/coco/*.java main/java/*.java main/java/SemanticClasses/*.java main/java/SemanticScope/*.java main/java/SyntacticTree/*.java

@@ -1,8 +1,8 @@
-package SemanticClasses;
+package main.java.SemanticClasses;
 
 import java.util.Vector;
 
-import src.*;
+import main.java.*;
 
 public class Block{
     Vector<Statement> statements;

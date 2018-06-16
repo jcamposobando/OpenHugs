@@ -1,3 +1,5 @@
+package main.coco;
+
 import java.util.BitSet;
 import main.java.SemanticScope.*;
 
@@ -225,4 +227,4 @@ classBlock =  lbrace (. pushNode(); .)
               lineEnd {(functionDeclaration | variableDeclaration) lineEnd} 
               rbrace(. popNode(); .). 
 
-END OpenHugs
+END OpenHugs.

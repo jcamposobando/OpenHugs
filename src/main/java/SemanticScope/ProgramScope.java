@@ -2,7 +2,7 @@ package main.java.SemanticScope;
 
 import java.util.HashMap;
 
-import src.DataType;
+import main.java.*;
 
 public class ProgramScope {
 

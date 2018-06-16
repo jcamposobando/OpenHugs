@@ -1,9 +1,9 @@
-package SyntacticTree;
+package main.java.SyntacticTree;
 
 import java.util.*;
 
-import SemanticClasses.*;
-import src.*;
+import main.java.*;
+import main.java.SemanticClasses.*;
 
 public class Node{
     Statement st;
