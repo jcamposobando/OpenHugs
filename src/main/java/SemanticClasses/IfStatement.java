@@ -1,9 +1,9 @@
-package  SemanticClasses;
+package main.java.SemanticClasses;
 
 import java.util.Collection;
 import java.util.HashMap; //Diccionario :v
 
-import src.*;
+import main.java.*;
 
 public class IfStatement implements Statement {
 

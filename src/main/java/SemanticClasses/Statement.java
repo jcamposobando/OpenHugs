@@ -1,4 +1,4 @@
-package SemanticClasses;
+package main.java.SemanticClasses;
 
 import java.util.*;
 import java.lang.*;

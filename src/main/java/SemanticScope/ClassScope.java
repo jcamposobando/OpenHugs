@@ -4,7 +4,7 @@ import java.util.HashMap;
 
 import java.util.LinkedHashMap;
 
-import src.DataType;
+import main.java.*;
 
 public class ClassScope {
 

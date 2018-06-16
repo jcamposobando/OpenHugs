@@ -1,5 +1,7 @@
 import java.util.BitSet;
 
+import main.coco.*;
+
 COMPILER main.java.Main
 main.java.SemanticTree.Node root = new main.java.SemanticTree.Node("root",-1,null);
 main.java.SemanticTree.Node currentNode = root;

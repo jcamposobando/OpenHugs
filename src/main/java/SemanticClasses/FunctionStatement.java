@@ -1,6 +1,6 @@
-package SemanticClasses;
+package main.java.SemanticClasses;
 
-import src.*;
+import main.java.*;
 
 public class FunctionStatement implements Statement{
     
