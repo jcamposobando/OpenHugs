@@ -2,12 +2,14 @@ package main.java.SemanticScope;
 
 import java.util.HashMap;
 
+import src.DataType;
+
 public class ProgramScope {
 
     private HashMap<String,ClassScope> classes;
 
     public ProgramScope () {
-        classes = new HashMap();
+        classes = new HashMap<>();
     }
     
     public DataType lookUpVariable(String name){

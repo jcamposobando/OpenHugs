@@ -1,9 +1,17 @@
 import java.util.BitSet;
 
 COMPILER main.java.Main
-
 main.java.SemanticTree.Node root = new main.java.SemanticTree.Node("root",-1,null);
 main.java.SemanticTree.Node currentNode = root;
+//import SemanticScope.*;
+import SemanticClasses.*;
+import SyntacticTree.*
+import src.*;
+
+COMPILER OpenHugs
+
+Node root = new Node();
+Node currentNode = root;
 
 void debug (String str){
   //System.err.println(str);

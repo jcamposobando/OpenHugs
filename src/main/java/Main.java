@@ -7,4 +7,5 @@ public class Main {
         parser.Parse();
         System.out.println(parser.errors.count + " errors detected");
     }   
-}   
+} 
+
