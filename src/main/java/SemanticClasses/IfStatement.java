@@ -1,20 +1,124 @@
+
 package main.java.SemanticClasses;
 
-import java.util.Collection;
+import main.java.DataType;
+
 import java.util.HashMap; //Diccionario :v
 
-import main.java.*;
+import main.java.SemanticScope.*;
 
 public class IfStatement implements Statement {
 
     private HashMap<String, DataType> contenido;
     private String operador;
     private DataType tipoExp = null;
-    StatementType stType;
+    
+    private final Block thenBlock;
+    private final Block elseBlock;
+    private ExpressionStatement condition;
+    private Block parent;
+    private MethodScope parentMethod;
 
-    public IfStatement() {
-        this.stType = StatementType.SI;
+    public IfStatement(Block parent,MethodScope parentMethod) {
+        //this.type = "SI";
+        condition = new  ExpressionStatement(parent,null);
+        thenBlock = new Block(parentMethod,this);
+        elseBlock = new Block(parentMethod,this);
+        this.parent = parent;
+        this.parentMethod = parentMethod;
     }
+    
+    public Block getThenBlock(){
+        return thenBlock;
+    }
+    
+    public Block getElseBlock(){
+        return elseBlock;
+    }
+    
+    
+    public Block getParent(){
+        return parent;
+    }
+    
+    public MethodScope lookUpMethod(String name){
+        return parent.lookUpMethod(name);
+    }
+    
+        
+    public DataType lookUpVariable(String name){
+        return parent.lookUpVariable(name);
+    }
+    
+    public boolean typeCheck (){
+        boolean res = true;
+        res &= condition.getType() == DataType.LOGICO;
+        res &= thenBlock.typeCheck();
+        res &= (elseBlock!= null) ? elseBlock.typeCheck() : true;
+        return res;
+    }
+    
+    public ExpressionStatement getCondition(){
+        return condition;
+    }
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+    //----------------------------------------------------------------------------
+    //ESTO VA PARA CHEQUEO SEMANTICO
+    //----------------------------------------------------------------------------
+        
+        
+
     public void setOperador(String operador){ //Se puede meter todo tipo de operadore pero solo asigna cuando encuentre el indicado
         if (operador.equals("<=") || operador.equals(">=")
          || operador.equals("<")  || operador.equals(">")
@@ -76,8 +180,7 @@ public class IfStatement implements Statement {
 
     }
 
-    public StatementType getType(){
-        return this.stType;
-    }
+
+
 
 }

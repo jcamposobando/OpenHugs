@@ -6,6 +6,8 @@ import java.util.LinkedHashMap;
 
 import main.java.*;
 
+import main.java.SemanticClasses.*;
+
 
 /**
  *
@@ -42,11 +44,15 @@ public class MethodScope {
         this.declarations = new HashMap<>();
         this.parameters = new LinkedHashMap<>();
         this.returnType = returnType;
-        this.block = new Block();
+        this.block = new Block(this,null);
     }
     
     public void setReturnType( String returnType){
         this.returnType =  DataType.valueOf(returnType); 
+    }
+    
+    public DataType getReturnType(){
+        return this.returnType;
     }
     
     public DataType lookUpVariable(String name){
@@ -69,6 +75,13 @@ public class MethodScope {
     
     public Block getBlock(){
         return block;
+    }
+    
+    public boolean typeCheck(){
+        boolean res = block.typeCheck();
+        if (!res) System.err.println("Error en el metodo "+methodName);
+        return res;
+        //FALTA CHEQUEAR QUE RETORNE EL TIPO CORRECTO
     }
     
 }

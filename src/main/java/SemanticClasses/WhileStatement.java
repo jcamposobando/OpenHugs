@@ -4,16 +4,86 @@ import java.util.HashMap;
 
 import main.java.*;
 
+import main.java.SemanticScope.*;
+
 public class WhileStatement implements Statement{
 
+    private final Block block;
+    
+    private final ExpressionStatement condition;
+
+    private final Block parent;
+    
+    private final MethodScope parentMethod;
+    
+    public WhileStatement(Block parent, MethodScope parentMethod){
+        this.parentMethod = parentMethod;
+        this.parent = parent;
+        this.block = new Block(parentMethod,this);
+        this.condition = new ExpressionStatement(parent , null);
+    }
+    
+    public Block getBlock () {
+        return block;
+    }
+    
+    public Block getParent(){
+        return parent;
+    }
+
+
+    public MethodScope lookUpMethod(String name){
+        return parent.lookUpMethod(name);
+    }    
+    
+    public DataType lookUpVariable(String name){
+        return parent.lookUpVariable(name);
+    }
+    
+    public boolean typeCheck (){
+        boolean res = true;
+        res &= condition.getType() == DataType.LOGICO;
+        res &= block.typeCheck();
+        return res;
+    }
+    
+    
+    public ExpressionStatement getCondition(){
+        return condition;
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     private HashMap<String, DataType> contenido;
     private String operador;
     private DataType tipoExp = null;
     StatementType stType;
-
-    public WhileStatement(){
-        this.stType = StatementType.CICLO;
-    }
 
     public void setOperador(String operador){ //Se puede meter todo tipo de operadore pero solo asigna cuando encuentre el indicado
         if (operador.equals("<=") || operador.equals(">=")

@@ -80,6 +80,15 @@ public class ClassScope {
         methods.put(name, newMethod);    //Así? cual se supone que sea el otro parámetro?
         return newMethod;
     }
+    
+    public boolean typeCheck(){
+        boolean res = true;
+        for (MethodScope meth : methods.values()){
+            res &= meth.typeCheck();
+        }
+        if (!res) System.err.println("Error en la clase "+className);
+        return res;
+    }
 }
 
 

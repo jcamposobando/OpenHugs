@@ -10,7 +10,7 @@ CLASE Algoritmos {
 				RETORNAR 1 ;la segunda condición de salida
 			} 
 			SINO {
-				RETORNAR fibonacci(n-1) + fibonacci(n-2)
+				RETORNAR fibonacci(n-1) + fibonacci(n-1)  
 			}
 		}
 	} ;fin de la función
