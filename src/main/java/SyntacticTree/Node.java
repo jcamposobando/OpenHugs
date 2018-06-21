@@ -10,10 +10,12 @@ public class Node{
     Set<Node> objects;// = new Vector<>();  
     
     public Node(){
+        System.out.println("Node: sin parámetros");
         objects = new HashSet<>();  
     }
     
     public Node(StatementType type){
+        System.out.println("Node: con parámetros");
         objects = new HashSet<>();  
         
         switch(type){

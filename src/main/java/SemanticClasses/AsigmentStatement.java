@@ -23,15 +23,15 @@ public class AsigmentStatement implements Statement{
         return expresion;
     }
     
-    public MethodScope lookUpMethod(String name){
-        return parent.lookUpMethod(name);
-    }
-    
     public DataType lookUpVariable(String name){
         return parent.lookUpVariable(name);
     }
     
     public boolean typeCheck () {
         return expresion.getType() == lookUpVariable(variableName);
+    }
+    
+    public MethodScope lookUpMethod(String name){
+        return parent.lookUpMethod(name);
     }
 }

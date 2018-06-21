@@ -6,4 +6,5 @@ public enum DataType {
     PALABRA,
     NONE,
     OPERATOR,
+    VECTOR
 }

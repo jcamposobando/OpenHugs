@@ -19,7 +19,6 @@ public class Variable implements Evaluable {
         this.type = type;
     }
     
-    
     public DataType getType() {
         if ( type != null ) return type;
         else {

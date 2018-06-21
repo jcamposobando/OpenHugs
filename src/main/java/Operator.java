@@ -10,19 +10,3 @@ public class Operator {
     }
     
 }
-
-
-/*
-    MINUS("-"),
-    PLUS("+"),
-    MUL("*"),
-    DIV("/"),
-    LEQ("<="),
-    GEQ(">="),
-    LESS("<"),
-    GREAT(">"),
-    EQUAL("=="),
-    NOTEQ("!="),
-    INC("++"),
-    DEC("--");
-*/

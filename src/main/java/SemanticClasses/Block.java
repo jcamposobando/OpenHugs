@@ -19,11 +19,38 @@ public class Block{
     
     private final Statement parentBlock;
     
+    public Block( MethodScope parentMethod, Statement parentBlock){
+        variables = new HashMap<>();
+        statements = new Vector<>();
+        this.parentMethod = parentMethod;
+        this.parentBlock = parentBlock;
+    }
+    
+    public AsigmentStatement addAssigmentStatement(String name){
+        AsigmentStatement statement = new AsigmentStatement(this, name);
+        statements.add(statement);
+        return statement;
+    }
+    
+    public IfStatement addIfStatement(){
+        IfStatement ifStatement = new IfStatement(this,parentMethod);
+        statements.add(ifStatement);
+        return ifStatement;
+    }
+
+    public boolean typeCheck () {
+        boolean res = true;
+        for (Statement st : statements){
+            res &= st.typeCheck();
+        }
+        return res;
+    }
+    
     public MethodScope lookUpMethod (String name){
         return parentMethod.lookUpMethod(name) ;
     }
     
-    public  MethodScope getParentMethod  () {
+    public MethodScope getParentMethod  () {
         return parentMethod;
     }
     
@@ -37,16 +64,8 @@ public class Block{
         return parentMethod.lookUpVariable(name);
     }
     
-    public Block( MethodScope parentMethod, Statement parentBlock){
-        variables = new HashMap<>();
-        statements = new Vector<>();
-        this.parentMethod = parentMethod;
-        this.parentBlock = parentBlock;
-    }
-    
     public Block(Vector<Statement> s){
         this.statements = s;
-        
         this.parentMethod = null;
         this.parentBlock = null;
     }
@@ -55,20 +74,8 @@ public class Block{
         this.statements.add(s);
     }
     
-    public IfStatement addIfStatement(){
-        IfStatement ifStatement = new IfStatement(this,parentMethod);
-        statements.add(ifStatement);
-        return ifStatement;
-    }
-    
     public WhileStatement addWhileStatement(){
         WhileStatement statement = new WhileStatement(this,parentMethod);
-        statements.add(statement);
-        return statement;
-    }
-    
-    public AsigmentStatement addAssigmentStatement(String name){
-        AsigmentStatement statement = new AsigmentStatement(this, name);
         statements.add(statement);
         return statement;
     }
@@ -83,12 +90,5 @@ public class Block{
     public void addVariable (String typeName, String name){
         variables.put(name, DataType.valueOf(typeName));
     }
-
-    public boolean typeCheck () {
-        boolean res = true;
-        for (Statement st : statements){
-            res &= st.typeCheck();
-        }
-        return res;
-    }
+    
 }

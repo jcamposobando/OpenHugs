@@ -22,7 +22,6 @@ public class Value implements Evaluable {
         this.type = type;
     }
     
-    
     public DataType getType() {
         if ( type == null){
             if (value.equals("VERDADERO") || value.equals("FALSO")  ) {
