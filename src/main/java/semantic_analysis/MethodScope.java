@@ -1,12 +1,7 @@
 package main.java.semantic_analysis;
 
 import java.util.HashMap;
-
 import java.util.LinkedHashMap;
-
-import main.java.*;
-
-import main.java.SemanticClasses.*;
 
 
 /**

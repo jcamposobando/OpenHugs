@@ -1,4 +1,4 @@
-package main.java;
+package main.java.semantic_analysis;
 
 public enum DataType {
     NUMERO,

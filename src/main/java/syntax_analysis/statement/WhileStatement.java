@@ -1,12 +1,10 @@
-package main.java.semantic_analysis;
+package main.java.syntax_analysis.statement;
 
-import java.util.HashMap;
+import main.java.semantic_analysis.Block;
+import main.java.semantic_analysis.DataType;
+import main.java.semantic_analysis.MethodScope;
 
-import main.java.*;
-
-import main.java.SemanticScope.*;
-
-public class WhileStatement implements Statement{
+public class WhileStatement implements Statement {
 
     private final Block block;
     

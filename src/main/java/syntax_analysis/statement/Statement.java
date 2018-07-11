@@ -1,11 +1,8 @@
-package main.java.semantic_analysis;
+package main.java.syntax_analysis.statement;
 
-import java.util.*;
 import java.lang.*;
-
-import main.java.*;
-
-import main.java.SemanticScope.*;
+import main.java.semantic_analysis.DataType;
+import main.java.semantic_analysis.MethodScope;
 
 public interface Statement{
     

@@ -1,4 +1,4 @@
-package main.java;
+package main.java.syntax_analysis.statement;
 
 public enum StatementType {
     SI,

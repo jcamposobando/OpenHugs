@@ -1,13 +1,8 @@
 package main.java.semantic_analysis;
 
 import java.util.Vector;
-
 import java.util.HashMap;
-
-import main.java.*;
-
-import main.java.SemanticScope.*;
-
+import main.java.syntax_analysis.statement.*;
 
 public class Block{
     

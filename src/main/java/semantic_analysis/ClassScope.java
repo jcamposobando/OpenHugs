@@ -2,10 +2,6 @@ package main.java.semantic_analysis;
 
 import java.util.HashMap;
 
-import java.util.LinkedHashMap;
-
-import main.java.*;
-
 public class ClassScope {
 
     private final HashMap<String,DataType> attributes;

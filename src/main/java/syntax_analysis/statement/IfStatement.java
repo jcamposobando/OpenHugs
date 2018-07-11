@@ -1,10 +1,7 @@
-package main.java.semantic_analysis;
-
-import main.java.DataType;
+package main.java.syntax_analysis.statement;
 
 import java.util.HashMap; //Diccionario :v
-
-import main.java.SemanticScope.*;
+import main.java.semantic_analysis.*;
 
 public class IfStatement implements Statement {
 
