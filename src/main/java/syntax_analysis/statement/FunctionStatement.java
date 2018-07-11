@@ -1,7 +1,6 @@
 package main.java.syntax_analysis.statement;
 
 import java.util.Vector;
-
 import main.java.semantic_analysis.Block;
 import main.java.semantic_analysis.DataType;
 import main.java.semantic_analysis.Evaluable;

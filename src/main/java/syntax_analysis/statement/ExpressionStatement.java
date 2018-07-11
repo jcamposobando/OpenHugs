@@ -1,6 +1,7 @@
 package main.java.syntax_analysis.statement;
 
 import main.java.semantic_analysis.*;
+import java.util.Arrays;
 
 public class ExpressionStatement implements Evaluable {
     
@@ -30,20 +31,22 @@ public class ExpressionStatement implements Evaluable {
     
     public DataType getType() {
         if(operator==null){
-            return var1.getType;
+            return var1.getType();
         } else if (Arrays.asList(mathOp).contains(operator) ) {
-            if ( var1.checkType(DataType.NUMERO) && var2.checkType(DataType.NUMERO) ) return DataType.NUMERO;
+            if ( var1.checkType(DataType.NUMERO) && var2.checkType(DataType.NUMERO) )
+                return DataType.NUMERO;
         } else if (Arrays.asList(compOp).contains(operator) ){
-            if ( var1.checkType(DataType.NUMERO) && var2.checkType(DataType.NUMERO) ) return DataType.LOGICO;
+            if ( var1.checkType(DataType.NUMERO) && var2.checkType(DataType.NUMERO) )
+                return DataType.LOGICO;
         } else if (Arrays.asList(logOp).contains(operator) ) {
-            if ( var1.checkType(DataType.LOGICO) && var2.checkType(DataType.LOGICO) ) return DataType.LOGICO;
-        } else {
-            return DataType.NONE;
+            if ( var1.checkType(DataType.LOGICO) && var2.checkType(DataType.LOGICO) )
+                return DataType.LOGICO;
         }
+        return DataType.NONE;
     }
     
     public void  setOperator ( String operator){
-        this.operator = new Operator(operator);
+        this.operator = operator;
     }
     
     public ExpressionStatement getSubExpression() {

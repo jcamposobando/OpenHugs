@@ -1,7 +1,9 @@
 package main.java.semantic_analysis;
 
 public interface Evaluable {
-    public DataType getType() ;
+
+    DataType getType() ;
     
-    public boolean checkType(DataType type);
+    boolean checkType(DataType type);
+
 }
