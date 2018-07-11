@@ -76,14 +76,22 @@ public class Block{
     }
     
     public FunctionStatement addFunctionCall(String name){
-        FunctionStatement statement = new FunctionStatement(name);
+        FunctionStatement statement = new FunctionStatement(name,this);
         statements.add(statement);
         return statement;
     }
-    
     
     public void addVariable (String typeName, String name){
         variables.put(name, DataType.valueOf(typeName));
     }
     
+    public DataType getReturnType (){
+        return parentMethod.getReturnType();
+    }
+    
+    public ExpressionStatement addReturnStatement(){
+        ReturnStatement returnStatement = new ReturnStatement(this);
+        statements.add(returnStatement);
+        return returnStatement.getExpression();
+    }
 }

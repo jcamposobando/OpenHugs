@@ -19,10 +19,11 @@ public class FunctionStatement implements Statement,Evaluable {
     
     StatementType stType;
     
-    public FunctionStatement(String name){
+    public FunctionStatement(String name,Block parent){
         this.functionName = name;
         this.parameters = new Vector<>();
         this.returnType = null;
+        this.parent = parent;
     }
     
     public ExpressionStatement addParameter(){
@@ -49,7 +50,10 @@ public class FunctionStatement implements Statement,Evaluable {
     
     public boolean typeCheck () {
         boolean res = true;
-        return true;
+        DataType[] a = parent.lookUpMethod(functionName).parametersTypes();
+        res &= a.length == parameters.size();
+        for(int i = 0;i<a.length;i++) res &= a[i] ==  parameters.get(i).getType();
+        return res;
     }
     
 }
