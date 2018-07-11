@@ -118,16 +118,22 @@ public class CodeGenerator {
                     );
                 break;
             case PALABRA:
-
+                String tag = this.tagManager.getTag();
+                this.dataSection.append(
+                        tag + "\t.asciiz\t" + "\""+value.getValue()+"\"" + "\t#declaration for string variable\n"
+                );
+                this.textSection.append(
+                        "la\t" + register + "," + tag + "\t# load address of string to be printed\n"
+                );
                 break;
             case NONE:
-
+                System.out.println("Pánico");
                 break;
             case OPERATOR:
-
+                System.out.println("Pánico");
                 break;
             case VECTOR:
-
+                //check this
                 break;
         }
     }
