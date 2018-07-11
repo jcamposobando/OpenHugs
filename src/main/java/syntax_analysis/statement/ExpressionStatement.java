@@ -82,4 +82,6 @@ public class ExpressionStatement implements Evaluable {
     public boolean checkType(DataType type){
         return type == getType();
     }
+
+
 }
