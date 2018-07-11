@@ -1,15 +1,18 @@
-package main.java.SemanticScope;
+package main.java.semantic_analysis;
 
 import java.util.HashMap;
 
-import src.DataType;
+import main.java.*;
 
 public class ProgramScope {
 
     private HashMap<String,ClassScope> classes;
+    private HashMap<String,ClassScope> imports;
+
 
     public ProgramScope () {
         classes = new HashMap<>();
+        imports = new HashMap<>();
     }
     
     public DataType lookUpVariable(String name){
@@ -26,5 +29,16 @@ public class ProgramScope {
         ClassScope newClass = new ClassScope(this, name);
         classes.put(name, newClass);
         return newClass;
+    }
+    
+    public void addImport (String name){
+        imports.put(name, new ClassScope(this,name));
+    }
+    
+    public boolean typeCheck(){
+        boolean res = true;
+        for( ClassScope cls : classes.values())  res &= cls.typeCheck();
+        for( ClassScope cls : imports.values())  res &= cls.typeCheck();
+        return res;
     }
 }

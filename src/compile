@@ -1,13 +1,5 @@
-rm ATG/*.java
+java -jar ../libraries/Coco.jar main/coco/Scopes.ATG
 
-rm ../out/src/*.class
+rm ./main/coco/*.java.old
 
-rm ../out/SemanticScope/*class
-
-rm ../out/SemanticClasses/*.class
-
-rm ../out/SyntacticTree/*.class
-
-java -jar ../libraries/Coco.jar ATG/OpenHugs.ATG 
-
-javac -d ../out SyntacticTree/*.java *.java SemanticClasses/*.java SemanticScope/*.java
+javac -d ../out/ ./main/java/SemanticClasses/*.java ./main/java/SemanticScope/*.java ./main/java/*.java ./main/coco/*.java -Xlint
