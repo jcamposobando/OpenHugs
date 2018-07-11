@@ -7,6 +7,8 @@ public class CodeGenerator {
 
     RegisterManager registerManager;
 
+    TagManager tagManager;
+
     // program root
     private ProgramScope root;
     // file manager
@@ -23,6 +25,7 @@ public class CodeGenerator {
     public CodeGenerator(ProgramScope root){
         this.root = root;
         this.registerManager = new RegisterManager();
+        this.tagManager = new TagManager();
         this.fileManager = new FileManager();
     }
 
@@ -75,11 +78,13 @@ public class CodeGenerator {
     }
 
     /**
-     *
-     * @param variable
+     * Generate code for moving declared variables
+     * @param variable the variable object
      */
-    private void gen(Variable variable){
-
+    private void gen(Variable variable, String register){
+        this.textSection.append(
+                "la\t"+ register + " , " + variable.getValue() + "\n"
+        );
     }
 
     /**
@@ -91,11 +96,40 @@ public class CodeGenerator {
     }
 
     /**
-     *
-     * @param value
+     * Generate code for literal values
+     * @param value the value object
      */
-    private void gen(Value value){
+    private void gen(Value value, String register){
+        switch (value.getType()){
+            case NUMERO:
+                this.textSection.append(
+                        "li\t" + register + " , " + value.getValue() + "\n"
+                );
+                break;
+            case LOGICO:
+                // 1: true 0: false
+                if(value.getValue().equals("VERDADERO"))
+                    this.textSection.append(
+                            "li\t" + register + " , " + 1 + "\n"
+                    );
+                else
+                    this.textSection.append(
+                            "li\t" + register + " , " + 0 + "\n"
+                    );
+                break;
+            case PALABRA:
 
+                break;
+            case NONE:
+
+                break;
+            case OPERATOR:
+
+                break;
+            case VECTOR:
+
+                break;
+        }
     }
 
     /**
