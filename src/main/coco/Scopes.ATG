@@ -58,19 +58,15 @@ CHARACTERS
   cr            = '\u000d'. /* 13 = carriage return */
   upper         = 'A' .. 'Z'.
   lower         = 'a' .. 'z'.
-
-  digit         = "0123456789".
-  letter        = upper + lower + '_' + '$'.
-
+  digit         = '0' .. '9'.
   stringChar    = ANY - "\"" - '\\' - cr - lf.
 
 TOKENS
-  
   lineEnd = lf {{tab}lf}.
   
-  variableName = lower{lower}.
+  variableName = lower{lower|upper}.
   
-  className = upper{lower}.
+  className = upper{lower|upper}.
   
   number = digit { digit } ['.' digit { digit } ].
   
@@ -124,12 +120,8 @@ TOKENS
   bool = "LOGICO".
   true = "VERDADERO".
   false = "FALSO".
-  
 
-
-COMMENTS FROM ";;" TO ";;"
 COMMENTS FROM ";" TO lf
-
 
 IGNORE cr + tab
 
