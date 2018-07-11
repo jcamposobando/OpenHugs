@@ -1,4 +1,4 @@
-package main.java.SemanticScope;
+package main.java.semantic_analysis;
 
 import java.util.HashMap;
 
