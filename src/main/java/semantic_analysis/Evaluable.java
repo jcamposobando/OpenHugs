@@ -1,4 +1,4 @@
-package main.java.SemanticClasses;
+package main.java.semantic_analysis;
 
 import main.java.*;
 
