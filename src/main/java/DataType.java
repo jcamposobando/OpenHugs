@@ -1,4 +1,4 @@
-package src;
+package main.java;
 
 public enum DataType {
     NUMERO,
@@ -6,4 +6,5 @@ public enum DataType {
     PALABRA,
     NONE,
     OPERATOR,
+    VECTOR
 }

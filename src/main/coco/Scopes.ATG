@@ -1,18 +1,24 @@
+package main.coco;
+
+
+import main.java.SemanticScope.*;
+import main.java.SemanticClasses.*;
+
 import java.util.BitSet;
-import SemanticScope.*;
+import java.util.ArrayDeque;
+
 COMPILER OpenHugs
 
-Node root = new Node("root",-1,null);
-Node currentNode = root;
-
-ProgramScope program;
+public ProgramScope program;
 ClassScope currentClass;
 MethodScope currentMethod;
+Block currentBlock;
 
-void debug (String str){
-  //System.err.println(str);
-}
-
+ArrayDeque<IfStatement> currentIf = new ArrayDeque<>() ;
+ArrayDeque<FunctionStatement>  currentfunction  = new ArrayDeque<>();
+ArrayDeque<WhileStatement> currentWhile  = new ArrayDeque<>() ;
+ExpressionStatement currentExpression;
+AsigmentStatement currentAssignment;
 
 String ss(){
   return ss(0);
@@ -41,20 +47,6 @@ boolean isElseClause(){
   scanner.ResetPeek();
   Token next = scanner.Peek();
   return  next.kind == _sino || la.kind == _sino ;
-}
-
-void pushNode(){
-  Node newNode = new Node(scanner.pt.val, scanner.pt.kind, currentNode);
-  currentNode.children.add(newNode);
-  currentNode = newNode;
-}
-
-void popNode(){
-  currentNode = currentNode.parent;
-}
-
-void addChildren(){
-  currentNode.children.add(new Node(scanner.pt.val, scanner.pt.kind, currentNode));
 }
 
 /*-------------------------------------------------------------------------*/
@@ -150,13 +142,15 @@ completeClassName = className{ dot className} [ colon typeName {comma typeName }
 
 tipoRetorno = numero | bool | palabra | completeClassName .
 
-include = incorporar className { dot className} lineEnd .
+include = (. ; .)incorporar className { dot className} lineEnd .
 
 classDeclaration = 
 (. currentClass = program.addClass(ss(1)); .) clase className [ colon typeName {comma typeName}] classBlock [lineEnd]
 (. currentClass = null; .) .
 
-functionDeclaration = (. currentMethod = currentClass.addMethod(ss(1)); .) funcion variableName lpar [parameterList] rpar [returns (.currentMethod.setReturnType(ss()); .) tipoRetorno] [lineEnd] StatementBlock
+functionDeclaration = (. currentMethod = currentClass.addMethod(ss(1)); .) funcion variableName lpar [parameterList] rpar 
+[returns (.currentMethod.setReturnType(ss()); .) tipoRetorno]
+(. currentBlock = currentMethod.getBlock(); .) [lineEnd] StatementBlock (. currentBlock = null; .)
 (. currentMethod = null; .).
 
 parameterList = functionParameter {comma functionParameter} .
@@ -164,71 +158,72 @@ parameterList = functionParameter {comma functionParameter} .
 functionParameter = (. currentMethod.addParameter(ss(0),ss(1)); .) typeName variableName .
 
 variableDeclaration = (. if (currentMethod == null)  currentClass.addVariable(ss(0),ss(1)); else currentMethod.addVariable(ss(0),ss(1)); .)
-typeName variableName [asign expresion] .
+typeName (. currentAssignment = currentBlock.addAssigmentStatement(ss()); .) variableName [asign (. currentExpression = currentAssignment.getExpression(); .) expresion (. currentExpression = null; .) ] .
 
-assignment = (. currentMethod.lookUpVariable(ss()); .) variableName asign expresion
-(. debug("asignacion"); .)
-.
+assignment = 
+  (. currentAssignment = currentBlock.addAssigmentStatement(ss()); .) variableName asign 
+  (. currentExpression = currentAssignment.getExpression(); .) expresion 
+  (. currentExpression = null; .)
+  (. currentAssignment = null; .)
+  .
 
-whileLoop = ciclo (. debug("while"); .) mientras lpar logExpresion rpar StatementBlock.
+whileLoop = 
+  (. currentWhile.push( currentBlock.addWhileStatement() ); .) 
+  ciclo  mientras lpar
+  (. currentExpression = currentIf.peek().getCondition() ; .) expresion rpar 
+  (. currentBlock = currentWhile.peek().getBlock(); .) StatementBlock
+  (. currentBlock = currentWhile.peek().getParent(); .)
+  (. currentWhile.pop(); .) 
+  .
 
-ifStatement = si (. debug("if"); .) lpar logExpresion rpar StatementBlock [IF (isElseClause()) [lineEnd] sino (. debug("else"); .) StatementBlock ].
+ifStatement =  
+  (. currentIf.push(currentBlock.addIfStatement()); .)
+  si lpar 
+  (. currentExpression = currentIf.peek().getCondition() ; .) expresion rpar 
+  (. currentBlock = currentIf.peek().getThenBlock() ; .) StatementBlock 
+  [IF (isElseClause()) [lineEnd] sino (. currentBlock = currentIf.peek().getElseBlock() ; .) StatementBlock ]
+  (. currentBlock = currentIf.peek().getParent(); .)
+  (. currentIf.pop();; .)
+  .
 
-functionCall = (. currentClass.lookUpMethod(ss()); .) variableName lpar [expresion { comma expresion } ]  rpar (. addChildren(); .).
+functionCall = 
+  (. currentfunction.push( (currentExpression == null) ? currentBlock.addFunctionCall(ss()) : currentExpression.addFunctionCall(ss()) );.)
+  variableName lpar 
+  [ (. currentExpression = currentfunction.peek().addParameter() ;.) expresion 
+  { (. currentExpression = currentfunction.peek().addParameter() ;.) comma expresion } ]  rpar
+  (. currentfunction.pop(); .)
+  .
 
 typeName = completeClassName | numero | palabra | bool.
 
-expresion = 
-  numExpresion | logExpresion | strExpression.
-  
-strExpression = 
-  ( lpar strExpression rpar
-  | stringLit
-  | variableName )
-    [ plus strExpression].
+value = number | boolValue | stringLit.
 
-numExpresion =
-  ((lpar numExpresion rpar
+expresion =
+  ( (. currentExpression.addExpression() ; .)lpar expresion rpar (. currentExpression = currentExpression.getParent() ; .)
   | IF( isFunctionCall() ) functionCall
-  | number
-  | variableName  [ inc
-                  | dec ]
-                  ) [ minus numExpresion
-                    | plus numExpresion
-                    | mul numExpresion
-                    | div numExpresion ] ).
-
-logExpresion =
-  ((not logExpresion
-  | lpar logExpresion rpar
-  | IF( isFunctionCall() ) functionCall
-  | variableName 
-  | boolValue )   [ and logExpresion
-                  | or logExpresion ] )
-  | numExpresion  ( leq numExpresion
-                  | geq numExpresion
-                  | less numExpresion
-                  | great numExpresion
-                  | equal numExpresion
-                  | notEq numExpresion ) .
+  | (.currentExpression.addValue(ss()); .) value
+  | (.currentExpression.addVariable(ss()); .) variableName 
+                  [ (. currentExpression.setOperator(ss()); .) (inc | dec) ]
+  ) 	[ (. currentExpression.setOperator(ss()); .) operator (.currentExpression = currentExpression.getSubExpression(); .) expresion (.currentExpression = currentExpression.getParent() ; .)] .
+ 
+ operator = minus | plus | mul | div | leq | geq | less | great | equal | notEq .
+ 
 
 
 boolValue = true | false .
 
-StatementBlock = lbrace (.pushNode(); .)
+StatementBlock = lbrace 
                         [lineEnd] { ( IF(isAsignment()) assignment  
                                       | whileLoop 
                                       | ifStatement 
                                       | IF( isFunctionCall() ) functionCall
                                       | variableDeclaration
-                                      | increment
+                                      | variableName (inc | dec)
                                       | return expresion
-                                    ) lineEnd } rbrace (. popNode(); .).
-                                    
-increment = (. currentMethod.lookUpVariable(ss()); .) variableName (inc | dec) .
+                                    ) lineEnd } rbrace .
 
-classBlock =  lbrace (. pushNode(); .)
+classBlock =  lbrace 
               lineEnd {(functionDeclaration | variableDeclaration) lineEnd} 
-              rbrace(. popNode(); .). 
+              rbrace. 
 
 END OpenHugs.

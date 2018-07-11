@@ -1,19 +1,21 @@
-package SyntacticTree;
+package main.java.SyntacticTree;
 
 import java.util.*;
 
-import SemanticClasses.*;
-import src.*;
+import main.java.*;
+import main.java.SemanticClasses.*;
 
 public class Node{
     Statement st;
     Set<Node> objects;// = new Vector<>();  
     
     public Node(){
+        System.out.println("Node: sin parámetros");
         objects = new HashSet<>();  
     }
     
     public Node(StatementType type){
+        System.out.println("Node: con parámetros");
         objects = new HashSet<>();  
         
         switch(type){
