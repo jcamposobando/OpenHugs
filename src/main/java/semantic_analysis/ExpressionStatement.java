@@ -8,6 +8,12 @@ import main.java.SemanticScope.*;
 
 public class ExpressionStatement implements Evaluable{
     
+    String[] mathOp = {"+","-","*","/"};
+    
+    String[] compOp = {"<",">","<=","=>","==","!="};
+    
+    String[] logOp = {"Y","O"};
+    
     private final Block parent;
     
     private DataType type;
@@ -16,17 +22,28 @@ public class ExpressionStatement implements Evaluable{
     
     private Evaluable var2;
     
-    private Operator operator;
+    private String operator;
     
     private final ExpressionStatement parentExpression;
 
     public ExpressionStatement (Block parent, ExpressionStatement parentExpression ){
         this.parent = parent;
         this.parentExpression = parentExpression;
+        operator = null;
     }
     
     public DataType getType() {
-        return DataType.NUMERO;
+        if(operator==null){
+            return var1.getType;
+        } else if (Arrays.asList(mathOp).contains(operator) ) {
+            if ( var1.checkType(DataType.NUMERO) && var2.checkType(DataType.NUMERO) ) return DataType.NUMERO;
+        } else if (Arrays.asList(compOp).contains(operator) ){
+            if ( var1.checkType(DataType.NUMERO) && var2.checkType(DataType.NUMERO) ) return DataType.LOGICO;
+        } else if (Arrays.asList(logOp).contains(operator) ) {
+            if ( var1.checkType(DataType.LOGICO) && var2.checkType(DataType.LOGICO) ) return DataType.LOGICO;
+        } else {
+            return DataType.NONE;
+        }
     }
     
     public void  setOperator ( String operator){
@@ -64,7 +81,6 @@ public class ExpressionStatement implements Evaluable{
     }
     
     public boolean checkType(DataType type){
-        return true;
+        return type == getType();
     }
-    
 }

@@ -25,7 +25,7 @@ public class Variable implements Evaluable {
             type = parentBlock.lookUpVariable(value);
             return type;
         }
-    };
+    }
     
     public boolean checkType(DataType type){
         return this.getType() == type;
