@@ -1,11 +1,12 @@
-package main.coco;
-
-
+/**
+ *
+ **/
 import main.java.SemanticScope.*;
 import main.java.SemanticClasses.*;
 
 import java.util.BitSet;
 import java.util.ArrayDeque;
+
 
 COMPILER OpenHugs
 
