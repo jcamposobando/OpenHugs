@@ -1,4 +1,4 @@
-//pakage main.java.code_generation;
+pakage main.java.code_generation;
 
 public class TagManager {
     private int tnum;
