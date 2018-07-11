@@ -4,6 +4,24 @@
     <list default="true" id="3d4690e9-3f10-40dd-ba3c-bb85aa518768" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/coco/Scopes.ATG" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/coco/Scopes.ATG" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DataType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/semantic_analysis/DataType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Operator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/semantic_analysis/Operator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/StatementType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/syntax_analysis/statement/StatementType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/semantic_analysis/AsigmentStatement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/syntax_analysis/statement/AsigmentStatement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/semantic_analysis/Block.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/semantic_analysis/Block.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/semantic_analysis/ClassScope.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/semantic_analysis/ClassScope.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/semantic_analysis/Evaluable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/semantic_analysis/Evaluable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/semantic_analysis/ExpressionStatement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/syntax_analysis/statement/ExpressionStatement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/semantic_analysis/FunctionStatement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/syntax_analysis/statement/FunctionStatement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/semantic_analysis/IfStatement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/syntax_analysis/statement/IfStatement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/semantic_analysis/MethodScope.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/semantic_analysis/MethodScope.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/semantic_analysis/ProgramScope.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/semantic_analysis/ProgramScope.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/semantic_analysis/Statement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/syntax_analysis/statement/Statement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/semantic_analysis/Value.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/semantic_analysis/Value.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/semantic_analysis/Variable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/semantic_analysis/Variable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/semantic_analysis/WhileStatement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/syntax_analysis/statement/WhileStatement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/syntax_analysis/syntactic_tree/Node.java" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -18,33 +36,106 @@
       <file leaf-file-name="Scopes.ATG" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/coco/Scopes.ATG">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="641">
-              <caret line="123" lean-forward="true" selection-start-line="123" selection-end-line="123" selection-end-column="26" />
+            <state relative-caret-position="336">
+              <caret line="52" lean-forward="true" selection-start-line="52" selection-end-line="52" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
+                <element signature="e#12#139#0" expanded="true" />
                 <element signature="imports" expanded="true" />
-                <element signature="e#1135#1437#0" expanded="true" />
-                <element signature="e#1489#2651#0" expanded="true" />
-                <element signature="e#1649#1766#0" expanded="true" />
-                <element signature="e#2657#2707#0" expanded="true" />
+                <element signature="e#2157#2158#0" expanded="true" />
+                <element signature="e#2175#2176#0" expanded="true" />
+                <element signature="e#1606#1723#0" expanded="true" />
+                <element signature="e#2734#9555#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Eratostenes.txt" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/code/Eratostenes.txt">
-          <provider selected="true" editor-type-id="text-editor" />
+      <file leaf-file-name="Operator.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/semantic_analysis/Operator.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="56">
+              <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+            </state>
+          </provider>
         </entry>
       </file>
-      <file leaf-file-name="Fibonacci.txt" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/code/Fibonacci.txt">
-          <provider selected="true" editor-type-id="text-editor" />
+      <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/Main.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="336">
+              <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
+            </state>
+          </provider>
         </entry>
       </file>
-      <file leaf-file-name="Triangulo.txt" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/code/Triangulo.txt">
-          <provider selected="true" editor-type-id="text-editor" />
+      <file leaf-file-name="ProgramScope.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/semantic_analysis/ProgramScope.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="112">
+              <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Value.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/semantic_analysis/Value.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="140">
+              <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Variable.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/semantic_analysis/Variable.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="112">
+              <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Block.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/semantic_analysis/Block.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="644">
+              <caret line="23" column="4" lean-forward="true" selection-start-line="23" selection-start-column="4" selection-end-line="23" selection-end-column="4" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DataType.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/semantic_analysis/DataType.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="56">
+              <caret line="2" column="12" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="12" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Evaluable.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/semantic_analysis/Evaluable.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="56">
+              <caret line="2" column="17" selection-start-line="2" selection-start-column="17" selection-end-line="2" selection-end-column="17" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MethodScope.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/semantic_analysis/MethodScope.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="112">
+              <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
         </entry>
       </file>
     </leaf>
@@ -55,6 +146,22 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
+        <option value="$PROJECT_DIR$/src/main/java/Operator.java" />
+        <option value="$PROJECT_DIR$/src/main/java/semantic_analysis/DataType.java" />
+        <option value="$PROJECT_DIR$/src/main/java/semantic_analysis/Operator.java" />
+        <option value="$PROJECT_DIR$/src/main/java/semantic_analysis/StatementType.java" />
+        <option value="$PROJECT_DIR$/src/main/java/syntax_analysis/syntactic_tree/Node.java" />
+        <option value="$PROJECT_DIR$/src/main/java/syntax_analysis/tree/Node.java" />
+        <option value="$PROJECT_DIR$/src/main/java/syntax_analysis/tree/AsigmentStatement.java" />
+        <option value="$PROJECT_DIR$/src/main/java/syntax_analysis/tree/ExpressionStatement.java" />
+        <option value="$PROJECT_DIR$/src/main/java/syntax_analysis/tree/FunctionStatement.java" />
+        <option value="$PROJECT_DIR$/src/main/java/syntax_analysis/tree/IfStatement.java" />
+        <option value="$PROJECT_DIR$/src/main/java/syntax_analysis/tree/Statement.java" />
+        <option value="$PROJECT_DIR$/src/main/java/syntax_analysis/tree/WhileStatement.java" />
+        <option value="$PROJECT_DIR$/src/main/java/syntax_analysis/statement/WhileStatement.java" />
+        <option value="$PROJECT_DIR$/src/main/java/semantic_analysis/MethodScope.java" />
+        <option value="$PROJECT_DIR$/src/main/java/semantic_analysis/Block.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Main.java" />
         <option value="$PROJECT_DIR$/src/main/coco/Scopes.ATG" />
       </list>
     </option>
@@ -79,9 +186,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
-      <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -123,6 +228,8 @@
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
+      <pane id="AndroidView" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -200,11 +307,12 @@
       <workItem from="1531326860528" duration="734000" />
       <workItem from="1531327624479" duration="147000" />
       <workItem from="1531327863236" duration="823000" />
+      <workItem from="1531330124171" duration="1964000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1704000" />
+    <option name="totallyTimeSpent" value="3963000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="28" width="1920" height="1052" extended-state="6" />
@@ -218,19 +326,19 @@
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
       <window_info anchor="right" id="Maven Projects" order="3" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Run" order="2" />
       <window_info anchor="bottom" id="Version Control" order="7" />
+      <window_info anchor="bottom" id="Run" order="2" />
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.32924107" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="2" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25725028" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.26100966" />
       <window_info anchor="right" id="Database" order="3" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info id="UI Designer" order="2" />
       <window_info anchor="right" id="Theme Preview" order="3" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Gradle" order="3" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -249,30 +357,55 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/main/coco/Scopes.ATG">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="532">
-          <caret line="19" lean-forward="true" selection-start-line="19" selection-end-line="19" />
+        <state relative-caret-position="6216">
+          <caret line="222" lean-forward="true" selection-start-line="222" selection-end-line="222" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
+            <element signature="e#12#139#0" expanded="true" />
             <element signature="imports" expanded="true" />
-            <element signature="e#1135#1437#0" expanded="true" />
-            <element signature="e#1489#2651#0" expanded="true" />
-            <element signature="e#1649#1766#0" expanded="true" />
-            <element signature="e#2657#2707#0" expanded="true" />
+            <element signature="e#2157#2158#0" expanded="true" />
+            <element signature="e#2175#2176#0" expanded="true" />
+            <element signature="e#1606#1723#0" expanded="true" />
+            <element signature="e#2734#9555#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/semantic_analysis/Operator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="56">
+          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/code/Eratostenes.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/code/Fibonacci.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/code/Triangulo.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="280">
+          <caret line="12" column="8" lean-forward="true" selection-start-line="12" selection-start-column="8" selection-end-line="12" selection-end-column="8" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/coco/Scopes.ATG">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="784">
-          <caret line="28" selection-start-line="28" selection-end-line="28" />
+        <state relative-caret-position="3444">
+          <caret line="123" lean-forward="true" selection-start-line="123" selection-end-line="123" selection-end-column="26" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
+            <element signature="e#12#139#0" expanded="true" />
             <element signature="imports" expanded="true" />
-            <element signature="e#1135#1437#0" expanded="true" />
-            <element signature="e#1489#2651#0" expanded="true" />
-            <element signature="e#1649#1766#0" expanded="true" />
-            <element signature="e#2657#2707#0" expanded="true" />
+            <element signature="e#2157#2158#0" expanded="true" />
+            <element signature="e#2175#2176#0" expanded="true" />
+            <element signature="e#1606#1723#0" expanded="true" />
+            <element signature="e#2734#9555#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -288,15 +421,322 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/coco/Scopes.ATG">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="641">
-          <caret line="123" lean-forward="true" selection-start-line="123" selection-end-line="123" selection-end-column="26" />
+        <state relative-caret-position="532">
+          <caret line="19" lean-forward="true" selection-start-line="19" selection-end-line="19" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
+            <element signature="e#12#139#0" expanded="true" />
             <element signature="imports" expanded="true" />
-            <element signature="e#1135#1437#0" expanded="true" />
-            <element signature="e#1489#2651#0" expanded="true" />
-            <element signature="e#1649#1766#0" expanded="true" />
-            <element signature="e#2657#2707#0" expanded="true" />
+            <element signature="e#2157#2158#0" expanded="true" />
+            <element signature="e#2175#2176#0" expanded="true" />
+            <element signature="e#1606#1723#0" expanded="true" />
+            <element signature="e#2734#9555#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/coco/Scopes.ATG">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="784">
+          <caret line="28" selection-start-line="28" selection-end-line="28" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+            <element signature="e#12#139#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+            <element signature="e#2157#2158#0" expanded="true" />
+            <element signature="e#2175#2176#0" expanded="true" />
+            <element signature="e#1606#1723#0" expanded="true" />
+            <element signature="e#2734#9555#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/code/Eratostenes.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/code/Fibonacci.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/code/Triangulo.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/coco/Scopes.ATG">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2044">
+          <caret line="127" lean-forward="true" selection-start-line="127" selection-end-line="127" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+            <element signature="e#12#139#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+            <element signature="e#2157#2158#0" expanded="true" />
+            <element signature="e#2175#2176#0" expanded="true" />
+            <element signature="e#1606#1723#0" expanded="true" />
+            <element signature="e#2734#9555#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/coco/Scopes.ATG">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="532">
+          <caret line="19" lean-forward="true" selection-start-line="19" selection-end-line="19" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+            <element signature="e#12#139#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+            <element signature="e#2157#2158#0" expanded="true" />
+            <element signature="e#2175#2176#0" expanded="true" />
+            <element signature="e#1606#1723#0" expanded="true" />
+            <element signature="e#2734#9555#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/coco/Scopes.ATG">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="784">
+          <caret line="28" selection-start-line="28" selection-end-line="28" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+            <element signature="e#12#139#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+            <element signature="e#2157#2158#0" expanded="true" />
+            <element signature="e#2175#2176#0" expanded="true" />
+            <element signature="e#1606#1723#0" expanded="true" />
+            <element signature="e#2734#9555#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/code/Eratostenes.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/code/Fibonacci.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/code/Triangulo.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/coco/Scopes.ATG">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1988">
+          <caret line="122" lean-forward="true" selection-start-line="122" selection-end-line="122" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+            <element signature="e#12#139#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+            <element signature="e#2157#2158#0" expanded="true" />
+            <element signature="e#2175#2176#0" expanded="true" />
+            <element signature="e#1606#1723#0" expanded="true" />
+            <element signature="e#2734#9555#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/coco/Scopes.ATG">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="532">
+          <caret line="19" lean-forward="true" selection-start-line="19" selection-end-line="19" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+            <element signature="e#12#139#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+            <element signature="e#2157#2158#0" expanded="true" />
+            <element signature="e#2175#2176#0" expanded="true" />
+            <element signature="e#1606#1723#0" expanded="true" />
+            <element signature="e#2734#9555#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/coco/Scopes.ATG">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="784">
+          <caret line="28" selection-start-line="28" selection-end-line="28" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+            <element signature="e#12#139#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+            <element signature="e#2157#2158#0" expanded="true" />
+            <element signature="e#2175#2176#0" expanded="true" />
+            <element signature="e#1606#1723#0" expanded="true" />
+            <element signature="e#2734#9555#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/code/Eratostenes.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/code/Fibonacci.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/code/Triangulo.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/syntax_analysis/syntactic_tree/Node.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="112">
+          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/syntax_analysis/tree/Node.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="532">
+          <caret line="21" column="18" lean-forward="true" selection-start-line="21" selection-start-column="18" selection-end-line="21" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/syntax_analysis/statement/ExpressionStatement.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="112">
+          <caret line="4" selection-start-line="4" selection-end-line="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/syntax_analysis/statement/FunctionStatement.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="80">
+          <caret line="3" selection-start-line="3" selection-end-line="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/syntax_analysis/statement/IfStatement.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="112">
+          <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/syntax_analysis/statement/Statement.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="140">
+          <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/syntax_analysis/statement/StatementType.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="56">
+          <caret line="2" column="12" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/syntax_analysis/statement/WhileStatement.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="308">
+          <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/syntax_analysis/statement/AsigmentStatement.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="280">
+          <caret line="10" selection-start-line="10" selection-end-line="10" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/semantic_analysis/ClassScope.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="112">
+          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/semantic_analysis/DataType.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="56">
+          <caret line="2" column="12" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/semantic_analysis/Evaluable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="56">
+          <caret line="2" column="17" selection-start-line="2" selection-start-column="17" selection-end-line="2" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/semantic_analysis/Operator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="56">
+          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/semantic_analysis/ProgramScope.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="112">
+          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/semantic_analysis/Value.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="140">
+          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/semantic_analysis/Variable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="112">
+          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/semantic_analysis/MethodScope.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="112">
+          <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/semantic_analysis/Block.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="644">
+          <caret line="23" column="4" lean-forward="true" selection-start-line="23" selection-start-column="4" selection-end-line="23" selection-end-column="4" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="336">
+          <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/coco/Scopes.ATG">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="336">
+          <caret line="52" lean-forward="true" selection-start-line="52" selection-end-line="52" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+            <element signature="e#12#139#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+            <element signature="e#2157#2158#0" expanded="true" />
+            <element signature="e#2175#2176#0" expanded="true" />
+            <element signature="e#1606#1723#0" expanded="true" />
+            <element signature="e#2734#9555#0" expanded="true" />
           </folding>
         </state>
       </provider>

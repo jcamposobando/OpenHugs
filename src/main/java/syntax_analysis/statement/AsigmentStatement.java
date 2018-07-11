@@ -1,12 +1,10 @@
-package main.java.semantic_analysis;
+package main.java.syntax_analysis.statement;
 
-import java.util.Vector;
+import main.java.semantic_analysis.Block;
+import main.java.semantic_analysis.DataType;
+import main.java.semantic_analysis.MethodScope;
 
-import main.java.SemanticScope.*;
-
-import main.java.*;
-
-public class AsigmentStatement implements Statement{
+public class AsigmentStatement implements Statement {
     private final String variableName;
     
     private final ExpressionStatement expresion;

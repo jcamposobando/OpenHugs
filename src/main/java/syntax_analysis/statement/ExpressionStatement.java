@@ -1,12 +1,8 @@
-package main.java.semantic_analysis;
+package main.java.syntax_analysis.statement;
 
-import main.java.*;
+import main.java.semantic_analysis.*;
 
-import main.java.SemanticClasses.*;
-
-import main.java.SemanticScope.*;
-
-public class ExpressionStatement implements Evaluable{
+public class ExpressionStatement implements Evaluable {
     
     private final Block parent;
     

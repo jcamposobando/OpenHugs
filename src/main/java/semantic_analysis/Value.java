@@ -1,6 +1,6 @@
 package main.java.semantic_analysis;
 
-import main.java.*;
+import main.java.syntax_analysis.statement.ExpressionStatement;
 
 import java.lang.*;
 

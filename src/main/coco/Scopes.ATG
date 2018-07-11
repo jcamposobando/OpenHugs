@@ -1,9 +1,8 @@
 /**
  *
  **/
-import main.java.SemanticScope.*;
-import main.java.SemanticClasses.*;
-
+import main.java.semantic_analysis.*;
+import main.java.syntax_analysis.*;
 import java.util.BitSet;
 import java.util.ArrayDeque;
 

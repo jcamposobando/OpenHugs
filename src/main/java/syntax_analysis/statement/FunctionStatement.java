@@ -1,14 +1,13 @@
-package main.java.semantic_analysis;
-
-import main.java.*;
+package main.java.syntax_analysis.statement;
 
 import java.util.Vector;
 
-import main.java.SemanticClasses.*;
+import main.java.semantic_analysis.Block;
+import main.java.semantic_analysis.DataType;
+import main.java.semantic_analysis.Evaluable;
+import main.java.semantic_analysis.MethodScope;
 
-import main.java.SemanticScope.*;
-
-public class FunctionStatement implements Statement,Evaluable{
+public class FunctionStatement implements Statement,Evaluable {
     
     private final String functionName;
     

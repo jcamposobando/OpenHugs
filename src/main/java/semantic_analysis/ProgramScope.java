@@ -2,8 +2,6 @@ package main.java.semantic_analysis;
 
 import java.util.HashMap;
 
-import main.java.*;
-
 public class ProgramScope {
 
     private HashMap<String,ClassScope> classes;

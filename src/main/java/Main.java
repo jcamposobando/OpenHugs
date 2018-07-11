@@ -2,8 +2,6 @@ package main.java;
 
 import main.coco.*;
 
-import main.java.SemanticScope.*;
-
 public class Main {
     public static void main(String[] arg) {
         Scanner scanner = new Scanner(arg[0]);
