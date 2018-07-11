@@ -1,4 +1,4 @@
-package main.java.SyntacticTree;
+package main.java.semantic_analysis.syntactic_tree;
 
 import java.util.*;
 
