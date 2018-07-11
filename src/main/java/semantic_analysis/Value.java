@@ -44,4 +44,8 @@ public class Value implements Evaluable {
     public boolean checkType(DataType type){
         return this.getType() == type;
     }
+
+    public String getValue() {
+        return value;
+    }
 }

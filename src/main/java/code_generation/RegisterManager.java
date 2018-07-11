@@ -1,46 +1,46 @@
 package main.java.code_generation;
 
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 
 public class RegisterManager {
 
-    private String[] registers;
-    private Map<String,String> variables;
-    private int currentRegister;
+    private Map<String,Boolean> registers;
 
     /**
      * Default constructor
-     * @param numberOfRegisters
      */
-    public RegisterManager(int numberOfRegisters){
-
-        this.registers = new String[numberOfRegisters+1];
-
-        for (int i=1; i<numberOfRegisters; ++i){
-            this.registers[i] = "$s"+i;
+    public RegisterManager(){
+        this.registers = new HashMap<>();
+        for (int i=0; i<8; ++i){
+            this.registers.put("s"+i,true);
         }
-        this.currentRegister = -1;
-        this.variables = new HashMap<>();
     }
 
     /**
      * Allows to get an available register for use
      * @return the register assigned
      */
-    public String newRegister(String variableName){
-        String register = this.registers[(++currentRegister)%this.registers.length+1];
-        this.variables.put(variableName,register);
-        return register;
+    public String acquireRegister(){
+        for(String key : this.registers.keySet()){
+            for (Boolean value : this.registers.values()){
+                if (value){
+                    this.registers.put(key,false);
+                    return key;
+                }
+            }
+        }
+        return null;
     }
 
     /**
      * Allows to get the corresponding register for each variable
-     * @param variableName the name assigned to the register
+     * @param register the name assigned to the register
      * @return the register assigned
      */
-    public String getRegister(String variableName){
-        return this.variables.get(variableName);
+    public void releaseRegister(String register){
+        this.registers.put(register,true);
     }
 
 }

@@ -30,4 +30,12 @@ public class Variable implements Evaluable {
     public boolean checkType(DataType type){
         return this.getType() == type;
     }
+
+    /**
+     *
+     * @return
+     */
+    public String getValue() {
+        return value;
+    }
 }

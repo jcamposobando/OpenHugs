@@ -2,11 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3d4690e9-3f10-40dd-ba3c-bb85aa518768" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/code_generation/CodeGenerator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/code_generation/FileManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/code_generation/RegisterManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/code_generation/TagManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/code_generation/CodeGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/code_generation/CodeGenerator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/code_generation/RegisterManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/code_generation/RegisterManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/semantic_analysis/Value.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/semantic_analysis/Value.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/semantic_analysis/Variable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/semantic_analysis/Variable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/syntax_analysis/statement/ExpressionStatement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/syntax_analysis/statement/ExpressionStatement.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -57,23 +57,48 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="RegisterManager.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="RegisterManager.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/code_generation/RegisterManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret lean-forward="true" />
+            <state relative-caret-position="526">
+              <caret line="40" column="16" selection-start-line="40" selection-start-column="16" selection-end-line="40" selection-end-column="16" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CodeGenerator.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="CodeGenerator.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/code_generation/CodeGenerator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="582">
-              <caret line="88" column="8" lean-forward="true" selection-start-line="88" selection-start-column="8" selection-end-line="88" selection-end-column="8" />
+            <state relative-caret-position="666">
+              <caret line="78" selection-start-line="78" selection-end-line="78" />
               <folding>
                 <element signature="e#757#758#0" expanded="true" />
                 <element signature="e#784#785#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Value.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/semantic_analysis/Value.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="582">
+              <caret line="47" column="30" selection-start-line="47" selection-start-column="30" selection-end-line="47" selection-end-column="30" />
+              <folding>
+                <element signature="e#1413#1414#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Variable.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/semantic_analysis/Variable.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="480">
+              <caret line="34" column="6" selection-start-line="34" selection-start-column="6" selection-end-line="34" selection-end-column="6" />
+              <folding>
+                <element signature="e#1074#1075#0" expanded="true" />
+                <element signature="e#1102#1103#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -91,12 +116,18 @@
       <file leaf-file-name="ExpressionStatement.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/syntax_analysis/statement/ExpressionStatement.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1316">
-              <caret line="47" column="16" lean-forward="true" selection-start-line="47" selection-start-column="16" selection-end-line="47" selection-end-column="16" />
+            <state relative-caret-position="1198">
+              <caret line="108" column="1" lean-forward="true" selection-start-line="108" selection-start-column="1" selection-end-line="108" selection-end-column="1" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#1474#1475#0" expanded="true" />
                 <element signature="e#1514#1515#0" expanded="true" />
+                <element signature="e#2473#2474#0" expanded="true" />
+                <element signature="e#2500#2501#0" expanded="true" />
+                <element signature="e#2612#2613#0" expanded="true" />
+                <element signature="e#2639#2640#0" expanded="true" />
+                <element signature="e#2674#2675#0" expanded="true" />
+                <element signature="e#2705#2706#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -107,24 +138,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="196">
               <caret line="7" selection-start-line="7" selection-end-line="7" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Parser.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/syntax_analysis/Parser.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="168">
-              <caret line="10" column="10" selection-start-line="10" selection-start-column="10" selection-end-line="10" selection-end-column="10" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="UTF8Buffer.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/lexical_analysis/UTF8Buffer.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="196">
-              <caret line="7" column="12" selection-start-line="7" selection-start-column="12" selection-end-line="7" selection-end-column="12" />
             </state>
           </provider>
         </entry>
@@ -172,12 +185,14 @@
         <option value="$PROJECT_DIR$/src/main/java/syntax_analysis/Parser.java" />
         <option value="$PROJECT_DIR$/src/main/java/semantic_analysis/Evaluable.java" />
         <option value="$PROJECT_DIR$/src/main/java/syntax_analysis/statement/Operator.java" />
-        <option value="$PROJECT_DIR$/src/main/java/syntax_analysis/statement/ExpressionStatement.java" />
         <option value="$PROJECT_DIR$/src/main/java/syntax_analysis/statement/FunctionStatement.java" />
         <option value="$PROJECT_DIR$/src/main/java/code_generation/FileManager.java" />
-        <option value="$PROJECT_DIR$/src/main/java/code_generation/RegisterManager.java" />
-        <option value="$PROJECT_DIR$/src/main/java/code_generation/CodeGenerator.java" />
         <option value="$PROJECT_DIR$/src/main/java/code_generation/TagManager.java" />
+        <option value="$PROJECT_DIR$/src/main/java/syntax_analysis/statement/ExpressionStatement.java" />
+        <option value="$PROJECT_DIR$/src/main/java/semantic_analysis/Variable.java" />
+        <option value="$PROJECT_DIR$/src/main/java/semantic_analysis/Value.java" />
+        <option value="$PROJECT_DIR$/src/main/java/code_generation/CodeGenerator.java" />
+        <option value="$PROJECT_DIR$/src/main/java/code_generation/RegisterManager.java" />
       </list>
     </option>
   </component>
@@ -240,6 +255,14 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="code_generation" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="OpenHugs" type="b2602c69:ProjectViewProjectNode" />
+              <item name="OpenHugs" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="semantic_analysis" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="OpenHugs" type="b2602c69:ProjectViewProjectNode" />
@@ -360,12 +383,12 @@
       <workItem from="1531327863236" duration="823000" />
       <workItem from="1531330124171" duration="4233000" />
       <workItem from="1531334430721" duration="121000" />
-      <workItem from="1531339678356" duration="4501000" />
+      <workItem from="1531339678356" duration="7153000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="10854000" />
+    <option name="totallyTimeSpent" value="13506000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="28" width="1920" height="1052" extended-state="6" />
@@ -600,20 +623,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/semantic_analysis/Value.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="140">
-          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/semantic_analysis/Variable.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="112">
-          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/semantic_analysis/MethodScope.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="112">
@@ -743,18 +752,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/syntax_analysis/statement/ExpressionStatement.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1316">
-          <caret line="47" column="16" lean-forward="true" selection-start-line="47" selection-start-column="16" selection-end-line="47" selection-end-column="16" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1474#1475#0" expanded="true" />
-            <element signature="e#1514#1515#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/syntax_analysis/statement/FunctionStatement.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="252">
@@ -781,13 +778,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/code_generation/RegisterManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret lean-forward="true" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Main.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="252">
@@ -802,14 +792,60 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/code_generation/CodeGenerator.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/semantic_analysis/Variable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="480">
+          <caret line="34" column="6" selection-start-line="34" selection-start-column="6" selection-end-line="34" selection-end-column="6" />
+          <folding>
+            <element signature="e#1074#1075#0" expanded="true" />
+            <element signature="e#1102#1103#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/syntax_analysis/statement/ExpressionStatement.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1198">
+          <caret line="108" column="1" lean-forward="true" selection-start-line="108" selection-start-column="1" selection-end-line="108" selection-end-column="1" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1474#1475#0" expanded="true" />
+            <element signature="e#1514#1515#0" expanded="true" />
+            <element signature="e#2473#2474#0" expanded="true" />
+            <element signature="e#2500#2501#0" expanded="true" />
+            <element signature="e#2612#2613#0" expanded="true" />
+            <element signature="e#2639#2640#0" expanded="true" />
+            <element signature="e#2674#2675#0" expanded="true" />
+            <element signature="e#2705#2706#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/semantic_analysis/Value.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="582">
-          <caret line="88" column="8" lean-forward="true" selection-start-line="88" selection-start-column="8" selection-end-line="88" selection-end-column="8" />
+          <caret line="47" column="30" selection-start-line="47" selection-start-column="30" selection-end-line="47" selection-end-column="30" />
+          <folding>
+            <element signature="e#1413#1414#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/code_generation/CodeGenerator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="666">
+          <caret line="78" selection-start-line="78" selection-end-line="78" />
           <folding>
             <element signature="e#757#758#0" expanded="true" />
             <element signature="e#784#785#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/code_generation/RegisterManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="526">
+          <caret line="40" column="16" selection-start-line="40" selection-start-column="16" selection-end-line="40" selection-end-column="16" />
         </state>
       </provider>
     </entry>

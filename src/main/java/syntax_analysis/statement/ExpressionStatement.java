@@ -83,5 +83,27 @@ public class ExpressionStatement implements Evaluable {
         return type == getType();
     }
 
+    /**
+     *
+     * @return
+     */
+    public Evaluable getVar1() {
+        return var1;
+    }
 
+    /**
+     *
+     * @return
+     */
+    public Evaluable getVar2() {
+        return var2;
+    }
+
+    /**
+     *
+     * @return
+     */
+    public String getOperator() {
+        return operator;
+    }
 }

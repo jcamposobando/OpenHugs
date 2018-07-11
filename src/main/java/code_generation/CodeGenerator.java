@@ -1,11 +1,11 @@
 package main.java.code_generation;
 
-import main.java.semantic_analysis.ClassScope;
-import main.java.semantic_analysis.MethodScope;
-import main.java.semantic_analysis.ProgramScope;
+import main.java.semantic_analysis.*;
 import main.java.syntax_analysis.statement.*;
 
 public class CodeGenerator {
+
+    RegisterManager registerManager;
 
     // program root
     private ProgramScope root;
@@ -22,6 +22,7 @@ public class CodeGenerator {
      */
     public CodeGenerator(ProgramScope root){
         this.root = root;
+        this.registerManager = new RegisterManager();
         this.fileManager = new FileManager();
     }
 
@@ -58,10 +59,26 @@ public class CodeGenerator {
     }
 
     /**
-     *
-     * @param expressionStatement
+     * Allows to generate code using ExpressionStatements
+     * @param expressionStatement the expression for generation
      */
     private void gen(ExpressionStatement expressionStatement){
+        Evaluable eval1 = expressionStatement.getVar1();
+        //check the Evaluable implementation
+        if(eval1 instanceof Variable){
+            gen((Variable)eval1);
+        } else if (eval1 instanceof ExpressionStatement){
+            gen((ExpressionStatement)eval1);
+        } else if (eval1 instanceof Value){
+            gen((Value)eval1);
+        }
+    }
+
+    /**
+     *
+     * @param variable
+     */
+    private void gen(Variable variable){
 
     }
 
@@ -70,6 +87,14 @@ public class CodeGenerator {
      * @param functionStatement
      */
     private void gen(FunctionStatement functionStatement){
+
+    }
+
+    /**
+     *
+     * @param value
+     */
+    private void gen(Value value){
 
     }
 
