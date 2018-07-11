@@ -1,6 +1,7 @@
 package main.java;
 
-import main.coco.*;
+import main.java.lexical_analysis.Scanner;
+import main.java.syntax_analysis.Parser;
 
 public class Main {
     public static void main(String[] arg) {

@@ -2,26 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3d4690e9-3f10-40dd-ba3c-bb85aa518768" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/lexical_analysis/Buffer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/lexical_analysis/StartStates.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/lexical_analysis/Token.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/lexical_analysis/UTF8Buffer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/syntax_analysis/Errors.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/syntax_analysis/FatalError.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/coco/Scopes.ATG" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/coco/Scopes.ATG" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/DataType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/semantic_analysis/DataType.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Operator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/semantic_analysis/Operator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/StatementType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/syntax_analysis/statement/StatementType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/semantic_analysis/AsigmentStatement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/syntax_analysis/statement/AsigmentStatement.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/semantic_analysis/Block.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/semantic_analysis/Block.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/semantic_analysis/ClassScope.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/semantic_analysis/ClassScope.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/semantic_analysis/Evaluable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/semantic_analysis/Evaluable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/semantic_analysis/ExpressionStatement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/syntax_analysis/statement/ExpressionStatement.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/semantic_analysis/FunctionStatement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/syntax_analysis/statement/FunctionStatement.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/semantic_analysis/IfStatement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/syntax_analysis/statement/IfStatement.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/semantic_analysis/MethodScope.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/semantic_analysis/MethodScope.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/semantic_analysis/ProgramScope.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/semantic_analysis/ProgramScope.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/semantic_analysis/Statement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/syntax_analysis/statement/Statement.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/semantic_analysis/Value.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/semantic_analysis/Value.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/semantic_analysis/Variable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/semantic_analysis/Variable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/semantic_analysis/WhileStatement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/syntax_analysis/statement/WhileStatement.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/syntax_analysis/syntactic_tree/Node.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lexical_analysis/Scanner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lexical_analysis/Scanner.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/syntax_analysis/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/syntax_analysis/Parser.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -33,26 +24,79 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="Scopes.ATG" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/coco/Scopes.ATG">
+      <file leaf-file-name="Main.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/Main.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="336">
-              <caret line="52" lean-forward="true" selection-start-line="52" selection-end-line="52" />
+              <caret line="12" column="2" lean-forward="true" selection-start-line="12" selection-start-column="2" selection-end-line="12" selection-end-column="2" />
               <folding>
-                <element signature="n#!!doc" expanded="true" />
-                <element signature="e#12#139#0" expanded="true" />
                 <element signature="imports" expanded="true" />
-                <element signature="e#2157#2158#0" expanded="true" />
-                <element signature="e#2175#2176#0" expanded="true" />
-                <element signature="e#1606#1723#0" expanded="true" />
-                <element signature="e#2734#9555#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Operator.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/semantic_analysis/Operator.java">
+      <file leaf-file-name="Parser.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/syntax_analysis/Parser.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="168">
+              <caret line="10" column="10" lean-forward="true" selection-start-line="10" selection-start-column="10" selection-end-line="10" selection-end-column="10" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="FatalError.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/syntax_analysis/FatalError.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="112">
+              <caret line="4" column="12" lean-forward="true" selection-start-line="4" selection-start-column="12" selection-end-line="4" selection-end-column="12" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Errors.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/syntax_analysis/Errors.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1708">
+              <caret line="61" column="23" lean-forward="true" selection-start-line="61" selection-start-column="23" selection-end-line="61" selection-end-column="23" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Triangulo.txt" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/code/Triangulo.txt">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file leaf-file-name="Scanner.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/lexical_analysis/Scanner.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="28">
+              <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Buffer.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/lexical_analysis/Buffer.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="196">
+              <caret line="10" column="16" lean-forward="true" selection-start-line="10" selection-start-column="16" selection-end-line="10" selection-end-column="16" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UTF8Buffer.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/lexical_analysis/UTF8Buffer.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="196">
+              <caret line="7" column="12" lean-forward="true" selection-start-line="7" selection-start-column="12" selection-end-line="7" selection-end-column="12" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Token.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/lexical_analysis/Token.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="56">
               <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
@@ -60,85 +104,23 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Main.java">
+      <file leaf-file-name="StartStates.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/lexical_analysis/StartStates.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="336">
-              <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ProgramScope.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/semantic_analysis/ProgramScope.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="112">
-              <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Value.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/semantic_analysis/Value.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="140">
-              <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Variable.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/semantic_analysis/Variable.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="112">
-              <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Block.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/semantic_analysis/Block.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="644">
-              <caret line="23" column="4" lean-forward="true" selection-start-line="23" selection-start-column="4" selection-end-line="23" selection-end-column="4" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DataType.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/semantic_analysis/DataType.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="56">
-              <caret line="2" column="12" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="12" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Evaluable.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/semantic_analysis/Evaluable.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="56">
-              <caret line="2" column="17" selection-start-line="2" selection-start-column="17" selection-end-line="2" selection-end-column="17" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MethodScope.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/semantic_analysis/MethodScope.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="112">
-              <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="28">
+              <caret line="1" selection-start-line="1" selection-end-line="1" />
             </state>
           </provider>
         </entry>
       </file>
     </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -161,8 +143,17 @@
         <option value="$PROJECT_DIR$/src/main/java/syntax_analysis/statement/WhileStatement.java" />
         <option value="$PROJECT_DIR$/src/main/java/semantic_analysis/MethodScope.java" />
         <option value="$PROJECT_DIR$/src/main/java/semantic_analysis/Block.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Main.java" />
         <option value="$PROJECT_DIR$/src/main/coco/Scopes.ATG" />
+        <option value="$PROJECT_DIR$/src/main/coco/Scanner.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Main.java" />
+        <option value="$PROJECT_DIR$/src/main/java/syntax_analysis/Errors.java" />
+        <option value="$PROJECT_DIR$/src/main/java/syntax_analysis/FatalError.java" />
+        <option value="$PROJECT_DIR$/src/main/java/lexical_analysis/Token.java" />
+        <option value="$PROJECT_DIR$/src/main/java/lexical_analysis/Buffer.java" />
+        <option value="$PROJECT_DIR$/src/main/java/lexical_analysis/Scanner.java" />
+        <option value="$PROJECT_DIR$/src/main/java/lexical_analysis/StartStates.java" />
+        <option value="$PROJECT_DIR$/src/main/java/lexical_analysis/UTF8Buffer.java" />
+        <option value="$PROJECT_DIR$/src/main/java/syntax_analysis/Parser.java" />
       </list>
     </option>
   </component>
@@ -224,6 +215,14 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="OpenHugs" type="b2602c69:ProjectViewProjectNode" />
+              <item name="OpenHugs" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="lexical_analysis" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -252,6 +251,18 @@
     </option>
   </component>
   <component name="RunManager">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="main.java.Main" />
+      <module name="OpenHugs" />
+      <option name="PROGRAM_PARAMETERS" value="$PROJECT_DIR$/code/Triangulo.txt" />
+      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="main.java.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+    </configuration>
     <configuration default="true" type="Application" factoryName="Application">
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
     </configuration>
@@ -293,6 +304,11 @@
       <properties />
       <listeners />
     </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Main" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -307,12 +323,12 @@
       <workItem from="1531326860528" duration="734000" />
       <workItem from="1531327624479" duration="147000" />
       <workItem from="1531327863236" duration="823000" />
-      <workItem from="1531330124171" duration="1964000" />
+      <workItem from="1531330124171" duration="3929000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="3963000" />
+    <option name="totallyTimeSpent" value="5928000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="28" width="1920" height="1052" extended-state="6" />
@@ -320,6 +336,7 @@
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Messages" weight="0.32924107" />
       <window_info anchor="right" id="Palette&#9;" order="3" />
       <window_info id="Image Layers" order="2" />
       <window_info anchor="right" id="Capture Analysis" order="3" />
@@ -327,11 +344,12 @@
       <window_info anchor="right" id="Maven Projects" order="3" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="7" />
-      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.48549107" />
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.32924107" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="2" />
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.26100966" />
+      <window_info anchor="bottom" id="Problems" weight="0.32924107" />
       <window_info anchor="right" id="Database" order="3" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -355,42 +373,13 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/coco/Scopes.ATG">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="6216">
-          <caret line="222" lean-forward="true" selection-start-line="222" selection-end-line="222" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-            <element signature="e#12#139#0" expanded="true" />
-            <element signature="imports" expanded="true" />
-            <element signature="e#2157#2158#0" expanded="true" />
-            <element signature="e#2175#2176#0" expanded="true" />
-            <element signature="e#1606#1723#0" expanded="true" />
-            <element signature="e#2734#9555#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/semantic_analysis/Operator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="56">
-          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/code/Eratostenes.txt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/code/Fibonacci.txt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/code/Triangulo.txt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Main.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="280">
           <caret line="12" column="8" lean-forward="true" selection-start-line="12" selection-start-column="8" selection-end-line="12" selection-end-column="8" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -401,11 +390,9 @@
           <folding>
             <element signature="n#!!doc" expanded="true" />
             <element signature="e#12#139#0" expanded="true" />
-            <element signature="imports" expanded="true" />
             <element signature="e#2157#2158#0" expanded="true" />
             <element signature="e#2175#2176#0" expanded="true" />
             <element signature="e#1606#1723#0" expanded="true" />
-            <element signature="e#2734#9555#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -426,11 +413,9 @@
           <folding>
             <element signature="n#!!doc" expanded="true" />
             <element signature="e#12#139#0" expanded="true" />
-            <element signature="imports" expanded="true" />
             <element signature="e#2157#2158#0" expanded="true" />
             <element signature="e#2175#2176#0" expanded="true" />
             <element signature="e#1606#1723#0" expanded="true" />
-            <element signature="e#2734#9555#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -442,11 +427,9 @@
           <folding>
             <element signature="n#!!doc" expanded="true" />
             <element signature="e#12#139#0" expanded="true" />
-            <element signature="imports" expanded="true" />
             <element signature="e#2157#2158#0" expanded="true" />
             <element signature="e#2175#2176#0" expanded="true" />
             <element signature="e#1606#1723#0" expanded="true" />
-            <element signature="e#2734#9555#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -467,11 +450,9 @@
           <folding>
             <element signature="n#!!doc" expanded="true" />
             <element signature="e#12#139#0" expanded="true" />
-            <element signature="imports" expanded="true" />
             <element signature="e#2157#2158#0" expanded="true" />
             <element signature="e#2175#2176#0" expanded="true" />
             <element signature="e#1606#1723#0" expanded="true" />
-            <element signature="e#2734#9555#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -483,11 +464,9 @@
           <folding>
             <element signature="n#!!doc" expanded="true" />
             <element signature="e#12#139#0" expanded="true" />
-            <element signature="imports" expanded="true" />
             <element signature="e#2157#2158#0" expanded="true" />
             <element signature="e#2175#2176#0" expanded="true" />
             <element signature="e#1606#1723#0" expanded="true" />
-            <element signature="e#2734#9555#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -499,11 +478,9 @@
           <folding>
             <element signature="n#!!doc" expanded="true" />
             <element signature="e#12#139#0" expanded="true" />
-            <element signature="imports" expanded="true" />
             <element signature="e#2157#2158#0" expanded="true" />
             <element signature="e#2175#2176#0" expanded="true" />
             <element signature="e#1606#1723#0" expanded="true" />
-            <element signature="e#2734#9555#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -524,11 +501,9 @@
           <folding>
             <element signature="n#!!doc" expanded="true" />
             <element signature="e#12#139#0" expanded="true" />
-            <element signature="imports" expanded="true" />
             <element signature="e#2157#2158#0" expanded="true" />
             <element signature="e#2175#2176#0" expanded="true" />
             <element signature="e#1606#1723#0" expanded="true" />
-            <element signature="e#2734#9555#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -540,11 +515,9 @@
           <folding>
             <element signature="n#!!doc" expanded="true" />
             <element signature="e#12#139#0" expanded="true" />
-            <element signature="imports" expanded="true" />
             <element signature="e#2157#2158#0" expanded="true" />
             <element signature="e#2175#2176#0" expanded="true" />
             <element signature="e#1606#1723#0" expanded="true" />
-            <element signature="e#2734#9555#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -556,11 +529,9 @@
           <folding>
             <element signature="n#!!doc" expanded="true" />
             <element signature="e#12#139#0" expanded="true" />
-            <element signature="imports" expanded="true" />
             <element signature="e#2157#2158#0" expanded="true" />
             <element signature="e#2175#2176#0" expanded="true" />
             <element signature="e#1606#1723#0" expanded="true" />
-            <element signature="e#2734#9555#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -569,9 +540,6 @@
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/code/Fibonacci.txt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/code/Triangulo.txt">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/syntax_analysis/syntactic_tree/Node.java">
@@ -585,20 +553,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="532">
           <caret line="21" column="18" lean-forward="true" selection-start-line="21" selection-start-column="18" selection-end-line="21" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/syntax_analysis/statement/ExpressionStatement.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="112">
-          <caret line="4" selection-start-line="4" selection-end-line="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/syntax_analysis/statement/FunctionStatement.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="80">
-          <caret line="3" selection-start-line="3" selection-end-line="3" />
         </state>
       </provider>
     </entry>
@@ -639,27 +593,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/syntax_analysis/statement/AsigmentStatement.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="280">
-          <caret line="10" selection-start-line="10" selection-end-line="10" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/semantic_analysis/ClassScope.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="112">
           <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/semantic_analysis/DataType.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="56">
-          <caret line="2" column="12" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="12" />
         </state>
       </provider>
     </entry>
@@ -701,7 +638,7 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/semantic_analysis/MethodScope.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="112">
-          <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
+          <caret line="4" selection-start-line="4" selection-end-line="4" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -711,32 +648,133 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/semantic_analysis/Block.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="644">
-          <caret line="23" column="4" lean-forward="true" selection-start-line="23" selection-start-column="4" selection-end-line="23" selection-end-column="4" />
+          <caret line="23" column="4" selection-start-line="23" selection-start-column="4" selection-end-line="23" selection-end-column="4" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Main.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/syntax_analysis/statement/AsigmentStatement.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="336">
-          <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
+        <state relative-caret-position="280">
+          <caret line="10" selection-start-line="10" selection-end-line="10" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/syntax_analysis/statement/ExpressionStatement.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="112">
+          <caret line="4" selection-start-line="4" selection-end-line="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/syntax_analysis/statement/FunctionStatement.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="80">
+          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/semantic_analysis/DataType.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="224">
+          <caret line="8" column="10" lean-forward="true" selection-start-line="8" selection-start-column="10" selection-end-line="8" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/coco/Parser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="133">
+          <caret line="400" selection-start-line="400" selection-end-line="400" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/coco/Scopes.ATG">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="336">
-          <caret line="52" lean-forward="true" selection-start-line="52" selection-end-line="52" />
+        <state relative-caret-position="1540">
+          <caret line="213" column="105" lean-forward="true" selection-start-line="213" selection-start-column="105" selection-end-line="213" selection-end-column="105" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
             <element signature="e#12#139#0" expanded="true" />
-            <element signature="imports" expanded="true" />
             <element signature="e#2157#2158#0" expanded="true" />
             <element signature="e#2175#2176#0" expanded="true" />
             <element signature="e#1606#1723#0" expanded="true" />
-            <element signature="e#2734#9555#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/code/Triangulo.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/syntax_analysis/Errors.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1708">
+          <caret line="61" column="23" lean-forward="true" selection-start-line="61" selection-start-column="23" selection-end-line="61" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/syntax_analysis/FatalError.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="112">
+          <caret line="4" column="12" lean-forward="true" selection-start-line="4" selection-start-column="12" selection-end-line="4" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/lexical_analysis/Buffer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="196">
+          <caret line="10" column="16" lean-forward="true" selection-start-line="10" selection-start-column="16" selection-end-line="10" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/lexical_analysis/Scanner.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="28">
+          <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/lexical_analysis/StartStates.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="28">
+          <caret line="1" selection-start-line="1" selection-end-line="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/lexical_analysis/Token.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="56">
+          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/lexical_analysis/UTF8Buffer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="196">
+          <caret line="7" column="12" lean-forward="true" selection-start-line="7" selection-start-column="12" selection-end-line="7" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/syntax_analysis/Parser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="168">
+          <caret line="10" column="10" lean-forward="true" selection-start-line="10" selection-start-column="10" selection-end-line="10" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="336">
+          <caret line="12" column="2" lean-forward="true" selection-start-line="12" selection-start-column="2" selection-end-line="12" selection-end-column="2" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
