@@ -7,7 +7,7 @@ public class ExpressionStatement implements Evaluable {
     
     String[] mathOp = {"+","-","*","/"};
     
-    String[] compOp = {"<",">","<=","=>","==","!="};
+    String[] compOp = {"<",">","<=",">=","==","!="};
     
     String[] logOp = {"Y","O"};
     

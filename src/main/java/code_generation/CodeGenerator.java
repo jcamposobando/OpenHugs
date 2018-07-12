@@ -65,15 +65,90 @@ public class CodeGenerator {
      * Allows to generate code using ExpressionStatements
      * @param expressionStatement the expression for generation
      */
-    private void gen(ExpressionStatement expressionStatement){
+    private void gen(ExpressionStatement expressionStatement, String register){
         Evaluable eval1 = expressionStatement.getVar1();
+        String reg1 = this.registerManager.acquireRegister();
         //check the Evaluable implementation
         if(eval1 instanceof Variable){
-            gen((Variable)eval1);
-        } else if (eval1 instanceof ExpressionStatement){
-            gen((ExpressionStatement)eval1);
+            gen((Variable)eval1,reg1);
         } else if (eval1 instanceof Value){
-            gen((Value)eval1);
+            gen((Value)eval1,reg1);
+        // recursive call
+        } else if (eval1 instanceof ExpressionStatement){
+            gen((ExpressionStatement)eval1,reg1);
+        }
+        //check if exists another var
+        Evaluable eval2 = expressionStatement.getVar2();
+        if(eval2!=null){
+            String reg2 = this.registerManager.acquireRegister();
+            if(eval1 instanceof Variable){
+                gen((Variable)eval1,reg2);
+            } else if (eval1 instanceof Value){
+                gen((Value)eval1,reg2);
+                // recursive call
+            } else if (eval1 instanceof ExpressionStatement){
+                gen((ExpressionStatement)eval1,reg2);
+            }
+            switch (expressionStatement.getOperator()){
+                case "+":
+                    this.textSection.append(
+                            "add\t" + register + " , " + reg1 + " , " + reg2 + "\n"
+                    );
+                    break;
+                case "-":
+                    this.textSection.append(
+                            "sub\t" + register + " , " + reg1 + " , " + reg2 + "\n"
+                    );
+                    break;
+                case "*":
+                    this.textSection.append(
+                            "mult\t" + reg1 + " , " + reg2 + "\n"
+                                     + "mflo\t" + register + "\n"
+                    );
+                    break;
+                case "/":
+                    this.textSection.append(
+                            "div\t" + reg1 + " , " + reg2 + "\n"
+                                    + "mflo\t" + register + "\n"
+                    );
+                    break;
+                case "<":
+                    this.textSection.append(
+                            "slt\t" + register + " , " +reg1 + " , " + reg2 + "\n"
+                    );
+                    break;
+                case ">":
+                    this.textSection.append(
+                            "slt\t" + register + " , " +reg2 + " , " + reg1 + "\n"
+                    );
+                    break;
+                case "<=":
+
+                    break;
+                case ">=":
+
+                    break;
+                case "==":
+
+                    break;
+                case "!=":
+
+                    break;
+                case "Y":
+                    this.textSection.append(
+                            "and\t" + register + " , " + reg1 + " , " + reg2
+                    );
+                    break;
+                case "O":
+                    this.textSection.append(
+                            "or\t" + register + " , " + reg1 + " , " + reg2
+                    );
+                    break;
+            }
+        } else {
+            this.textSection.append(
+                    "move\t" + register + " , " + reg1 + "\n"
+            );
         }
     }
 
