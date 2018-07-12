@@ -6,8 +6,6 @@ import main.java.semantic_analysis.*;
 public class IfStatement implements Statement {
 
     private HashMap<String, DataType> contenido;
-    private String operador;
-    private DataType tipoExp = null;
     
     private final Block thenBlock;
     private final Block elseBlock;
@@ -16,7 +14,6 @@ public class IfStatement implements Statement {
     private MethodScope parentMethod;
 
     public IfStatement(Block parent,MethodScope parentMethod) {
-        //this.type = "SI";
         condition = new  ExpressionStatement(parent,null);
         thenBlock = new Block(parentMethod,this);
         elseBlock = new Block(parentMethod,this);

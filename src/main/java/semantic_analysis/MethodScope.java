@@ -79,5 +79,10 @@ public class MethodScope {
         //FALTA CHEQUEAR QUE RETORNE EL TIPO CORRECTO
     }
     
+    public DataType[] parametersTypes (){
+        DataType[] res = new DataType[parameters.size()];
+        parameters.entrySet().toArray(res);
+        return res;
+    }
 }
 

@@ -2,4 +2,4 @@ java -jar ../libraries/Coco.jar main/coco/Scopes.ATG
 
 rm ./main/coco/*.java.old
 
-javac -d ../out/ ./main/java/SemanticClasses/*.java ./main/java/SemanticScope/*.java ./main/java/*.java ./main/coco/*.java -Xlint
+javac -d ../out/  ./main/java/syntax_analysis/statement/*.java ./main/java/syntax_analysis/*.java ./main/java/lexical_analysis/*.java ./main/java/semantic_analysis/*.java  -Xlint
