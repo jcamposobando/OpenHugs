@@ -150,8 +150,33 @@ public class CodeGenerator {
         while(i.hasNext()) {
             Map.Entry me = (Map.Entry)i.next();
             
-            System.out.print(me.getKey() + ": ");
-            System.out.println(me.getValue());
+            //System.out.print(me.getKey() + ": ");
+            
+            switch((DataType)me.getValue()){
+                case NUMERO:
+                    this.dataSection.append(
+                        (String)me.getKey() + "\t.word\t0\t#declaration for string variable\n"
+                    );
+                    break;
+                case LOGICO:
+                    this.dataSection.append(
+                        (String)me.getKey() + "\t.word\t0\t#declaration for string variable\n"
+                    );
+                    break;
+                case NONE:
+                    break;
+                case PALABRA:
+                    this.dataSection.append(
+                        (String)me.getKey() + "\t.asciiz\t""\t#declaration for string variable\n"
+                    );
+                    break;
+                case OPERATOR:
+                    this.dataSection.append("#OPERATOR\n");
+                    break;
+                case VECTOR:
+                    this.dataSection.append("#VECTOR\n");
+                    break;
+            }
         }
         
         Vector<Statement> statements = block.getStatements();
