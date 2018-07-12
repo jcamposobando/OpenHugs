@@ -94,4 +94,10 @@ public class Block{
         statements.add(returnStatement);
         return returnStatement.getExpression();
     }
+    
+    public Vector<Statement> getStatements(){
+        return statements;
+    }
+    
+    public
 }

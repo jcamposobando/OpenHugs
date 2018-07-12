@@ -2,6 +2,7 @@ package main.java.code_generation;
 
 import main.java.semantic_analysis.*;
 import main.java.syntax_analysis.statement.*;
+import java.util.*;
 
 public class CodeGenerator {
 
@@ -67,7 +68,7 @@ public class CodeGenerator {
      */
     private void gen(ExpressionStatement expressionStatement){
         Evaluable eval1 = expressionStatement.getVar1();
-        //check the Evaluable implementation
+        
         if(eval1 instanceof Variable){
             gen((Variable)eval1);
         } else if (eval1 instanceof ExpressionStatement){
@@ -139,13 +140,51 @@ public class CodeGenerator {
     }
     
     private void gen(Block block){
-
+        
+        /*
+        hacer cosas con las variables
+        */
+        Set set = block.getVariables();
+        Iterator i = set.iterator();
+        
+        while(i.hasNext()) {
+            Map.Entry me = (Map.Entry)i.next();
+            
+            System.out.print(me.getKey() + ": ");
+            System.out.println(me.getValue());
+        }
+        
+        Vector<Statement> statements = block.getStatements();
+        Enumeration vStm = statements.elements();
+      
+        while(vStm.hasMoreElements()){
+            Statement sval1 = vStm.nextElement();
+        
+            if(sval1 instanceof AsigmentStatement){
+                this.gen(AsigmentStatement)sval1);
+                
+            } else if (sval1 instanceof ExpressionStatement){
+                this.gen((ExpressionStatement)sval1);
+                
+            } else if (sval1 instanceof FunctionStatement){
+                this.gen((FunctionStatement)sval1);
+                
+            }else if (sval1 instanceof IfStatement){
+                this.gen((IfStatement)sval1);
+                
+            }else if (sval1 instanceof ReturnStatement){
+                this.gen((ReturnStatement)sval1);
+                
+            }else if (sval1 instanceof WhileStatement){
+                this.gen((WhileStatement)sval1);
+            }
+        }
     }
 
     /**
      *
      * @param ifStatement
-     */
+    */
     private void gen(IfStatement ifStatement){
         this.gen(ifStatement.getCondition());
         this.gen(ifStatement.getElseBlock());
