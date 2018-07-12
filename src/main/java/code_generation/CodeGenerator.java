@@ -137,13 +137,19 @@ public class CodeGenerator {
                 break;
         }
     }
+    
+    private void gen(Block block){
+
+    }
 
     /**
      *
      * @param ifStatement
      */
     private void gen(IfStatement ifStatement){
-
+        this.gen(ifStatement.getCondition());
+        this.gen(ifStatement.getElseBlock());
+        this.gen(ifStatement.getThenBlock());
     }
 
     /**
