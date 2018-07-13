@@ -3,6 +3,8 @@ package main.java.syntax_analysis.statement;
 import main.java.semantic_analysis.*;
 import java.util.Arrays;
 
+import java.util.Arrays;
+
 public class ExpressionStatement implements Evaluable {
     
     String[] mathOp = {"+","-","*","/"};
@@ -55,7 +57,7 @@ public class ExpressionStatement implements Evaluable {
     }
     
     public FunctionStatement addFunctionCall (String name){
-        var1 = new FunctionStatement(name);
+        var1 = new FunctionStatement(name,parent);
         return (FunctionStatement) var1;
     }
     

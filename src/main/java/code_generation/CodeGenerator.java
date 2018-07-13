@@ -2,6 +2,7 @@ package main.java.code_generation;
 
 import main.java.semantic_analysis.*;
 import main.java.syntax_analysis.statement.*;
+import java.util.*;
 
 public class CodeGenerator {
 
@@ -67,8 +68,10 @@ public class CodeGenerator {
      */
     private void gen(ExpressionStatement expressionStatement, String register){
         Evaluable eval1 = expressionStatement.getVar1();
+        
         String reg1 = this.registerManager.acquireRegister();
         //check the Evaluable implementation
+        
         if(eval1 instanceof Variable){
             gen((Variable)eval1,reg1);
         } else if (eval1 instanceof Value){
@@ -212,13 +215,82 @@ public class CodeGenerator {
                 break;
         }
     }
+    
+    private void gen(Block block){
+        
+        /*
+        hacer cosas con las variables
+        */
+        Set set = block.getVariables();
+        Iterator i = set.iterator();
+        
+        while(i.hasNext()) {
+            Map.Entry me = (Map.Entry)i.next();
+            
+            //System.out.print(me.getKey() + ": ");
+            
+            switch((DataType)me.getValue()){
+                case NUMERO:
+                    this.dataSection.append(
+                        (String)me.getKey() + "\t.word\t0\t#declaration for string variable\n"
+                    );
+                    break;
+                case LOGICO:
+                    this.dataSection.append(
+                        (String)me.getKey() + "\t.word\t0\t#declaration for string variable\n"
+                    );
+                    break;
+                case NONE:
+                    break;
+                case PALABRA:
+                    this.dataSection.append(
+                        (String)me.getKey() + "\t.asciiz\t""\t#declaration for string variable\n"
+                    );
+                    break;
+                case OPERATOR:
+                    this.dataSection.append("#OPERATOR\n");
+                    break;
+                case VECTOR:
+                    this.dataSection.append("#VECTOR\n");
+                    break;
+            }
+        }
+        
+        Vector<Statement> statements = block.getStatements();
+        Enumeration vStm = statements.elements();
+      
+        while(vStm.hasMoreElements()){
+            Statement sval1 = vStm.nextElement();
+        
+            if(sval1 instanceof AsigmentStatement){
+                this.gen(AsigmentStatement)sval1);
+                
+            } else if (sval1 instanceof ExpressionStatement){
+                this.gen((ExpressionStatement)sval1);
+                
+            } else if (sval1 instanceof FunctionStatement){
+                this.gen((FunctionStatement)sval1);
+                
+            }else if (sval1 instanceof IfStatement){
+                this.gen((IfStatement)sval1);
+                
+            }else if (sval1 instanceof ReturnStatement){
+                this.gen((ReturnStatement)sval1);
+                
+            }else if (sval1 instanceof WhileStatement){
+                this.gen((WhileStatement)sval1);
+            }
+        }
+    }
 
     /**
      *
      * @param ifStatement
-     */
+    */
     private void gen(IfStatement ifStatement){
-
+        this.gen(ifStatement.getCondition());
+        this.gen(ifStatement.getElseBlock());
+        this.gen(ifStatement.getThenBlock());
     }
 
     /**
