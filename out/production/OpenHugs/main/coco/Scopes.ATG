@@ -294,6 +294,14 @@ true
 | false
 .
 
+
+//returnStatement =  return expresion.
+returnStatement 
+=                                           (. currentExpression = currentBlock.addReturnStatement() .)
+return 
+expresion                                   (. currentExpression = null .)
+.
+
 //StatementBlock = lbrace [ lineEnd ]{ ( IF(isAsignment() ) assignment  | whileLoop | ifStatement | IF( isFunctionCall() ) functionCall| variableDeclaration| variableName (inc | dec)| return expresion) lineEnd } rbrace.
 StatementBlock
 =
@@ -306,7 +314,7 @@ assignment
 | IF( isFunctionCall() ) functionCall
 | variableDeclaration
 | variableName (inc | dec)
-| return expresion
+| returnStatement
 ) lineEnd 
 } rbrace
 .

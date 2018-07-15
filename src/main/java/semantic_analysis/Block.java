@@ -1,103 +1,107 @@
 package main.java.semantic_analysis;
 
-import java.util.Vector;
-import java.util.HashMap;
 import main.java.syntax_analysis.statement.*;
 
-public class Block{
-    
-    HashMap<String,DataType> variables;
-    
+import java.util.HashMap;
+import java.util.Vector;
+
+public class Block {
+
+    HashMap<String, DataType> variables;
+
     Vector<Statement> statements;
-    
+
     private final MethodScope parentMethod;
-    
+
     private final Statement parentBlock;
-    
-    public Block( MethodScope parentMethod, Statement parentBlock){
+
+    public Block(MethodScope parentMethod, Statement parentBlock) {
         variables = new HashMap<>();
         statements = new Vector<>();
         this.parentMethod = parentMethod;
         this.parentBlock = parentBlock;
     }
-    
-    public AsigmentStatement addAssigmentStatement(String name){
+
+    public AsigmentStatement addAssigmentStatement(String name) {
         AsigmentStatement statement = new AsigmentStatement(this, name);
         statements.add(statement);
         return statement;
     }
-    
-    public IfStatement addIfStatement(){
-        IfStatement ifStatement = new IfStatement(this,parentMethod);
+
+    public IfStatement addIfStatement() {
+        IfStatement ifStatement = new IfStatement(this, parentMethod);
         statements.add(ifStatement);
         return ifStatement;
     }
 
-    public boolean typeCheck () {
+    public boolean typeCheck() {
         boolean res = true;
-        for (Statement st : statements){
+        for (Statement st : statements) {
             res &= st.typeCheck();
         }
         return res;
     }
-    
-    public MethodScope lookUpMethod (String name){
-        return parentMethod.lookUpMethod(name) ;
+
+    public MethodScope lookUpMethod(String name) {
+        return parentMethod.lookUpMethod(name);
     }
-    
-    public MethodScope getParentMethod  () {
+
+    public MethodScope getParentMethod() {
         return parentMethod;
     }
-    
-    public DataType lookUpVariable(String name){
+
+    public DataType lookUpVariable(String name) {
         DataType dt = variables.get(name);
-        if ( dt != null ) return  dt;
-        else if ( parentBlock != null ) {
+        if (dt != null) return dt;
+        else if (parentBlock != null) {
             dt = parentBlock.lookUpVariable(name);
-                if (dt != null) return dt;
+            if (dt != null) return dt;
         }
         return parentMethod.lookUpVariable(name);
     }
-    
-    public Block(Vector<Statement> s){
+
+    public Block(Vector<Statement> s) {
         this.statements = s;
         this.parentMethod = null;
         this.parentBlock = null;
     }
-    
-    public void addStatement(Statement s){
+
+    public void addStatement(Statement s) {
         this.statements.add(s);
     }
-    
-    public WhileStatement addWhileStatement(){
-        WhileStatement statement = new WhileStatement(this,parentMethod);
+
+    public WhileStatement addWhileStatement() {
+        WhileStatement statement = new WhileStatement(this, parentMethod);
         statements.add(statement);
         return statement;
     }
-    
-    public FunctionStatement addFunctionCall(String name){
-        FunctionStatement statement = new FunctionStatement(name,this);
+
+    public FunctionStatement addFunctionCall(String name) {
+        FunctionStatement statement = new FunctionStatement(name, this);
         statements.add(statement);
         return statement;
     }
-    
-    public void addVariable (String typeName, String name){
+
+    public void addVariable(String typeName, String name) {
         variables.put(name, DataType.valueOf(typeName));
     }
-    
-    public DataType getReturnType (){
+
+    public DataType getReturnType() {
         return parentMethod.getReturnType();
     }
-    
-    public ExpressionStatement addReturnStatement(){
+
+    public ExpressionStatement addReturnStatement() {
         ReturnStatement returnStatement = new ReturnStatement(this);
         statements.add(returnStatement);
         return returnStatement.getExpression();
     }
-    
-    public Vector<Statement> getStatements(){
+
+    public Vector<Statement> getStatements() {
         return statements;
     }
-    
-    public
+
+    public HashMap<String, DataType> getVariables() {
+        return variables;
+    }
+
 }
