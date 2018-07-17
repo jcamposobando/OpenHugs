@@ -7,14 +7,12 @@ import java.util.Map;
 
 public class CodeGenerator {
 
-    RegisterManager registerManager;
+    private RegisterManager registerManager;
 
-    TagManager tagManager;
+    private TagManager tagManager;
 
     // program root
     private ProgramScope root;
-    // file manager
-    private FileManager fileManager;
     // .data section in the final file
     private StringBuilder dataSection;
     // .text section in the final file
@@ -25,30 +23,40 @@ public class CodeGenerator {
      */
     public CodeGenerator(ProgramScope root) {
         this.root = root;
-        this.registerManager = new RegisterManager();
+        registerManager = new RegisterManager();
         this.tagManager = new TagManager();
-        this.fileManager = new FileManager();
-    }
+        dataSection = new StringBuilder();
+        textSection = new StringBuilder();
 
-    /**
-     * @return
-     */
-    private boolean generate() {
-        return false;
+        dataSection.append("data.\n");
+
+        textSection.append("text.\n");
+        textSection.append("jal main\n");
+        textSection.append("li $v0, 10 \nsyscall\n");
+
+        for (ClassScope classScope : root.classes.values()) {
+            gen(classScope);
+        }
+
+        System.out.println(dataSection.toString() + textSection.toString());
     }
 
     /**
      * @param classScope
      */
     private void gen(ClassScope classScope) {
-
+        for (MethodScope methodScope : classScope.methods.values()) {
+            gen(methodScope);
+        }
     }
 
     /**
      * @param methodScope
      */
     private void gen(MethodScope methodScope) {
-
+        textSection.append(methodScope.methodName).append(":\n");
+        gen(methodScope.getBlock());
+        textSection.append("jr\n");
     }
 
     /**
@@ -59,7 +67,10 @@ public class CodeGenerator {
     }
 
     private void gen(ReturnStatement returnStatement) {
-
+        String reg = registerManager.acquireRegister();
+        gen(returnStatement.getExpression(),reg);
+        registerManager.releaseRegister(reg);
+        dataSection.append("jr\n");
     }
 
     /**
@@ -70,7 +81,7 @@ public class CodeGenerator {
     private void gen(ExpressionStatement expressionStatement, String register) {
         Evaluable eval1 = expressionStatement.getVar1();
 
-        String reg1 = this.registerManager.acquireRegister();
+        String reg1 = registerManager.acquireRegister();
         //check the Evaluable implementation
 
         if (eval1 instanceof Variable) {
@@ -84,7 +95,7 @@ public class CodeGenerator {
         //check if exists another var
         Evaluable eval2 = expressionStatement.getVar2();
         if (eval2 != null) {
-            String reg2 = this.registerManager.acquireRegister();
+            String reg2 = registerManager.acquireRegister();
             if (eval1 instanceof Variable) {
                 gen((Variable) eval1, reg2);
             } else if (eval1 instanceof Value) {
@@ -95,36 +106,22 @@ public class CodeGenerator {
             }
             switch (expressionStatement.getOperator()) {
                 case "+":
-                    this.textSection.append(
-                            "add\t" + register + " , " + reg1 + " , " + reg2 + "\n"
-                    );
+                    textSection.append("add\t").append(register).append(" , ").append(reg1).append(" , ").append(reg2).append("\n");
                     break;
                 case "-":
-                    this.textSection.append(
-                            "sub\t" + register + " , " + reg1 + " , " + reg2 + "\n"
-                    );
+                    textSection.append("sub\t").append(register).append(" , ").append(reg1).append(" , ").append(reg2).append("\n");
                     break;
                 case "*":
-                    this.textSection.append(
-                            "mult\t" + reg1 + " , " + reg2 + "\n"
-                                    + "mflo\t" + register + "\n"
-                    );
+                    textSection.append("mult\t").append(reg1).append(" , ").append(reg2).append("\n").append("mflo\t").append(register).append("\n");
                     break;
                 case "/":
-                    this.textSection.append(
-                            "div\t" + reg1 + " , " + reg2 + "\n"
-                                    + "mflo\t" + register + "\n"
-                    );
+                    textSection.append("div\t").append(reg1).append(" , ").append(reg2).append("\n").append("mflo\t").append(register).append("\n");
                     break;
                 case "<":
-                    this.textSection.append(
-                            "slt\t" + register + " , " + reg1 + " , " + reg2 + "\n"
-                    );
+                    textSection.append("slt\t").append(register).append(" , ").append(reg1).append(" , ").append(reg2).append("\n");
                     break;
                 case ">":
-                    this.textSection.append(
-                            "slt\t" + register + " , " + reg2 + " , " + reg1 + "\n"
-                    );
+                    textSection.append("slt\t").append(register).append(" , ").append(reg2).append(" , ").append(reg1).append("\n");
                     break;
                 case "<=":
 
@@ -139,20 +136,14 @@ public class CodeGenerator {
 
                     break;
                 case "Y":
-                    this.textSection.append(
-                            "and\t" + register + " , " + reg1 + " , " + reg2
-                    );
+                    textSection.append("and\t").append(register).append(" , ").append(reg1).append(" , ").append(reg2);
                     break;
                 case "O":
-                    this.textSection.append(
-                            "or\t" + register + " , " + reg1 + " , " + reg2
-                    );
+                    textSection.append("or\t").append(register).append(" , ").append(reg1).append(" , ").append(reg2);
                     break;
             }
         } else {
-            this.textSection.append(
-                    "move\t" + register + " , " + reg1 + "\n"
-            );
+            textSection.append("move\t").append(register).append(" , ").append(reg1).append("\n");
         }
     }
 
@@ -162,9 +153,12 @@ public class CodeGenerator {
      * @param variable the variable object
      */
     private void gen(Variable variable, String register) {
-        this.textSection.append(
-                "la\t" + register + " , " + variable.getValue() + "\n"
-        );
+        textSection
+                .append("la\t")
+                .append(register)
+                .append(" , ")
+                .append(variable.getValue())
+                .append("\n");
     }
 
     /**
@@ -182,94 +176,93 @@ public class CodeGenerator {
     private void gen(Value value, String register) {
         switch (value.getType()) {
             case NUMERO:
-                this.textSection.append(
-                        "li\t" + register + " , " + value.getValue() + "\n"
-                );
+                textSection
+                        .append("li\t")
+                        .append(register)
+                        .append(" , ")
+                        .append(value.getValue())
+                        .append("\n");
                 break;
             case LOGICO:
                 // 1: true 0: false
-                if (value.getValue().equals("VERDADERO"))
-                    this.textSection.append(
-                            "li\t" + register + " , " + 1 + "\n"
-                    );
-                else
-                    this.textSection.append(
-                            "li\t" + register + " , " + 0 + "\n"
-                    );
+                textSection
+                        .append("li\t")
+                        .append(register)
+                        .append(" , ")
+                        .append(value.getValue().equals("VERDADERO") ? 1 : 0)
+                        .append("\n");
                 break;
             case PALABRA:
                 String tag = this.tagManager.getTag();
-                this.dataSection.append(
-                        tag + "\t.asciiz\t" + "\"" + value.getValue() + "\"" + "\t#declaration for string variable\n"
-                );
-                this.textSection.append(
-                        "la\t" + register + "," + tag + "\t# load address of string to be printed\n"
-                );
-                break;
-            case NONE:
-                System.out.println("Pánico");
-                break;
-            case OPERATOR:
-                System.out.println("Pánico");
+                dataSection
+                        .append(tag)
+                        .append("\t.asciiz\t")
+                        .append("\"")
+                        .append(value.getValue())
+                        .append("\"")
+                        .append("\t#declaration for string variable\n");
+                textSection
+                        .append("la\t")
+                        .append(register)
+                        .append(",")
+                        .append(tag)
+                        .append("\t# load address of string to be printed\n");
                 break;
             case VECTOR:
-                //check this
+                //TODO implement vectors
                 break;
+            default:
+                System.err.println("Unrecognized value type in gen(Value)");
+                break;
+
         }
     }
 
     private void gen(Block block) {
-        
-        /*
-        hacer cosas con las variables
-        */
+
+        //reserve space for variables
         for (Map.Entry me : block.getVariables().entrySet()) {
-
-            //System.out.print(me.getKey() + ": ");
-
             switch ((DataType) me.getValue()) {
                 case NUMERO:
-                    this.dataSection.append(
-                            me.getKey() + "\t.word\t0\t#declaration for string variable\n"
-                    );
+                    dataSection
+                            .append(me.getKey())
+                            .append("\t.word\t0\t#declaration for string variable\n");
                     break;
                 case LOGICO:
-                    this.dataSection.append(
-                            me.getKey() + "\t.word\t0\t#declaration for string variable\n"
-                    );
-                    break;
-                case NONE:
+                    dataSection
+                            .append(me.getKey())
+                            .append("\t.word\t0\t#declaration for string variable\n");
                     break;
                 case PALABRA:
-                    this.dataSection.append(
-                            me.getKey() + "\t.asciiz\t" + "\t#declaration for string variable\n"
-                    );
-                    break;
-                case OPERATOR:
-                    this.dataSection.append("#OPERATOR\n");
+                    dataSection
+                            .append(me.getKey())
+                            .append("\t.asciiz\t")
+                            .append("\t#declaration for string variable\n");
                     break;
                 case VECTOR:
-                    this.dataSection.append("#VECTOR\n");
+                    dataSection.append("#VECTOR\n");
+                    break;
+                default:
+                    System.err.println("Unrecognizable type");
                     break;
             }
         }
 
-        for (Statement sval1 : block.getStatements()) {
+        for (Statement statement : block.getStatements()) {
+            if (statement instanceof AsigmentStatement) {
+                gen((AsigmentStatement) statement);
 
-            if (sval1 instanceof AsigmentStatement) {
-                this.gen((AsigmentStatement) sval1);
+            } else if (statement instanceof FunctionStatement) {
+                gen((FunctionStatement) statement);
 
-            } else if (sval1 instanceof FunctionStatement) {
-                this.gen((FunctionStatement) sval1);
+            } else if (statement instanceof IfStatement) {
+                gen((IfStatement) statement);
 
-            } else if (sval1 instanceof IfStatement) {
-                this.gen((IfStatement) sval1);
+            } else if (statement instanceof ReturnStatement) {
+                gen((ReturnStatement) statement);
 
-            } else if (sval1 instanceof ReturnStatement) {
-                this.gen((ReturnStatement) sval1);
-
-            } else if (sval1 instanceof WhileStatement) {
-                this.gen((WhileStatement) sval1);
+            } else if (statement instanceof WhileStatement) {
+                gen((WhileStatement) statement);
             }
         }
     }
@@ -278,15 +271,35 @@ public class CodeGenerator {
      * @param ifStatement
      */
     private void gen(IfStatement ifStatement) {
-        //this.gen(ifStatement.getCondition());
-        this.gen(ifStatement.getElseBlock());
-        this.gen(ifStatement.getThenBlock());
+        String reg = registerManager.acquireRegister();
+        String elseTag = tagManager.getTag();
+        String endTag= tagManager.getTag();
+
+        gen(ifStatement.getCondition(), reg);
+        registerManager.releaseRegister(reg);
+        textSection.append("bez ").append(reg).append(" , ").append(elseTag).append("\n");
+
+        gen(ifStatement.getThenBlock());
+        textSection.append("j ").append(endTag).append("\n");
+
+        textSection.append(elseTag).append(":\n");
+        gen(ifStatement.getElseBlock());
+        textSection.append(endTag).append(":\n");
     }
 
     /**
      * @param whileStatement
      */
     private void gen(WhileStatement whileStatement) {
+        //gen(ifStatement.getCondition());
+        String tag = tagManager.getTag();
+        textSection.append(tag).append(":\n");
+        gen(whileStatement.getBlock());
+        String reg = registerManager.acquireRegister();
+        gen(whileStatement.getCondition(), reg);
 
+        //TODO add jump on condition
+        textSection.append("bez ").append(reg).append(" , ").append(tag).append("\n");
+        registerManager.releaseRegister(reg);
     }
 }

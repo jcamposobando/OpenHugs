@@ -7,10 +7,9 @@ public class Main {
         Scanner scanner = new Scanner(arg[0]);
         Parser parser = new Parser(scanner);
         parser.Parse();
-        if (!parser.program.typeCheck()) System.err.println(" Error al chequear tipos");
-        else {
-            CodeGenerator cg = new CodeGenerator(parser.program);
-        }
+        //if (!parser.program.typeCheck()) System.err.println(" Error al chequear tipos");
+        CodeGenerator cg = new CodeGenerator(parser.program);
+
     }
 } 
 

@@ -1,20 +1,19 @@
 INCORPORAR Stdio ;esta linea permite incluir la biblioteca de manejo de datos entrada-salida
 
 CLASE Algoritmos {
-	FUNCION imprimir(){}
+    FUNCION main (){
+        triangulo ("*",4)
+    }
 	FUNCION triangulo (PALABRA letra , NUMERO niveles){
 		NUMERO i := 1
-		CICLO MIENTRAS ( i>4) {
+		CICLO MIENTRAS ( i < 4) {
 			NUMERO e := 1
-			CICLO MIENTRAS ( niveles) {
-				imprimir()
+			CICLO MIENTRAS ( e < i) {
+				imprimir( letra )
+			    e := e + 1
 			}
-			NUMERO j := 0
-			CICLO MIENTRAS (j + i ) {
-				imprimir ( letra )
-				j := j + 1
-			}
-			j := i+ 2 * 3 
+			i := i+1
+			imprimir ( "n" )
 		} ;fin del primer ciclo
 	} ;fin de la función
 } ;fin de la clase

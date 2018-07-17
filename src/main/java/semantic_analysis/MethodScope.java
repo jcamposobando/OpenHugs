@@ -19,7 +19,7 @@ public class MethodScope {
      */
     private final ClassScope parent;
     
-    private final String methodName;
+    public final String methodName;
     
     private DataType returnType;
     
@@ -76,7 +76,6 @@ public class MethodScope {
         boolean res = block.typeCheck();
         if (!res) System.err.println("Error en el metodo "+methodName);
         return res;
-        //FALTA CHEQUEAR QUE RETORNE EL TIPO CORRECTO
     }
     
     public DataType[] parametersTypes (){

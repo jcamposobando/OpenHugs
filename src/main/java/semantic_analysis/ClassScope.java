@@ -6,7 +6,7 @@ public class ClassScope {
 
     private final HashMap<String,DataType> attributes;
 
-    private final HashMap<String, MethodScope> methods;
+    public final HashMap<String, MethodScope> methods;
 
     private ProgramScope parent; 
     
