@@ -13,8 +13,8 @@ public class RegisterManager {
      */
     public RegisterManager(){
         this.registers = new HashMap<>();
-        for (int i=0; i<8; ++i){
-            this.registers.put("s"+i,true);
+        for (int i=1; i<8; ++i){
+            this.registers.put("$s"+i,true);
         }
     }
 

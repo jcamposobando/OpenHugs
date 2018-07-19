@@ -3,7 +3,7 @@ package main.java.semantic_analysis;
 import main.java.syntax_analysis.statement.ExpressionStatement;
 
 public class Variable implements Evaluable {
-    private final Block parentBlock;
+    public final Block parentBlock;
     private final ExpressionStatement parentExpression;
     private DataType type;
     private final String value;

@@ -5,7 +5,7 @@ import main.java.semantic_analysis.DataType;
 import main.java.semantic_analysis.MethodScope;
 
 public class AsigmentStatement implements Statement {
-    private final String variableName;
+    public final String variableName;
     
     private final ExpressionStatement expresion;
     

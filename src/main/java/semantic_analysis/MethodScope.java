@@ -12,7 +12,7 @@ public class MethodScope {
     /**
      *
      */
-    private HashMap<String,DataType> declarations;
+    public HashMap<String,DataType> declarations;
 
     /**
      *
@@ -28,7 +28,7 @@ public class MethodScope {
     /**
      *
      */
-    private final LinkedHashMap<String, DataType> parameters;
+    public final LinkedHashMap<String, DataType> parameters;
     
     /**
      *

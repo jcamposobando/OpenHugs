@@ -4,6 +4,7 @@ import main.java.semantic_analysis.*;
 import main.java.syntax_analysis.statement.*;
 
 import java.util.Map;
+import java.util.Set;
 
 public class CodeGenerator {
 
@@ -28,9 +29,9 @@ public class CodeGenerator {
         dataSection = new StringBuilder();
         textSection = new StringBuilder();
 
-        dataSection.append("data.\n");
+        dataSection.append(".data\n");
 
-        textSection.append("text.\n");
+        textSection.append(".text\n");
         textSection.append("jal main\n");
         textSection.append("li $v0, 10 \nsyscall\n");
 
@@ -54,23 +55,63 @@ public class CodeGenerator {
      * @param methodScope
      */
     private void gen(MethodScope methodScope) {
+
+        reserveVariables(methodScope.declarations.entrySet());
+
+        textSection.append("#StartOfMethod ").append(methodScope.methodName).append("\n");
+
         textSection.append(methodScope.methodName).append(":\n");
         gen(methodScope.getBlock());
-        textSection.append("jr\n");
+        textSection.append("jr $ra\n");
+        textSection.append("#EndOfMethod ").append(methodScope.methodName).append("\n");
+    }
+
+    private void reserveVariables(Set<Map.Entry<String, DataType>> entries) {
+        for (Map.Entry me : entries) {
+            System.out.println(me.getKey());
+            switch ((DataType) me.getValue()) {
+                case NUMERO:
+                    dataSection
+                            .append(me.getKey())
+                            .append(":\t.word\t0\t#declaration for string variable\n");
+                    break;
+                case LOGICO:
+                    dataSection
+                            .append(me.getKey())
+                            .append(":\t.word\t0\t#declaration for string variable\n");
+                    break;
+                case PALABRA:
+                    dataSection
+                            .append(me.getKey())
+                            .append(":\t.asciiz\t")
+                            .append("\t#declaration for string variable\n");
+                    break;
+                case Vector:
+                    dataSection.append("#VECTOR\n");
+                    break;
+                default:
+                    System.err.println("Unrecognizable type");
+                    break;
+            }
+        }
     }
 
     /**
      * @param asigmentStatement
      */
     private void gen(AsigmentStatement asigmentStatement) {
-
+        textSection.append("#StartOfAsignment\n");
+        String reg = registerManager.acquireRegister();
+        gen(asigmentStatement.getExpression(), reg);
+        textSection.append("sw ").append(reg).append( " , ").append(asigmentStatement.variableName).append("\n");
+        textSection.append("#EndOfAsignment\n");
     }
 
     private void gen(ReturnStatement returnStatement) {
-        String reg = registerManager.acquireRegister();
-        gen(returnStatement.getExpression(),reg);
-        registerManager.releaseRegister(reg);
-        dataSection.append("jr\n");
+        textSection.append("#StartOfReturnStatement\n");
+        gen(returnStatement.getExpression(), "a0");
+        dataSection.append("jr $ra\n");
+        textSection.append("#EndOfReturnStatement\n");
     }
 
     /**
@@ -145,6 +186,7 @@ public class CodeGenerator {
         } else {
             textSection.append("move\t").append(register).append(" , ").append(reg1).append("\n");
         }
+        registerManager.releaseRegister(reg1);
     }
 
     /**
@@ -153,19 +195,41 @@ public class CodeGenerator {
      * @param variable the variable object
      */
     private void gen(Variable variable, String register) {
-        textSection
-                .append("la\t")
-                .append(register)
-                .append(" , ")
-                .append(variable.getValue())
-                .append("\n");
+        if (variable.parentBlock.parentMethod.parameters.containsKey(variable.getValue())) {
+            int a = 0;
+            for (String var : variable.parentBlock.parentMethod.parameters.keySet()) {
+                if(!variable.getValue().equals(var)) a++;
+                else break;
+            }
+            textSection
+                    .append("ori $a").append(a).append(" , ").append(register).append("$0");
+        } else {
+            textSection
+                    .append("lw\t")
+                    .append(register)
+                    .append(" , ")
+                    .append(variable.getValue())
+                    .append("\n");
+        }
+
     }
 
     /**
      * @param functionStatement
      */
     private void gen(FunctionStatement functionStatement) {
+        textSection.append("#StartFunctionCall\n");
+        int a = 0;
+        for (ExpressionStatement expression : functionStatement.parameters) {
+            gen(expression, "$a" + a);
+        }
 
+        if (functionStatement.functionName.equals("imprimir")) {
+            textSection.append("\naddi $v0, $0, 4 \nsyscall #Print a string in console\n");
+        } else {
+            textSection.append("jal ").append(functionStatement.functionName).append("\n");
+        }
+        textSection.append("#StartFunctionCall\n");
     }
 
     /**
@@ -196,10 +260,8 @@ public class CodeGenerator {
                 String tag = this.tagManager.getTag();
                 dataSection
                         .append(tag)
-                        .append("\t.asciiz\t")
-                        .append("\"")
+                        .append(":\t.asciiz\t")
                         .append(value.getValue())
-                        .append("\"")
                         .append("\t#declaration for string variable\n");
                 textSection
                         .append("la\t")
@@ -208,7 +270,7 @@ public class CodeGenerator {
                         .append(tag)
                         .append("\t# load address of string to be printed\n");
                 break;
-            case VECTOR:
+            case Vector:
                 //TODO implement vectors
                 break;
             default:
@@ -219,34 +281,8 @@ public class CodeGenerator {
     }
 
     private void gen(Block block) {
-
         //reserve space for variables
-        for (Map.Entry me : block.getVariables().entrySet()) {
-            switch ((DataType) me.getValue()) {
-                case NUMERO:
-                    dataSection
-                            .append(me.getKey())
-                            .append("\t.word\t0\t#declaration for string variable\n");
-                    break;
-                case LOGICO:
-                    dataSection
-                            .append(me.getKey())
-                            .append("\t.word\t0\t#declaration for string variable\n");
-                    break;
-                case PALABRA:
-                    dataSection
-                            .append(me.getKey())
-                            .append("\t.asciiz\t")
-                            .append("\t#declaration for string variable\n");
-                    break;
-                case VECTOR:
-                    dataSection.append("#VECTOR\n");
-                    break;
-                default:
-                    System.err.println("Unrecognizable type");
-                    break;
-            }
-        }
+        reserveVariables(block.getVariables().entrySet());
 
         for (Statement statement : block.getStatements()) {
             if (statement instanceof AsigmentStatement) {
@@ -271,13 +307,14 @@ public class CodeGenerator {
      * @param ifStatement
      */
     private void gen(IfStatement ifStatement) {
+        textSection.append("#StartOfIfStatement\n");
         String reg = registerManager.acquireRegister();
         String elseTag = tagManager.getTag();
-        String endTag= tagManager.getTag();
+        String endTag = tagManager.getTag();
 
         gen(ifStatement.getCondition(), reg);
-        registerManager.releaseRegister(reg);
         textSection.append("bez ").append(reg).append(" , ").append(elseTag).append("\n");
+        registerManager.releaseRegister(reg);
 
         gen(ifStatement.getThenBlock());
         textSection.append("j ").append(endTag).append("\n");
@@ -285,12 +322,15 @@ public class CodeGenerator {
         textSection.append(elseTag).append(":\n");
         gen(ifStatement.getElseBlock());
         textSection.append(endTag).append(":\n");
+
+        textSection.append("#EndOfIfStatement\n");
     }
 
     /**
      * @param whileStatement
      */
     private void gen(WhileStatement whileStatement) {
+        textSection.append("#StartOfWhileStatement\n");
         //gen(ifStatement.getCondition());
         String tag = tagManager.getTag();
         textSection.append(tag).append(":\n");
@@ -299,7 +339,9 @@ public class CodeGenerator {
         gen(whileStatement.getCondition(), reg);
 
         //TODO add jump on condition
-        textSection.append("bez ").append(reg).append(" , ").append(tag).append("\n");
+        textSection.append("BEQ ").append(reg).append(" , ").append("$0 , ").append(tag).append("\n");
         registerManager.releaseRegister(reg);
+
+        textSection.append("#EndOfWhileStatement\n");
     }
 }

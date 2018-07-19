@@ -8,9 +8,9 @@ import main.java.semantic_analysis.MethodScope;
 
 public class FunctionStatement implements Statement,Evaluable {
     
-    private final String functionName;
+    public final String functionName;
     
-    private final Vector<ExpressionStatement> parameters;
+    public final Vector<ExpressionStatement> parameters;
     
     private Block parent;
     

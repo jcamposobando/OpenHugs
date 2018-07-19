@@ -11,7 +11,7 @@ public class Block {
 
     Vector<Statement> statements;
 
-    private final MethodScope parentMethod;
+    public final MethodScope parentMethod;
 
     private final Statement parentBlock;
 
